@@ -1,188 +1,232 @@
 package com.binance.api.client.domain.account;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents an executed trade.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Trade {
+public class Trade
+{
+	/**
+	 * Trade id.
+	 */
+	private Long id;
 
-  /**
-   * Trade id.
-   */
-  private Long id;
+	/**
+	 * Price.
+	 */
+	private String price;
 
-  /**
-   * Price.
-   */
-  private String price;
+	/**
+	 * Quantity.
+	 */
+	private String qty;
 
-  /**
-   * Quantity.
-   */
-  private String qty;
+	/**
+	 * Quote quantity for the trade (price * qty).
+	 */
+	private String quoteQty;
+
+	/**
+	 * Commission.
+	 */
+	private String commission;
+
+	/**
+	 * Asset on which commission is taken
+	 */
+	private String commissionAsset;
+
+	/**
+	 * Trade execution time.
+	 */
+	private long time;
+
+	/**
+	 * The symbol of the trade.
+	 */
+	private String symbol;
+
+	@JsonProperty("isBuyer")
+	private boolean buyer;
+
+	@JsonProperty("isMaker")
+	private boolean maker;
+
+	@JsonProperty("isBestMatch")
+	private boolean bestMatch;
+
+	private String orderId;
 
 
-  /**
-   * Quote quantity for the trade (price * qty).
-   */
-  private String quoteQty;
+	public Long getId()
+	{
+		return id;
+	}
 
-  /**
-   * Commission.
-   */
-  private String commission;
 
-  /**
-   * Asset on which commission is taken
-   */
-  private String commissionAsset;
+	@JsonSetter("id")
+	public void setId(Long id)
+	{
+		this.id = id;
+	}
 
-  /**
-   * Trade execution time.
-   */
-  private long time;
 
-  /**
-   * The symbol of the trade.
-   */
-  private String symbol;
+	@JsonSetter("tradeId")
+	public void setTradeId(Long id)
+	{
+		if (this.id == null)
+		{
+			setId( id );
+		}
+	}
 
-  @JsonProperty("isBuyer")
-  private boolean buyer;
 
-  @JsonProperty("isMaker")
-  private boolean maker;
+	public String getPrice()
+	{
+		return price;
+	}
 
-  @JsonProperty("isBestMatch")
-  private boolean bestMatch;
 
-  private String orderId;
+	public void setPrice(String price)
+	{
+		this.price = price;
+	}
 
-  public Long getId() {
-    return id;
-  }
 
-  @JsonSetter("id")
-  public void setId(Long id) {
-    this.id = id;
-  }
+	public String getQty()
+	{
+		return qty;
+	}
 
-  @JsonSetter("tradeId")
-  public void setTradeId(Long id) {
-    if (this.id == null) {
-      setId(id);
-    }
-  }
 
-  public String getPrice() {
-    return price;
-  }
+	public void setQty(String qty)
+	{
+		this.qty = qty;
+	}
 
-  public void setPrice(String price) {
-    this.price = price;
-  }
 
-  public String getQty() {
-    return qty;
-  }
+	public String getQuoteQty()
+	{
+		return quoteQty;
+	}
 
-  public void setQty(String qty) {
-    this.qty = qty;
-  }
 
-  public String getQuoteQty() {
-    return quoteQty;
-  }
+	public void setQuoteQty(String quoteQty)
+	{
+		this.quoteQty = quoteQty;
+	}
 
-  public void setQuoteQty(String quoteQty) {
-    this.quoteQty = quoteQty;
-  }
 
-  public String getCommission() {
-    return commission;
-  }
+	public String getCommission()
+	{
+		return commission;
+	}
 
-  public void setCommission(String commission) {
-    this.commission = commission;
-  }
 
-  public String getCommissionAsset() {
-    return commissionAsset;
-  }
+	public void setCommission(String commission)
+	{
+		this.commission = commission;
+	}
 
-  public void setCommissionAsset(String commissionAsset) {
-    this.commissionAsset = commissionAsset;
-  }
 
-  public long getTime() {
-    return time;
-  }
+	public String getCommissionAsset()
+	{
+		return commissionAsset;
+	}
 
-  public void setTime(long time) {
-    this.time = time;
-  }
 
-  public String getSymbol() {
-    return symbol;
-  }
+	public void setCommissionAsset(String commissionAsset)
+	{
+		this.commissionAsset = commissionAsset;
+	}
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
 
-  public boolean isBuyer() {
-    return buyer;
-  }
+	public long getTime()
+	{
+		return time;
+	}
 
-  public void setBuyer(boolean buyer) {
-    this.buyer = buyer;
-  }
 
-  public boolean isMaker() {
-    return maker;
-  }
+	public void setTime(long time)
+	{
+		this.time = time;
+	}
 
-  public void setMaker(boolean maker) {
-    this.maker = maker;
-  }
 
-  public boolean isBestMatch() {
-    return bestMatch;
-  }
+	public String getSymbol()
+	{
+		return symbol;
+	}
 
-  public void setBestMatch(boolean bestMatch) {
-    this.bestMatch = bestMatch;
-  }
 
-  public String getOrderId() {
-    return orderId;
-  }
+	public void setSymbol(String symbol)
+	{
+		this.symbol = symbol;
+	}
 
-  public void setOrderId(String orderId) {
-    this.orderId = orderId;
-  }
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-        .append("id", id)
-        .append("symbol", symbol)
-        .append("price", price)
-        .append("qty", qty)
-        .append("quoteQty", quoteQty)
-        .append("commission", commission)
-        .append("commissionAsset", commissionAsset)
-        .append("time", time)
-        .append("buyer", buyer)
-        .append("maker", maker)
-        .append("bestMatch", bestMatch)
-        .append("orderId", orderId)
-        .toString();
-  }
+	public boolean isBuyer()
+	{
+		return buyer;
+	}
+
+
+	public void setBuyer(boolean buyer)
+	{
+		this.buyer = buyer;
+	}
+
+
+	public boolean isMaker()
+	{
+		return maker;
+	}
+
+
+	public void setMaker(boolean maker)
+	{
+		this.maker = maker;
+	}
+
+
+	public boolean isBestMatch()
+	{
+		return bestMatch;
+	}
+
+
+	public void setBestMatch(boolean bestMatch)
+	{
+		this.bestMatch = bestMatch;
+	}
+
+
+	public String getOrderId()
+	{
+		return orderId;
+	}
+
+
+	public void setOrderId(String orderId)
+	{
+		this.orderId = orderId;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "id", id )
+				.append( "symbol", symbol ).append( "price", price ).append( "qty", qty ).append( "quoteQty", quoteQty )
+				.append( "commission", commission ).append( "commissionAsset", commissionAsset ).append( "time", time )
+				.append( "buyer", buyer ).append( "maker", maker ).append( "bestMatch", bestMatch ).append( "orderId", orderId )
+				.toString();
+	}
 }

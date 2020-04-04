@@ -1,11 +1,15 @@
 package com.binance.api.client.domain.market;
 
+import static cn.ttron.stock.metadata.StockConstants.ID_TYPE_AKS_SELLING;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import cn.ttron.stock.metadata.Order;
 
 /**
  * An order book entry consisting of price and quantity.
@@ -13,32 +17,14 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @JsonDeserialize(using = OrderBookEntryDeserializer.class)
 @JsonSerialize(using = OrderBookEntrySerializer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OrderBookEntry {
+public class OrderBookEntry extends Order
+{
 
-  private String price;
-  private String qty;
-
-  public String getPrice() {
-    return price;
-  }
-
-  public void setPrice(String price) {
-    this.price = price;
-  }
-
-  public String getQty() {
-    return qty;
-  }
-
-  public void setQty(String qty) {
-    this.qty = qty;
-  }
-
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-        .append("price", price)
-        .append("qty", qty)
-        .toString();
-  }
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "millis", getTimestamp() )
+				.append( "type", (getTypeId() == ID_TYPE_AKS_SELLING) ? "ask/sell" : "bid/buy" ).append( "price", getPrice() )
+				.append( "quantity", getVolume() ).toString();
+	}
 }
