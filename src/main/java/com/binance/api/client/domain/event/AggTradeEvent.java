@@ -13,31 +13,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AggTradeEvent extends AggTrade
 {
+
 	@JsonProperty("e")
 	private String eventType;
+
+	@JsonProperty("E")
+	private long eventTime;
 
 	@JsonProperty("s")
 	private String symbol;
 
-	@JsonProperty("E")
-	private long timestamp;
-
-
 	public String getEventType()
 	{
 		return eventType;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
-	}
-
-
-	public long getTimestamp()
-	{
-		return timestamp;
 	}
 
 
@@ -47,15 +35,27 @@ public class AggTradeEvent extends AggTrade
 	}
 
 
-	public void setSymbol(String symbol)
+	public long getEventTime()
 	{
-		this.symbol = symbol;
+		return eventTime;
 	}
 
 
-	public void setTimestamp(long eventTime)
+	public void setEventTime(long eventTime)
 	{
-		this.timestamp = eventTime;
+		this.eventTime = eventTime;
+	}
+
+
+	public String getSymbol()
+	{
+		return symbol;
+	}
+
+
+	public void setSymbol(String symbol)
+	{
+		this.symbol = symbol;
 	}
 
 
@@ -63,6 +63,6 @@ public class AggTradeEvent extends AggTrade
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
-				.append( "eventTime", timestamp ).append( "symbol", symbol ).append( "aggTrade", super.toString() ).toString();
+				.append( "eventTime", eventTime ).append( "symbol", symbol ).append( "aggTrade", super.toString() ).toString();
 	}
 }

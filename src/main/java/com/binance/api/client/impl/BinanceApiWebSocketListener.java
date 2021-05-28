@@ -17,7 +17,6 @@ import okhttp3.WebSocketListener;
  */
 public class BinanceApiWebSocketListener<T> extends WebSocketListener
 {
-
 	private BinanceApiCallback<T> callback;
 
 	private static final ObjectMapper mapper = new ObjectMapper();
@@ -25,7 +24,6 @@ public class BinanceApiWebSocketListener<T> extends WebSocketListener
 	private final ObjectReader objectReader;
 
 	private boolean closing = false;
-
 
 	public BinanceApiWebSocketListener(BinanceApiCallback<T> callback, Class<T> eventClass)
 	{
@@ -44,7 +42,6 @@ public class BinanceApiWebSocketListener<T> extends WebSocketListener
 	@Override
 	public void onMessage(WebSocket webSocket, String text)
 	{
-		// System.out.println( text );// XXX
 		try
 		{
 			T event = objectReader.readValue( text );

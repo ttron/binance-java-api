@@ -9,7 +9,6 @@ import java.util.List;
  */
 public final class Util
 {
-
 	/**
 	 * List of fiat currencies.
 	 */
@@ -18,9 +17,9 @@ public final class Util
 
 	public static final String BTC_TICKER = "BTC";
 
-
 	private Util()
 	{
+
 	}
 
 

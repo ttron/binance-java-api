@@ -17,7 +17,6 @@ public class RateLimit
 
 	private Integer limit;
 
-
 	public RateLimitType getRateLimitType()
 	{
 		return rateLimitType;

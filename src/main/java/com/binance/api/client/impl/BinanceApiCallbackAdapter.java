@@ -17,9 +17,7 @@ import retrofit2.Response;
  */
 public class BinanceApiCallbackAdapter<T> implements Callback<T>
 {
-
 	private final BinanceApiCallback<T> callback;
-
 
 	public BinanceApiCallbackAdapter(BinanceApiCallback<T> callback)
 	{
