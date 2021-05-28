@@ -33,7 +33,6 @@ public class AggTrade
 	@JsonProperty("m")
 	private boolean isBuyerMaker;
 
-
 	public long getAggregatedTradeId()
 	{
 		return aggregatedTradeId;

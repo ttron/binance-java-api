@@ -2,8 +2,11 @@ package com.binance.api.client;
 
 import static com.binance.api.client.impl.BinanceApiServiceGenerator.getSharedClient;
 
+import com.binance.api.client.impl.BinanceApiAsyncMarginRestClientImpl;
 import com.binance.api.client.impl.BinanceApiAsyncRestClientImpl;
+import com.binance.api.client.impl.BinanceApiMarginRestClientImpl;
 import com.binance.api.client.impl.BinanceApiRestClientImpl;
+import com.binance.api.client.impl.BinanceApiSwapRestClientImpl;
 import com.binance.api.client.impl.BinanceApiWebSocketClientImpl;
 
 /**
@@ -11,17 +14,15 @@ import com.binance.api.client.impl.BinanceApiWebSocketClientImpl;
  */
 public class BinanceApiClientFactory
 {
-
 	/**
 	 * API Key
 	 */
-	private String apiKey;
+	private final String apiKey;
 
 	/**
 	 * Secret.
 	 */
-	private String secret;
-
+	private final String secret;
 
 	/**
 	 * Instantiates a new binance api client factory.
@@ -80,10 +81,37 @@ public class BinanceApiClientFactory
 
 
 	/**
+	 * Creates a new asynchronous/non-blocking Margin REST client.
+	 */
+	public BinanceApiAsyncMarginRestClient newAsyncMarginRestClient()
+	{
+		return new BinanceApiAsyncMarginRestClientImpl( apiKey, secret );
+	}
+
+
+	/**
+	 * Creates a new synchronous/blocking Margin REST client.
+	 */
+	public BinanceApiMarginRestClient newMarginRestClient()
+	{
+		return new BinanceApiMarginRestClientImpl( apiKey, secret );
+	}
+
+
+	/**
 	 * Creates a new web socket client used for handling data streams.
 	 */
 	public BinanceApiWebSocketClient newWebSocketClient()
 	{
 		return new BinanceApiWebSocketClientImpl( getSharedClient() );
+	}
+
+
+	/**
+	 * Creates a new synchronous/blocking Swap REST client.
+	 */
+	public BinanceApiSwapRestClient newSwapRestClient()
+	{
+		return new BinanceApiSwapRestClientImpl( apiKey, secret );
 	}
 }

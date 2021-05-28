@@ -14,13 +14,11 @@ import com.binance.api.client.domain.market.AggTrade;
  */
 public class AggTradesCacheExample
 {
-
 	/**
 	 * Key is the aggregate trade id, and the value contains the aggregated trade data, which is
 	 * automatically updated whenever a new agg data stream event arrives.
 	 */
 	private Map<Long, AggTrade> aggTradesCache;
-
 
 	public AggTradesCacheExample(String symbol)
 	{

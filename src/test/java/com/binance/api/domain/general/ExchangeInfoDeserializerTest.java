@@ -24,7 +24,6 @@ import static org.junit.Assert.fail;
  * Test deserialization of exchange information.
  */
 public class ExchangeInfoDeserializerTest {
-
   @Test
   public void testExchangeInfoDeserialization() {
     final String json = "{\n" +

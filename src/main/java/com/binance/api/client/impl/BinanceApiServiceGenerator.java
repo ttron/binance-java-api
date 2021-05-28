@@ -7,13 +7,15 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.StringUtils;
 
 import com.binance.api.client.BinanceApiError;
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.config.BinanceApiConfig;
 import com.binance.api.client.exception.BinanceApiException;
 import com.binance.api.client.security.AuthenticationInterceptor;
 
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.logging.HttpLoggingInterceptor.Level;
 import retrofit2.Call;
 import retrofit2.Converter;
 import retrofit2.Response;
@@ -32,16 +34,20 @@ public class BinanceApiServiceGenerator
 
 	static
 	{
+		HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+		// set your desired log level
+		logging.setLevel( Level.BODY );
+
 		Dispatcher dispatcher = new Dispatcher();
 		dispatcher.setMaxRequestsPerHost( 500 );
 		dispatcher.setMaxRequests( 500 );
-		sharedClient = new OkHttpClient.Builder().dispatcher( dispatcher ).pingInterval( 20, TimeUnit.SECONDS ).build();
+		sharedClient = new OkHttpClient.Builder().addInterceptor( logging ).dispatcher( dispatcher )
+				.pingInterval( 20, TimeUnit.SECONDS ).build();
 	}
 
 	@SuppressWarnings("unchecked")
 	private static final Converter<ResponseBody, BinanceApiError> errorBodyConverter = (Converter<ResponseBody, BinanceApiError>) converterFactory
 			.responseBodyConverter( BinanceApiError.class, new Annotation[0], null );
-
 
 	public static <S> S createService(Class<S> serviceClass)
 	{
@@ -51,7 +57,7 @@ public class BinanceApiServiceGenerator
 
 	public static <S> S createService(Class<S> serviceClass, String apiKey, String secret)
 	{
-		Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl( BinanceApiConstants.API_BASE_URL )
+		Retrofit.Builder retrofitBuilder = new Retrofit.Builder().baseUrl( BinanceApiConfig.getApiBaseUrl() )
 				.addConverterFactory( converterFactory );
 
 		if (StringUtils.isEmpty( apiKey ) || StringUtils.isEmpty( secret ))
@@ -64,7 +70,7 @@ public class BinanceApiServiceGenerator
 			// client
 			AuthenticationInterceptor interceptor = new AuthenticationInterceptor( apiKey, secret );
 			OkHttpClient adaptedClient = sharedClient.newBuilder().addInterceptor( interceptor ).build();
-			retrofitBuilder.client( adaptedClient );// @_@
+			retrofitBuilder.client( adaptedClient );
 		}
 
 		Retrofit retrofit = retrofitBuilder.build();
@@ -75,7 +81,7 @@ public class BinanceApiServiceGenerator
 	/**
 	 * Execute a REST call and block until the response is received.
 	 */
-	public static <T> T executeSync(Call<T> call)
+	public static <T> T executeSync(Call<T> call) throws BinanceApiException
 	{
 		try
 		{

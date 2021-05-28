@@ -1,188 +1,248 @@
 package com.binance.api.client.domain.account;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.domain.OrderSide;
 import com.binance.api.client.domain.OrderStatus;
 import com.binance.api.client.domain.OrderType;
 import com.binance.api.client.domain.TimeInForce;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Response returned when placing a new order on the system.
- *
  * @see NewOrder for the request
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewOrderResponse {
+public class NewOrderResponse
+{
 
-  /**
-   * Order symbol.
-   */
-  private String symbol;
+	// {
+	// "symbol": "BTCUSDT",
+	// "orderId": 28,
+	// "orderListId": -1, //Unless OCO, value will be -1
+	// "clientOrderId": "6gCrw2kRUAF9CvJDGP16IP",
+	// "transactTime": 1507725176595,
+	// "price": "0.00000000",
+	// "origQty": "10.00000000",
+	// "executedQty": "10.00000000",
+	// "cummulativeQuoteQty": "10.00000000",
+	// "status": "FILLED",
+	// "timeInForce": "GTC",
+	// "type": "MARKET",
+	// "side": "SELL"
+	// }
 
-  /**
-   * Order id.
-   */
-  private Long orderId;
+	/**
+	 * This will be either a generated one, or the newClientOrderId parameter
+	 * which was passed when creating the new order.
+	 */
+	private String clientOrderId;
 
-  /**
-   * This will be either a generated one, or the newClientOrderId parameter
-   * which was passed when creating the new order.
-   */
-  private String clientOrderId;
+	private String cummulativeQuoteQty;
 
-  private String price;
+	private String executedQty;
 
-  private String origQty;
+	// @JsonSetter(nulls = Nulls.AS_EMPTY)
+	private List<Trade> fills;
 
-  private String executedQty;
+	/**
+	 * Order id.
+	 */
+	private Long orderId;
 
-  private String cummulativeQuoteQty;
+	private String origQty;
 
-  private OrderStatus status;
+	private String price;
 
-  private TimeInForce timeInForce;
+	private OrderSide side;
 
-  private OrderType type;
+	private OrderStatus status;
 
-  private OrderSide side;
+	/**
+	 * Order symbol.
+	 */
+	private String symbol;
 
-  // @JsonSetter(nulls = Nulls.AS_EMPTY)
-  private List<Trade> fills;
+	private TimeInForce timeInForce;
 
-  /**
-   * Transact time for this order.
-   */
-  private Long transactTime;
+	/**
+	 * Transact time for this order.
+	 */
+	private Long transactTime;
 
-  public String getSymbol() {
-    return symbol;
-  }
+	private OrderType type;
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
+	public String getClientOrderId()
+	{
+		return clientOrderId;
+	}
 
-  public Long getOrderId() {
-    return orderId;
-  }
 
-  public void setOrderId(Long orderId) {
-    this.orderId = orderId;
-  }
+	public String getCummulativeQuoteQty()
+	{
+		return cummulativeQuoteQty;
+	}
 
-  public String getClientOrderId() {
-    return clientOrderId;
-  }
 
-  public void setClientOrderId(String clientOrderId) {
-    this.clientOrderId = clientOrderId;
-  }
+	public String getExecutedQty()
+	{
+		return executedQty;
+	}
 
-  public Long getTransactTime() {
-    return transactTime;
-  }
 
-  public void setTransactTime(Long transactTime) {
-    this.transactTime = transactTime;
-  }
+	public List<Trade> getFills()
+	{
+		return fills;
+	}
 
-  public String getPrice() {
-    return price;
-  }
 
-  public void setPrice(String price) {
-    this.price = price;
-  }
+	public Long getOrderId()
+	{
+		return orderId;
+	}
 
-  public String getOrigQty() {
-    return origQty;
-  }
 
-  public void setOrigQty(String origQty) {
-    this.origQty = origQty;
-  }
+	public String getOrigQty()
+	{
+		return origQty;
+	}
 
-  public String getExecutedQty() {
-    return executedQty;
-  }
 
-  public void setExecutedQty(String executedQty) {
-    this.executedQty = executedQty;
-  }
+	public String getPrice()
+	{
+		return price;
+	}
 
-  public String getCummulativeQuoteQty() {
-    return cummulativeQuoteQty;
-  }
 
-  public void setCummulativeQuoteQty(String cummulativeQuoteQty) {
-    this.cummulativeQuoteQty = cummulativeQuoteQty;
-  }
+	public OrderSide getSide()
+	{
+		return side;
+	}
 
-  public OrderStatus getStatus() {
-    return status;
-  }
 
-  public void setStatus(OrderStatus status) {
-    this.status = status;
-  }
+	public OrderStatus getStatus()
+	{
+		return status;
+	}
 
-  public TimeInForce getTimeInForce() {
-    return timeInForce;
-  }
 
-  public void setTimeInForce(TimeInForce timeInForce) {
-    this.timeInForce = timeInForce;
-  }
+	public String getSymbol()
+	{
+		return symbol;
+	}
 
-  public OrderType getType() {
-    return type;
-  }
 
-  public void setType(OrderType type) {
-    this.type = type;
-  }
+	public TimeInForce getTimeInForce()
+	{
+		return timeInForce;
+	}
 
-  public OrderSide getSide() {
-    return side;
-  }
 
-  public void setSide(OrderSide side) {
-    this.side = side;
-  }
+	public Long getTransactTime()
+	{
+		return transactTime;
+	}
 
-  public List<Trade> getFills() {
-    return fills;
-  }
 
-  public void setFills(List<Trade> fills) {
-    this.fills = fills;
-  }
+	public OrderType getType()
+	{
+		return type;
+	}
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-        .append("symbol", symbol)
-        .append("orderId", orderId)
-        .append("clientOrderId", clientOrderId)
-        .append("transactTime", transactTime)
-        .append("price", price)
-        .append("origQty", origQty)
-        .append("executedQty", executedQty)
-        .append("status", status)
-        .append("timeInForce", timeInForce)
-        .append("type", type)
-        .append("side", side)
-        .append("fills", Optional.ofNullable(fills).orElse(Collections.emptyList())
-            .stream()
-            .map(Object::toString)
-            .collect(Collectors.joining(", ")))
-        .toString();
-  }
+
+	public void setClientOrderId(String clientOrderId)
+	{
+		this.clientOrderId = clientOrderId;
+	}
+
+
+	public void setCummulativeQuoteQty(String cummulativeQuoteQty)
+	{
+		this.cummulativeQuoteQty = cummulativeQuoteQty;
+	}
+
+
+	public void setExecutedQty(String executedQty)
+	{
+		this.executedQty = executedQty;
+	}
+
+
+	public void setFills(List<Trade> fills)
+	{
+		this.fills = fills;
+	}
+
+
+	public void setOrderId(Long orderId)
+	{
+		this.orderId = orderId;
+	}
+
+
+	public void setOrigQty(String origQty)
+	{
+		this.origQty = origQty;
+	}
+
+
+	public void setPrice(String price)
+	{
+		this.price = price;
+	}
+
+
+	public void setSide(OrderSide side)
+	{
+		this.side = side;
+	}
+
+
+	public void setStatus(OrderStatus status)
+	{
+		this.status = status;
+	}
+
+
+	public void setSymbol(String symbol)
+	{
+		this.symbol = symbol;
+	}
+
+
+	public void setTimeInForce(TimeInForce timeInForce)
+	{
+		this.timeInForce = timeInForce;
+	}
+
+
+	public void setTransactTime(Long transactTime)
+	{
+		this.transactTime = transactTime;
+	}
+
+
+	public void setType(OrderType type)
+	{
+		this.type = type;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
+				.append( "orderId", orderId ).append( "clientOrderId", clientOrderId ).append( "transactTime", transactTime )
+				.append( "price", price ).append( "origQty", origQty ).append( "executedQty", executedQty )
+				.append( "status", status ).append( "timeInForce", timeInForce ).append( "type", type ).append( "side", side )
+				.append( "fills", Optional.ofNullable( fills ).orElse( Collections.emptyList() ).stream().map( Object::toString )
+						.collect( Collectors.joining( ", " ) ) )
+				.toString();
+	}
 }

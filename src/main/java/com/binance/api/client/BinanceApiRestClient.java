@@ -7,7 +7,8 @@ import com.binance.api.client.domain.account.DepositAddress;
 import com.binance.api.client.domain.account.DepositHistory;
 import com.binance.api.client.domain.account.NewOrder;
 import com.binance.api.client.domain.account.NewOrderResponse;
-import com.binance.api.client.domain.account.Order;
+import com.binance.api.client.domain.account.BinanceOrder;
+import com.binance.api.client.domain.account.SubAccountTransfer;
 import com.binance.api.client.domain.account.Trade;
 import com.binance.api.client.domain.account.TradeHistoryItem;
 import com.binance.api.client.domain.account.WithdrawHistory;
@@ -28,66 +29,59 @@ import com.binance.api.client.domain.market.TickerPrice;
 import com.binance.api.client.domain.market.TickerStatistics;
 
 /**
- * Binance API façade, supporting synchronous/blocking access Binance's REST API.
+ * Binance API facade, supporting synchronous/blocking access Binance's REST API.
  */
 public interface BinanceApiRestClient
 {
 	// General endpoints
 
 	/**
-	 * Test connectivity to the Rest API.
-	 */
-	void ping();
-
-
-	/**
-	 * Test connectivity to the Rest API and get the current server time.
+	 * Cancel an active order.
 	 *
-	 * @return current server time.
+	 * @param cancelOrderRequest order status request parameters
 	 */
-	Long getServerTime();
+	CancelOrderResponse cancelOrder(CancelOrderRequest cancelOrderRequest);
+
+
+	CancelOrderResponse cancelAllOrder(String symbol);
 
 
 	/**
-	 * @return Current exchange trading rules and symbol information
+	 * Close out a new user data stream.
+	 *
+	 * @param listenKey listen key that identifies a data stream
 	 */
-	ExchangeInfo getExchangeInfo();
+	void closeUserDataStream(String listenKey);
 
 
 	/**
-	 * @return All the supported assets and whether or not they can be withdrawn.
+	 * Get 24 hour price change statistics.
+	 *
+	 * @param symbol ticker symbol (e.g. ETHBTC)
 	 */
-	List<Asset> getAllAssets();
+	TickerStatistics get24HrPriceStatistics(String symbol);
 
+
+	/**
+	 * Get current account information using default parameters.
+	 */
+	Account getAccount();
 
 	// Market Data endpoints
 
+
 	/**
-	 * Get order book of a symbol.
-	 *
-	 * @param symbol ticker symbol (e.g. ETHBTC)
-	 * @param limit depth of the order book (max 100)
+	 * Get current account information.
 	 */
-	OrderBook getOrderBook(String symbol, Integer limit);
+	Account getAccount(Long recvWindow, Long timestamp);
 
 
 	/**
-	 * Get recent trades (up to last 500). Weight: 1
+	 * Return the most recent aggregate trades for <code>symbol</code>
 	 *
-	 * @param symbol ticker symbol (e.g. ETHBTC)
-	 * @param limit of last trades (Default 500; max 1000.)
+	 * @see #getAggTrades(String, String, Integer, Long, Long)
 	 */
-	List<TradeHistoryItem> getTrades(String symbol, Integer limit);
-
-
-	/**
-	 * Get older trades. Weight: 5
-	 *
-	 * @param symbol ticker symbol (e.g. ETHBTC)
-	 * @param limit of last trades (Default 500; max 1000.)
-	 * @param fromId TradeId to fetch from. Default gets most recent trades.
-	 */
-	List<TradeHistoryItem> getHistoricalTrades(String symbol, Integer limit, Long fromId);
+	List<AggTrade> getAggTrades(String symbol);
 
 
 	/**
@@ -108,11 +102,44 @@ public interface BinanceApiRestClient
 
 
 	/**
-	 * Return the most recent aggregate trades for <code>symbol</code>
-	 *
-	 * @see #getAggTrades(String, String, Integer, Long, Long)
+	 * Get 24 hour price change statistics for all symbols.
 	 */
-	List<AggTrade> getAggTrades(String symbol);
+	List<TickerStatistics> getAll24HrPriceStatistics();
+
+
+	/**
+	 * @return All the supported assets and whether or not they can be withdrawn.
+	 */
+	List<Asset> getAllAssets();
+
+
+	/**
+	 * Get all account orders; active, canceled, or filled.
+	 *
+	 * @param orderRequest order request parameters
+	 * @return a list of all account orders
+	 */
+	List<BinanceOrder> getAllOrders(AllOrdersRequest orderRequest);
+
+
+	/**
+	 * Get Latest price for all symbols.
+	 */
+	List<TickerPrice> getAllPrices();
+
+
+	/**
+	 * Get best price/qty on the order book for all symbols.
+	 */
+	List<BookTicker> getBookTickers();
+
+
+	/**
+	 * Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
+	 *
+	 * @see #getCandlestickBars(String, CandlestickInterval, Integer, Long, Long)
+	 */
+	List<Candlestick> getCandlestickBars(String symbol, CandlestickInterval interval);
 
 
 	/**
@@ -130,31 +157,97 @@ public interface BinanceApiRestClient
 
 
 	/**
-	 * Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
+	 * Fetch deposit address.
 	 *
-	 * @see #getCandlestickBars(String, CandlestickInterval, Integer, Long, Long)
+	 * @return deposit address for a given asset.
 	 */
-	List<Candlestick> getCandlestickBars(String symbol, CandlestickInterval interval);
+	DepositAddress getDepositAddress(String asset);
 
 
 	/**
-	 * Get 24 hour price change statistics.
+	 * Fetch account deposit history.
+	 *
+	 * @return deposit history, containing a list of deposits
+	 */
+	DepositHistory getDepositHistory(String asset);
+
+	// Account endpoints
+
+
+	/**
+	 * @return Current exchange trading rules and symbol information
+	 */
+	ExchangeInfo getExchangeInfo();
+
+
+	/**
+	 * Get older trades. Weight: 5
 	 *
 	 * @param symbol ticker symbol (e.g. ETHBTC)
+	 * @param limit of last trades (Default 500; max 1000.)
+	 * @param fromId TradeId to fetch from. Default gets most recent trades.
 	 */
-	TickerStatistics get24HrPriceStatistics(String symbol);
+	List<TradeHistoryItem> getHistoricalTrades(String symbol, Integer limit, Long fromId);
 
 
 	/**
-	 * Get 24 hour price change statistics for all symbols.
+	 * Get trades for a specific account and symbol.
+	 *
+	 * @param symbol symbol to get trades from
+	 * @return a list of trades
 	 */
-	List<TickerStatistics> getAll24HrPriceStatistics();
+	List<Trade> getMyTrades(String symbol);
 
 
 	/**
-	 * Get Latest price for all symbols.
+	 * Get trades for a specific account and symbol.
+	 *
+	 * @param symbol symbol to get trades from
+	 * @param limit default 500; max 1000
+	 * @return a list of trades
 	 */
-	List<TickerPrice> getAllPrices();
+	List<Trade> getMyTrades(String symbol, Integer limit);
+
+
+	/**
+	 * Get trades for a specific account and symbol.
+	 *
+	 * @param symbol symbol to get trades from
+	 * @param limit default 500; max 1000
+	 * @param fromId TradeId to fetch from. Default gets most recent trades.
+	 * @return a list of trades
+	 */
+	List<Trade> getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp);
+
+
+	List<Trade> getMyTrades(String symbol, Long fromId);
+
+
+	/**
+	 * Get all open orders on a symbol.
+	 *
+	 * @param orderRequest order request parameters
+	 * @return a list of all account open orders on a symbol.
+	 */
+	List<BinanceOrder> getOpenOrders(OrderRequest orderRequest);
+
+
+	/**
+	 * Get order book of a symbol.
+	 *
+	 * @param symbol ticker symbol (e.g. ETHBTC)
+	 * @param limit depth of the order book (max 100)
+	 */
+	OrderBook getOrderBook(String symbol, Integer limit);
+
+
+	/**
+	 * Check an order's status.
+	 * @param orderStatusRequest order status request options/filters
+	 *
+	 * @return an order
+	 */
+	BinanceOrder getOrderStatus(OrderStatusRequest orderStatusRequest);
 
 
 	/**
@@ -166,12 +259,45 @@ public interface BinanceApiRestClient
 
 
 	/**
-	 * Get best price/qty on the order book for all symbols.
+	 * Test connectivity to the Rest API and get the current server time.
+	 *
+	 * @return current server time.
 	 */
-	List<BookTicker> getBookTickers();
+	Long getServerTime();
 
 
-	// Account endpoints
+	/**
+	 * Fetch sub-account transfer history.
+	 *
+	 * @return sub-account transfers
+	 */
+	List<SubAccountTransfer> getSubAccountTransfers();
+
+
+	/**
+	 * Get recent trades (up to last 500). Weight: 1
+	 *
+	 * @param symbol ticker symbol (e.g. ETHBTC)
+	 * @param limit of last trades (Default 500; max 1000.)
+	 */
+	List<TradeHistoryItem> getTrades(String symbol, Integer limit);
+
+
+	/**
+	 * Fetch account withdraw history.
+	 *
+	 * @return withdraw history, containing a list of withdrawals
+	 */
+	WithdrawHistory getWithdrawHistory(String asset);
+
+
+	/**
+	 * PING a user data stream to prevent a time out.
+	 *
+	 * @param listenKey listen key that identifies a data stream
+	 */
+	void keepAliveUserDataStream(String listenKey);
+
 
 	/**
 	 * Send in a new order.
@@ -189,82 +315,21 @@ public interface BinanceApiRestClient
 	 */
 	void newOrderTest(NewOrder order);
 
+	// User stream endpoints
+
 
 	/**
-	 * Check an order's status.
-	 * @param orderStatusRequest order status request options/filters
+	 * Test connectivity to the Rest API.
+	 */
+	void ping();
+
+
+	/**
+	 * Start a new user data stream.
 	 *
-	 * @return an order
+	 * @return a listen key that can be used with data streams
 	 */
-	Order getOrderStatus(OrderStatusRequest orderStatusRequest);
-
-
-	/**
-	 * Cancel an active order.
-	 *
-	 * @param cancelOrderRequest order status request parameters
-	 */
-	CancelOrderResponse cancelOrder(CancelOrderRequest cancelOrderRequest);
-
-
-	/**
-	 * Get all open orders on a symbol.
-	 *
-	 * @param orderRequest order request parameters
-	 * @return a list of all account open orders on a symbol.
-	 */
-	List<Order> getOpenOrders(OrderRequest orderRequest);
-
-
-	/**
-	 * Get all account orders; active, canceled, or filled.
-	 *
-	 * @param orderRequest order request parameters
-	 * @return a list of all account orders
-	 */
-	List<Order> getAllOrders(AllOrdersRequest orderRequest);
-
-
-	/**
-	 * Get current account information.
-	 */
-	Account getAccount(Long recvWindow, Long timestamp);
-
-
-	/**
-	 * Get current account information using default parameters.
-	 */
-	Account getAccount();
-
-
-	/**
-	 * Get trades for a specific account and symbol.
-	 *
-	 * @param symbol symbol to get trades from
-	 * @param limit default 500; max 1000
-	 * @param fromId TradeId to fetch from. Default gets most recent trades.
-	 * @return a list of trades
-	 */
-	List<Trade> getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp);
-
-
-	/**
-	 * Get trades for a specific account and symbol.
-	 *
-	 * @param symbol symbol to get trades from
-	 * @param limit default 500; max 1000
-	 * @return a list of trades
-	 */
-	List<Trade> getMyTrades(String symbol, Integer limit);
-
-
-	/**
-	 * Get trades for a specific account and symbol.
-	 *
-	 * @param symbol symbol to get trades from
-	 * @return a list of trades
-	 */
-	List<Trade> getMyTrades(String symbol);
+	String startUserDataStream();
 
 
 	/**
@@ -279,54 +344,4 @@ public interface BinanceApiRestClient
 	 * @param addressTag Secondary address identifier for coins like XRP,XMR etc.
 	 */
 	WithdrawResult withdraw(String asset, String address, String amount, String name, String addressTag);
-
-
-	/**
-	 * Fetch account deposit history.
-	 *
-	 * @return deposit history, containing a list of deposits
-	 */
-	DepositHistory getDepositHistory(String asset);
-
-
-	/**
-	 * Fetch account withdraw history.
-	 *
-	 * @return withdraw history, containing a list of withdrawals
-	 */
-	WithdrawHistory getWithdrawHistory(String asset);
-
-
-	/**
-	 * Fetch deposit address.
-	 *
-	 * @return deposit address for a given asset.
-	 */
-	DepositAddress getDepositAddress(String asset);
-
-
-	// User stream endpoints
-
-	/**
-	 * Start a new user data stream.
-	 *
-	 * @return a listen key that can be used with data streams
-	 */
-	String startUserDataStream();
-
-
-	/**
-	 * PING a user data stream to prevent a time out.
-	 *
-	 * @param listenKey listen key that identifies a data stream
-	 */
-	void keepAliveUserDataStream(String listenKey);
-
-
-	/**
-	 * Close out a new user data stream.
-	 *
-	 * @param listenKey listen key that identifies a data stream
-	 */
-	void closeUserDataStream(String listenKey);
 }

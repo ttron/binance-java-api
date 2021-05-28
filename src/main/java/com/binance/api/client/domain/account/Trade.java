@@ -64,7 +64,6 @@ public class Trade
 
 	private String orderId;
 
-
 	public Long getId()
 	{
 		return id;

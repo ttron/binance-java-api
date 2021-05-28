@@ -1,55 +1,72 @@
 package com.binance.api.client.domain.account.request;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Base request parameters for order-related methods.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OrderRequest {
+public class OrderRequest
+{
+	private Long recvWindow;
 
-  private final String symbol;
+	private String symbol;
 
-  private Long recvWindow;
+	private Long timestamp;
 
-  private Long timestamp;
+	public OrderRequest()
+	{
+		this.timestamp = System.currentTimeMillis();
+		this.recvWindow = BinanceApiConstants.DEFAULT_RECEIVING_WINDOW;
+	}
 
-  public OrderRequest(String symbol) {
-    this.symbol = symbol;
-    this.timestamp = System.currentTimeMillis();
-    this.recvWindow = BinanceApiConstants.DEFAULT_RECEIVING_WINDOW;
-  }
 
-  public String getSymbol() {
-    return symbol;
-  }
+	public OrderRequest(String symbol)
+	{
+		this();
+		this.symbol = symbol;
+	}
 
-  public Long getRecvWindow() {
-    return recvWindow;
-  }
 
-  public OrderRequest recvWindow(Long recvWindow) {
-    this.recvWindow = recvWindow;
-    return this;
-  }
+	public Long getRecvWindow()
+	{
+		return recvWindow;
+	}
 
-  public Long getTimestamp() {
-    return timestamp;
-  }
 
-  public OrderRequest timestamp(Long timestamp) {
-    this.timestamp = timestamp;
-    return this;
-  }
+	public String getSymbol()
+	{
+		return symbol;
+	}
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-        .append("symbol", symbol)
-        .append("recvWindow", recvWindow)
-        .append("timestamp", timestamp)
-        .toString();
-  }
+
+	public Long getTimestamp()
+	{
+		return timestamp;
+	}
+
+
+	public OrderRequest recvWindow(Long recvWindow)
+	{
+		this.recvWindow = recvWindow;
+		return this;
+	}
+
+
+	public OrderRequest timestamp(Long timestamp)
+	{
+		this.timestamp = timestamp;
+		return this;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
+				.append( "recvWindow", recvWindow ).append( "timestamp", timestamp ).toString();
+	}
 }

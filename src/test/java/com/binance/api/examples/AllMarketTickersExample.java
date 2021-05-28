@@ -8,19 +8,14 @@ import com.binance.api.client.BinanceApiWebSocketClient;
  *
  * It illustrates how to create a stream to obtain all market tickers.
  */
-public class AllMarketTickersExample
-{
-	public static void main(String[] args)
-	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
-		BinanceApiWebSocketClient client = factory.newWebSocketClient();
-		// client.onAllMarketTickersEvent( events -> {
-		// for ( AllMarketTickersEvent event : events )
-		// System.out.println( event );
-		// } );
+public class AllMarketTickersExample {
 
-		client.onSingleTickerEvent( "btcusdt", event -> {// @_@ must little case
-			System.out.println( event );
-		} );
-	}
+  public static void main(String[] args) {
+    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
+    BinanceApiWebSocketClient client = factory.newWebSocketClient();
+
+    client.onAllMarketTickersEvent(event -> {
+      System.out.println(event);
+    });
+  }
 }

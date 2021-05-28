@@ -74,15 +74,27 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<com.squareup.retrofit2.version>2.7.2</com.squareup.retrofit2.version>
+		<maven.compiler.source>9</maven.compiler.source>
+		<maven.compiler.target>9</maven.compiler.target>
+		<com.squareup.retrofit2.version>2.9.0</com.squareup.retrofit2.version>
+		<okhttp3.version>4.9.1</okhttp3.version>
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>cn.ttron</groupId>
-			<artifactId>stock</artifactId>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.13</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>cn.ttron.billions</groupId>
+			<artifactId>cryptocurrency</artifactId>
 			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>${okhttp3.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.retrofit2</groupId>
@@ -103,12 +115,6 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.6</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
