@@ -4,7 +4,7 @@ import static com.binance.api.client.impl.BinanceAPIServiceGenerator.createServi
 
 import java.util.List;
 
-import com.binance.api.client.BinanceAPIAsyncRestClient;
+import com.binance.api.client.IBinanceAPIAsyncRestClient;
 import com.binance.api.client.BinanceApiCallback;
 import com.binance.api.client.config.BinanceApiConfig;
 import com.binance.api.client.constant.BinanceAPIConstants;
@@ -38,7 +38,7 @@ import com.binance.api.client.domain.market.TickerStatistics;
 /**
  * Implementation of Binance's REST API using Retrofit with asynchronous/non-blocking method calls.
  */
-public class BinanceApiAsyncRestClientImpl implements BinanceAPIAsyncRestClient
+public class BinanceApiAsyncRestClientImpl implements IBinanceAPIAsyncRestClient
 {
 	private final BinanceAPIService binanceApiService;
 

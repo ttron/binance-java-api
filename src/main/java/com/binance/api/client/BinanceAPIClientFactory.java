@@ -74,7 +74,7 @@ public class BinanceAPIClientFactory
 	/**
 	 * Creates a new asynchronous/non-blocking REST client.
 	 */
-	public BinanceAPIAsyncRestClient newAsyncRestClient()
+	public IBinanceAPIAsyncRestClient newAsyncRestClient()
 	{
 		return new BinanceApiAsyncRestClientImpl( apiKey, secret );
 	}

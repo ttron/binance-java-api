@@ -1,6 +1,6 @@
 package com.binance.api.examples;
 
-import com.binance.api.client.BinanceAPIAsyncRestClient;
+import com.binance.api.client.IBinanceAPIAsyncRestClient;
 import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.account.BinanceAccount;
 
@@ -12,7 +12,7 @@ public class AccountEndpointsExampleAsync
 	public static void main(String[] args)
 	{
 		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
-		BinanceAPIAsyncRestClient client = factory.newAsyncRestClient();
+		IBinanceAPIAsyncRestClient client = factory.newAsyncRestClient();
 
 		// Get account balances (async)
 		client.getAccount( (BinanceAccount response) -> System.out.println( response.getAssetBalance( "ETH" ) ) );

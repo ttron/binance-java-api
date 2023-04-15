@@ -32,7 +32,7 @@ import com.binance.api.client.domain.market.TickerStatistics;
 /**
  * Binance API facade, supporting asynchronous/non-blocking access Binance's REST API.
  */
-public interface BinanceAPIAsyncRestClient
+public interface IBinanceAPIAsyncRestClient
 {
 
 	// General endpoints

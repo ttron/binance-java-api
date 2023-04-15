@@ -6,6 +6,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import xyz.tsst.billions.cryptocurrency.CYYExchangeAccount;
 
@@ -16,14 +17,9 @@ import xyz.tsst.billions.cryptocurrency.CYYExchangeAccount;
 public class BinanceAccount extends CYYExchangeAccount
 {
 	/**
-	 * Maker commission.
+	 * List of asset balances of this account.
 	 */
-	private int makerCommission;
-
-	/**
-	 * Taker commission.
-	 */
-	private int takerCommission;
+	private List<AssetBalance> balances;
 
 	/**
 	 * Buyer commission.
@@ -31,9 +27,9 @@ public class BinanceAccount extends CYYExchangeAccount
 	private int buyerCommission;
 
 	/**
-	 * Seller commission.
+	 * Whether or not it is possible to deposit into this account.
 	 */
-	private int sellerCommission;
+	private boolean canDeposit;
 
 	/**
 	 * Whether or not this account can trade.
@@ -45,127 +41,28 @@ public class BinanceAccount extends CYYExchangeAccount
 	 */
 	private boolean canWithdraw;
 
+	@JsonProperty("commissionRates")
+	private CommissionRate commissionRate;
+
 	/**
-	 * Whether or not it is possible to deposit into this account.
+	 * Maker commission.
 	 */
-	private boolean canDeposit;
+	private int makerCommission;
+
+	/**
+	 * Seller commission.
+	 */
+	private int sellerCommission;
+
+	/**
+	 * Taker commission.
+	 */
+	private int takerCommission;
 
 	/**
 	 * Last account update time.
 	 */
 	private long updateTime;
-
-	/**
-	 * List of asset balances of this account.
-	 */
-	private List<AssetBalance> balances;
-
-	public int getMakerCommission()
-	{
-		return makerCommission;
-	}
-
-
-	public void setMakerCommission(int makerCommission)
-	{
-		this.makerCommission = makerCommission;
-	}
-
-
-	public int getTakerCommission()
-	{
-		return takerCommission;
-	}
-
-
-	public void setTakerCommission(int takerCommission)
-	{
-		this.takerCommission = takerCommission;
-	}
-
-
-	public int getBuyerCommission()
-	{
-		return buyerCommission;
-	}
-
-
-	public void setBuyerCommission(int buyerCommission)
-	{
-		this.buyerCommission = buyerCommission;
-	}
-
-
-	public int getSellerCommission()
-	{
-		return sellerCommission;
-	}
-
-
-	public void setSellerCommission(int sellerCommission)
-	{
-		this.sellerCommission = sellerCommission;
-	}
-
-
-	public boolean isCanTrade()
-	{
-		return canTrade;
-	}
-
-
-	public void setCanTrade(boolean canTrade)
-	{
-		this.canTrade = canTrade;
-	}
-
-
-	public boolean isCanWithdraw()
-	{
-		return canWithdraw;
-	}
-
-
-	public void setCanWithdraw(boolean canWithdraw)
-	{
-		this.canWithdraw = canWithdraw;
-	}
-
-
-	public boolean isCanDeposit()
-	{
-		return canDeposit;
-	}
-
-
-	public void setCanDeposit(boolean canDeposit)
-	{
-		this.canDeposit = canDeposit;
-	}
-
-
-	public long getUpdateTime()
-	{
-		return updateTime;
-	}
-
-
-	public void setUpdateTime(long updateTime)
-	{
-		this.updateTime = updateTime;
-	}
-
-
-	public List<AssetBalance> getBalances()
-	{
-		return balances;
-	}
-
-
-	public void setBalances(List<AssetBalance> balances)
-	{
-		this.balances = balances;
-	}
 
 
 	/**
@@ -188,6 +85,124 @@ public class BinanceAccount extends CYYExchangeAccount
 		emptyBalance.setFree( "0" );
 		emptyBalance.setLocked( "0" );
 		return emptyBalance;
+	}
+
+	public List<AssetBalance> getBalances()
+	{
+		return balances;
+	}
+
+	public int getBuyerCommission()
+	{
+		return buyerCommission;
+	}
+
+
+	public CommissionRate getCommissionRate()
+	{
+		return commissionRate;
+	}
+
+
+	public int getMakerCommission()
+	{
+		return makerCommission;
+	}
+
+
+	public int getSellerCommission()
+	{
+		return sellerCommission;
+	}
+
+
+	public int getTakerCommission()
+	{
+		return takerCommission;
+	}
+
+
+	public long getUpdateTime()
+	{
+		return updateTime;
+	}
+
+
+	public boolean isCanDeposit()
+	{
+		return canDeposit;
+	}
+
+
+	public boolean isCanTrade()
+	{
+		return canTrade;
+	}
+
+
+	public boolean isCanWithdraw()
+	{
+		return canWithdraw;
+	}
+
+
+	public void setBalances(List<AssetBalance> balances)
+	{
+		this.balances = balances;
+	}
+
+
+	public void setBuyerCommission(int buyerCommission)
+	{
+		this.buyerCommission = buyerCommission;
+	}
+
+
+	public void setCanDeposit(boolean canDeposit)
+	{
+		this.canDeposit = canDeposit;
+	}
+
+
+	public void setCanTrade(boolean canTrade)
+	{
+		this.canTrade = canTrade;
+	}
+
+
+	public void setCanWithdraw(boolean canWithdraw)
+	{
+		this.canWithdraw = canWithdraw;
+	}
+
+
+	public void setCommissionRate(CommissionRate commissionRate)
+	{
+		this.commissionRate = commissionRate;
+	}
+
+
+	public void setMakerCommission(int makerCommission)
+	{
+		this.makerCommission = makerCommission;
+	}
+
+
+	public void setSellerCommission(int sellerCommission)
+	{
+		this.sellerCommission = sellerCommission;
+	}
+
+
+	public void setTakerCommission(int takerCommission)
+	{
+		this.takerCommission = takerCommission;
+	}
+
+
+	public void setUpdateTime(long updateTime)
+	{
+		this.updateTime = updateTime;
 	}
 
 
