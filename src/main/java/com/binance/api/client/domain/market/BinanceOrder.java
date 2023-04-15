@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import cn.ttron.billions.cryptocurrency.CYYOrder;
+import xyz.tsst.billions.cryptocurrency.CYYOrder;
 
 /**
  * An order book entry consisting of price and quantity.

@@ -1,6 +1,6 @@
 package com.binance.api.client;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -36,7 +36,7 @@ public class BinanceApiError {
 
   @Override
   public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+    return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
         .append("code", code)
         .append("msg", msg)
         .toString();

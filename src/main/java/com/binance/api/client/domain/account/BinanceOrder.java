@@ -2,7 +2,7 @@ package com.binance.api.client.domain.account;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.OrderSide;
 import com.binance.api.client.domain.OrderStatus;
 import com.binance.api.client.domain.OrderType;
@@ -309,7 +309,7 @@ public class BinanceOrder
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
 				.append( "orderId", orderId ).append( "clientOrderId", clientOrderId ).append( "price", price )
 				.append( "origQty", origQty ).append( "executedQty", executedQty ).append( "status", status )
 				.append( "timeInForce", timeInForce ).append( "type", type ).append( "side", side )

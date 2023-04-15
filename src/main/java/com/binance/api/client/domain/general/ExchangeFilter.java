@@ -2,7 +2,7 @@ package com.binance.api.client.domain.general;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -46,7 +46,7 @@ public class ExchangeFilter
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "filterType", filterType )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "filterType", filterType )
 				.append( "limit", limit ).toString();
 	}
 }

@@ -2,7 +2,7 @@ package com.binance.api.client.domain.account;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -116,7 +116,7 @@ public class SubAccountTransfer {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
                 .append("counterParty", this.counterParty)
                 .append("email", this.email)
                 .append("type", this.type)

@@ -1,21 +1,21 @@
 package com.binance.api.client.impl;
 
-import static com.binance.api.client.impl.BinanceApiServiceGenerator.createService;
+import static com.binance.api.client.impl.BinanceAPIServiceGenerator.createService;
 
 import java.util.List;
 
 import com.binance.api.client.BinanceApiAsyncMarginRestClient;
 import com.binance.api.client.BinanceApiCallback;
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.TransferType;
 import com.binance.api.client.domain.account.BinanceOrder;
+import com.binance.api.client.domain.account.CancelOrderResponse;
 import com.binance.api.client.domain.account.MarginAccount;
 import com.binance.api.client.domain.account.MarginNewOrder;
 import com.binance.api.client.domain.account.MarginNewOrderResponse;
 import com.binance.api.client.domain.account.MarginTransaction;
 import com.binance.api.client.domain.account.Trade;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
-import com.binance.api.client.domain.account.request.CancelOrderResponse;
 import com.binance.api.client.domain.account.request.OrderRequest;
 import com.binance.api.client.domain.account.request.OrderStatusRequest;
 import com.binance.api.client.domain.event.ListenKey;
@@ -25,11 +25,11 @@ import com.binance.api.client.domain.event.ListenKey;
  */
 public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMarginRestClient
 {
-	private final BinanceApiService binanceApiService;
+	private final BinanceAPIService binanceApiService;
 
 	public BinanceApiAsyncMarginRestClientImpl(String apiKey, String secret)
 	{
-		binanceApiService = createService( BinanceApiService.class, apiKey, secret );
+		binanceApiService = createService( BinanceAPIService.class, apiKey, secret );
 	}
 
 	// Margin Account endpoints
@@ -46,7 +46,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 	public void getAccount(BinanceApiCallback<MarginAccount> callback)
 	{
 		long timestamp = System.currentTimeMillis();
-		binanceApiService.getMarginAccount( BinanceApiConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
+		binanceApiService.getMarginAccount( BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
@@ -95,7 +95,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 	public void getMyTrades(String symbol, BinanceApiCallback<List<Trade>> callback)
 	{
 		binanceApiService
-				.getMyTrades( symbol, null, null, BinanceApiConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis() )
+				.getMyTrades( symbol, null, null, BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis() )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
@@ -121,7 +121,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 	{
 		long timestamp = System.currentTimeMillis();
 		binanceApiService
-				.transfer( asset, amount, type.getValue(), BinanceApiConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
+				.transfer( asset, amount, type.getValue(), BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
@@ -130,7 +130,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 	public void borrow(String asset, String amount, BinanceApiCallback<MarginTransaction> callback)
 	{
 		long timestamp = System.currentTimeMillis();
-		binanceApiService.borrow( asset, amount, BinanceApiConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
+		binanceApiService.borrow( asset, amount, BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
@@ -139,7 +139,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 	public void repay(String asset, String amount, BinanceApiCallback<MarginTransaction> callback)
 	{
 		long timestamp = System.currentTimeMillis();
-		binanceApiService.repay( asset, amount, BinanceApiConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
+		binanceApiService.repay( asset, amount, BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 }

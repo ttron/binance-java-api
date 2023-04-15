@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
+import com.binance.api.client.IBinanceAPIRestClient;
 import com.binance.api.client.BinanceApiWebSocketClient;
 import com.binance.api.client.domain.market.AggTrade;
 
@@ -32,8 +32,8 @@ public class AggTradesCacheExample
 	 */
 	private void initializeAggTradesCache(String symbol)
 	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
-		BinanceApiRestClient client = factory.newRestClient();
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
+		IBinanceAPIRestClient client = factory.newRestClient();
 		List<AggTrade> aggTrades = client.getAggTrades( symbol.toUpperCase() );
 
 		this.aggTradesCache = new HashMap<>();
@@ -49,7 +49,7 @@ public class AggTradesCacheExample
 	 */
 	private void startAggTradesEventStreaming(String symbol)
 	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
 		BinanceApiWebSocketClient client = factory.newWebSocketClient();
 
 		client.onAggTradeEvent( symbol.toLowerCase(), response -> {

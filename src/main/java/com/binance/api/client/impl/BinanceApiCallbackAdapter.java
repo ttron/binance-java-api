@@ -1,6 +1,6 @@
 package com.binance.api.client.impl;
 
-import static com.binance.api.client.impl.BinanceApiServiceGenerator.getBinanceApiError;
+import static com.binance.api.client.impl.BinanceAPIServiceGenerator.getBinanceApiError;
 
 import java.io.IOException;
 

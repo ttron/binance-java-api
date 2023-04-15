@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.binance.api</groupId>
 	<artifactId>binance-api-client</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<licenses>
 		<license>
 			<name>The MIT License</name>
@@ -76,8 +76,9 @@
 		<maven.build.timestamp.format>yyyyMMdd_HHmm</maven.build.timestamp.format>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
+		<log4j.version>2.20.0</log4j.version>
 		<com.squareup.retrofit2.version>2.9.0</com.squareup.retrofit2.version>
-		<okhttp3.version>4.9.1</okhttp3.version>
+		<okhttp3.version>4.10.0</okhttp3.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -87,9 +88,19 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>cn.ttron.billions</groupId>
+			<groupId>xyz.tsst.billions</groupId>
 			<artifactId>cryptocurrency</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jul</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.okhttp3</groupId>

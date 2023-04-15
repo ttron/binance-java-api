@@ -1,6 +1,6 @@
 package com.binance.api.client.domain.market;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -36,7 +36,7 @@ public class OrderBookEntry {
 
   @Override
   public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+    return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
         .append("price", price)
         .append("qty", qty)
         .toString();

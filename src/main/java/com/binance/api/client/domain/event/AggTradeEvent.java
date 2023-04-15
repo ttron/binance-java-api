@@ -2,7 +2,7 @@ package com.binance.api.client.domain.event;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.market.AggTrade;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -62,7 +62,7 @@ public class AggTradeEvent extends AggTrade
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
 				.append( "eventTime", eventTime ).append( "symbol", symbol ).append( "aggTrade", super.toString() ).toString();
 	}
 }

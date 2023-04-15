@@ -1,8 +1,8 @@
 package com.binance.api.examples;
 
 import com.binance.api.client.BinanceApiCallback;
-import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
+import com.binance.api.client.IBinanceAPIRestClient;
 import com.binance.api.client.BinanceApiWebSocketClient;
 import com.binance.api.client.domain.event.DepthEvent;
 import com.binance.api.client.domain.market.OrderBook;
@@ -45,7 +45,7 @@ public class DepthCacheExample {
   private static final String ASKS = "ASKS";
 
   private final String symbol;
-  private final BinanceApiRestClient restClient;
+  private final IBinanceAPIRestClient restClient;
   private final BinanceApiWebSocketClient wsClient;
   private final WsCallback wsCallback = new WsCallback();
   private final Map<String, NavigableMap<BigDecimal, BigDecimal>> depthCache = new HashMap<>();
@@ -56,7 +56,7 @@ public class DepthCacheExample {
   public DepthCacheExample(String symbol) {
     this.symbol = symbol;
 
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
+    BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
     this.wsClient = factory.newWebSocketClient();
     this.restClient = factory.newRestClient();
 

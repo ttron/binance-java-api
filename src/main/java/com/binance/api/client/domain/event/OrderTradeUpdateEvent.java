@@ -2,7 +2,7 @@ package com.binance.api.client.domain.event;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.ExecutionType;
 import com.binance.api.client.domain.OrderRejectReason;
 import com.binance.api.client.domain.OrderSide;
@@ -445,7 +445,7 @@ public class OrderTradeUpdateEvent
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
 				.append( "eventTime", eventTime ).append( "symbol", symbol ).append( "newClientOrderId", newClientOrderId )
 				.append( "side", side ).append( "type", type ).append( "timeInForce", timeInForce )
 				.append( "originalQuantity", originalQuantity ).append( "price", price ).append( "executionType", executionType )

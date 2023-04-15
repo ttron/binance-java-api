@@ -1,7 +1,7 @@
 package com.binance.api.examples;
 
-import com.binance.api.client.BinanceApiAsyncRestClient;
-import com.binance.api.client.BinanceApiClientFactory;
+import com.binance.api.client.BinanceAPIAsyncRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.general.FilterType;
 import com.binance.api.client.domain.general.SymbolFilter;
 import com.binance.api.client.domain.general.SymbolInfo;
@@ -13,8 +13,8 @@ public class GeneralEndpointsExampleAsync
 {
 	public static void main(String[] args) throws InterruptedException
 	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
-		BinanceApiAsyncRestClient client = factory.newAsyncRestClient();
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
+		BinanceAPIAsyncRestClient client = factory.newAsyncRestClient();
 
 		// Test connectivity
 		client.ping( response -> System.out.println( "Ping succeeded." ) );

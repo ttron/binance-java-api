@@ -1,6 +1,6 @@
 package com.binance.api.client.domain.market;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -126,7 +126,7 @@ public class Candlestick {
 
   @Override
   public String toString() {
-    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+    return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
         .append("openTime", openTime)
         .append("open", open)
         .append("high", high)

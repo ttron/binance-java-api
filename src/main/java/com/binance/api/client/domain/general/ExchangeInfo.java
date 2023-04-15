@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.exception.BinanceApiException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -15,39 +15,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ExchangeInfo
 {
-	private String timezone;
+	private List<RateLimit> rateLimits;
 
 	private Long serverTime;
 
-	private List<RateLimit> rateLimits;
+	private List<SymbolInfo> symbols;
 
 	// private List<String> exchangeFilters;
 
-	private List<SymbolInfo> symbols;
-
-	public String getTimezone()
-	{
-		return timezone;
-	}
-
-
-	public void setTimezone(String timezone)
-	{
-		this.timezone = timezone;
-	}
-
-
-	public Long getServerTime()
-	{
-		return serverTime;
-	}
-
-
-	public void setServerTime(Long serverTime)
-	{
-		this.serverTime = serverTime;
-	}
-
+	private String timezone;
 
 	public List<RateLimit> getRateLimits()
 	{
@@ -55,21 +31,9 @@ public class ExchangeInfo
 	}
 
 
-	public void setRateLimits(List<RateLimit> rateLimits)
+	public Long getServerTime()
 	{
-		this.rateLimits = rateLimits;
-	}
-
-
-	public List<SymbolInfo> getSymbols()
-	{
-		return symbols;
-	}
-
-
-	public void setSymbols(List<SymbolInfo> symbols)
-	{
-		this.symbols = symbols;
+		return serverTime;
 	}
 
 
@@ -84,10 +48,46 @@ public class ExchangeInfo
 	}
 
 
+	public List<SymbolInfo> getSymbols()
+	{
+		return symbols;
+	}
+
+
+	public String getTimezone()
+	{
+		return timezone;
+	}
+
+
+	public void setRateLimits(List<RateLimit> rateLimits)
+	{
+		this.rateLimits = rateLimits;
+	}
+
+
+	public void setServerTime(Long serverTime)
+	{
+		this.serverTime = serverTime;
+	}
+
+
+	public void setSymbols(List<SymbolInfo> symbols)
+	{
+		this.symbols = symbols;
+	}
+
+
+	public void setTimezone(String timezone)
+	{
+		this.timezone = timezone;
+	}
+
+
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "timezone", timezone )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "timezone", timezone )
 				.append( "serverTime", serverTime ).append( "rateLimits", rateLimits ).append( "symbols", symbols ).toString();
 	}
 }

@@ -1,6 +1,6 @@
 package com.binance.api.examples;
 
-import com.binance.api.client.BinanceApiClientFactory;
+import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.BinanceApiWebSocketClient;
 
 /**
@@ -11,7 +11,7 @@ import com.binance.api.client.BinanceApiWebSocketClient;
 public class AllMarketTickersExample {
 
   public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
+    BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
     BinanceApiWebSocketClient client = factory.newWebSocketClient();
 
     client.onAllMarketTickersEvent(event -> {

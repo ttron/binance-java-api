@@ -2,9 +2,9 @@ package com.binance.api.examples;
 
 import java.util.List;
 
-import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.BinanceApiRestClient;
-import com.binance.api.client.domain.account.Account;
+import com.binance.api.client.BinanceAPIClientFactory;
+import com.binance.api.client.IBinanceAPIRestClient;
+import com.binance.api.client.domain.account.BinanceAccount;
 import com.binance.api.client.domain.account.Trade;
 
 /**
@@ -15,10 +15,10 @@ public class AccountEndpointsExample
 
 	public static void main(String[] args)
 	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
-		BinanceApiRestClient client = factory.newRestClient();
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
+		IBinanceAPIRestClient client = factory.newRestClient();
 		// Get account balances
-		Account account = client.getAccount( 60_000L, System.currentTimeMillis() );
+		BinanceAccount account = client.getAccount( 60_000L, System.currentTimeMillis() );
 		System.out.println( account.getBalances() );
 		System.out.println( account.getAssetBalance( "ETH" ) );
 

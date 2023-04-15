@@ -1,7 +1,7 @@
 package com.binance.api.examples;
 
-import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
+import com.binance.api.client.IBinanceAPIRestClient;
 import com.binance.api.client.domain.market.AggTrade;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
@@ -19,8 +19,8 @@ import java.util.List;
 public class MarketDataEndpointsExample {
 
   public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
-    BinanceApiRestClient client = factory.newRestClient();
+    BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
+    IBinanceAPIRestClient client = factory.newRestClient();
 
     // Getting depth of a symbol
     OrderBook orderBook = client.getOrderBook("NEOETH", 10);

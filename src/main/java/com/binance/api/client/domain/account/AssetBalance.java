@@ -2,13 +2,13 @@ package com.binance.api.client.domain.account;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * An asset balance in an Account.
  *
- * @see Account
+ * @see BinanceAccount
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AssetBalance
@@ -67,7 +67,7 @@ public class AssetBalance
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "asset", asset )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "asset", asset )
 				.append( "free", free ).append( "locked", locked ).toString();
 	}
 }

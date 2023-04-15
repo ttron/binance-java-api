@@ -2,7 +2,7 @@ package com.binance.api.client.domain.account.request;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -20,7 +20,7 @@ public class OrderRequest
 	public OrderRequest()
 	{
 		this.timestamp = System.currentTimeMillis();
-		this.recvWindow = BinanceApiConstants.DEFAULT_RECEIVING_WINDOW;
+		this.recvWindow = BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW;
 	}
 
 
@@ -66,7 +66,7 @@ public class OrderRequest
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
 				.append( "recvWindow", recvWindow ).append( "timestamp", timestamp ).toString();
 	}
 }

@@ -1,9 +1,9 @@
 package com.binance.api.examples;
 
-import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
+import com.binance.api.client.IBinanceAPIRestClient;
 import com.binance.api.client.BinanceApiWebSocketClient;
-import com.binance.api.client.domain.account.Account;
+import com.binance.api.client.domain.account.BinanceAccount;
 import com.binance.api.client.domain.account.AssetBalance;
 
 import java.util.Map;
@@ -16,7 +16,7 @@ import static com.binance.api.client.domain.event.UserDataUpdateEvent.UserDataUp
  */
 public class AccountBalanceCacheExample {
 
-  private final BinanceApiClientFactory clientFactory;
+  private final BinanceAPIClientFactory clientFactory;
 
   /**
    * Key is the symbol, and the value is the balance of that symbol on the account.
@@ -29,7 +29,7 @@ public class AccountBalanceCacheExample {
   private final String listenKey;
 
   public AccountBalanceCacheExample(String apiKey, String secret) {
-    this.clientFactory = BinanceApiClientFactory.newInstance(apiKey, secret);
+    this.clientFactory = BinanceAPIClientFactory.newInstance(apiKey, secret);
     this.listenKey = initializeAssetBalanceCacheAndStreamSession();
     startAccountBalanceEventStreaming(listenKey);
   }
@@ -40,8 +40,8 @@ public class AccountBalanceCacheExample {
    * @return a listenKey that can be used with the user data streaming API.
    */
   private String initializeAssetBalanceCacheAndStreamSession() {
-    BinanceApiRestClient client = clientFactory.newRestClient();
-    Account account = client.getAccount();
+    IBinanceAPIRestClient client = clientFactory.newRestClient();
+    BinanceAccount account = client.getAccount();
 
     this.accountBalanceCache = new TreeMap<>();
     for (AssetBalance assetBalance : account.getBalances()) {

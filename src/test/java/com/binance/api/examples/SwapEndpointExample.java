@@ -1,6 +1,6 @@
 package com.binance.api.examples;
 
-import com.binance.api.client.BinanceApiClientFactory;
+import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.BinanceApiSwapRestClient;
 import com.binance.api.client.domain.account.*;
 
@@ -13,7 +13,7 @@ public class SwapEndpointExample {
 
     public static void main(String[] args) {
 
-        BinanceApiClientFactory binanceApiClientFactory = BinanceApiClientFactory.newInstance(API_KEY, SECRET_KEY);
+        BinanceAPIClientFactory binanceApiClientFactory = BinanceAPIClientFactory.newInstance(API_KEY, SECRET_KEY);
         BinanceApiSwapRestClient swapClient = binanceApiClientFactory.newSwapRestClient();
         List<Pool> pools = swapClient.listAllSwapPools();
         for(Pool pool:pools) {

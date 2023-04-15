@@ -1,0 +1,37 @@
+{
+    "cancelResult": "SUCCESS",
+    "newOrderResult": "SUCCESS",
+    "cancelResponse": {
+        "symbol": "SHIBUSDT",
+        "origClientOrderId": "mxRhRGMKdno8muPEdkkRy6",
+        "orderId": 1846329152,
+        "orderListId": -1,
+        "clientOrderId": "YpQuJ01iSOZiDG6W5b0kl5",
+        "price": "0.00001155",
+        "origQty": "500000.00",
+        "executedQty": "0.00",
+        "cummulativeQuoteQty": "0.00000000",
+        "status": "CANCELED",
+        "timeInForce": "GTC",
+        "type": "LIMIT",
+        "side": "SELL",
+        "selfTradePreventionMode": "NONE"
+    },
+    "newOrderResponse": {
+        "symbol": "SHIBUSDT",
+        "orderId": 1846330131,
+        "orderListId": -1,
+        "clientOrderId": "s57HzlJYANyj972PC0PaKU",
+        "transactTime": 1681534923568,
+        "price": "0.00001166",
+        "origQty": "500000.00",
+        "executedQty": "0.00",
+        "cummulativeQuoteQty": "0.00000000",
+        "status": "NEW",
+        "timeInForce": "GTC",
+        "type": "LIMIT",
+        "side": "SELL",
+        "workingTime": 1681534923568,
+        "selfTradePreventionMode": "NONE"
+    }
+}

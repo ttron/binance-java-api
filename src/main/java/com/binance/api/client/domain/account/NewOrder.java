@@ -2,7 +2,7 @@ package com.binance.api.client.domain.account;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.OrderSide;
 import com.binance.api.client.domain.OrderType;
 import com.binance.api.client.domain.TimeInForce;
@@ -91,7 +91,7 @@ public class NewOrder
 		this.quantity = quantity;
 		this.newOrderRespType = NewOrderResponseType.RESULT;
 		this.timestamp = System.currentTimeMillis();
-		this.recvWindow = BinanceApiConstants.DEFAULT_RECEIVING_WINDOW;
+		this.recvWindow = BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW;
 	}
 
 
@@ -324,7 +324,7 @@ public class NewOrder
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
 				.append( "side", side ).append( "type", type ).append( "timeInForce", timeInForce ).append( "quantity", quantity )
 				.append( "quoteOrderQty", quoteOrderQty ).append( "price", price ).append( "newClientOrderId", newClientOrderId )
 				.append( "stopPrice", stopPrice ).append( "icebergQty", icebergQty )

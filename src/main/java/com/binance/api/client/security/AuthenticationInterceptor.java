@@ -1,6 +1,6 @@
 package com.binance.api.client.security;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.Request;
@@ -31,14 +31,14 @@ public class AuthenticationInterceptor implements Interceptor {
         Request original = chain.request();
         Request.Builder newRequestBuilder = original.newBuilder();
 
-        boolean isApiKeyRequired = original.header(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_APIKEY) != null;
-        boolean isSignatureRequired = original.header(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED) != null;
-        newRequestBuilder.removeHeader(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_APIKEY)
-            .removeHeader(BinanceApiConstants.ENDPOINT_SECURITY_TYPE_SIGNED);
+        boolean isApiKeyRequired = original.header(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY) != null;
+        boolean isSignatureRequired = original.header(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED) != null;
+        newRequestBuilder.removeHeader(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY)
+            .removeHeader(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED);
 
         // Endpoint requires sending a valid API-KEY
         if (isApiKeyRequired || isSignatureRequired) {
-            newRequestBuilder.addHeader(BinanceApiConstants.API_KEY_HEADER, apiKey);
+            newRequestBuilder.addHeader(BinanceAPIConstants.API_KEY_HEADER, apiKey);
         }
 
         // Endpoint requires signing the payload

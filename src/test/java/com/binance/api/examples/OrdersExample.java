@@ -5,12 +5,12 @@ import static com.binance.api.client.domain.account.NewOrder.marketBuy;
 
 import java.util.List;
 
-import com.binance.api.client.BinanceApiClientFactory;
-import com.binance.api.client.BinanceApiRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
+import com.binance.api.client.IBinanceAPIRestClient;
 import com.binance.api.client.domain.TimeInForce;
+import com.binance.api.client.domain.account.BinanceOrder;
 import com.binance.api.client.domain.account.NewOrderResponse;
 import com.binance.api.client.domain.account.NewOrderResponseType;
-import com.binance.api.client.domain.account.BinanceOrder;
 import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.CancelOrderResponse;
@@ -23,11 +23,10 @@ import com.binance.api.client.exception.BinanceApiException;
  */
 public class OrdersExample
 {
-
 	public static void main(String[] args)
 	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
-		BinanceApiRestClient client = factory.newRestClient();
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
+		IBinanceAPIRestClient client = factory.newRestClient();
 
 		// Getting list of open orders
 		List<BinanceOrder> openOrders = client.getOpenOrders( new OrderRequest( "LINKETH" ) );

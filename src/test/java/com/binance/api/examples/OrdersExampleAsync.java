@@ -3,8 +3,8 @@ package com.binance.api.examples;
 import static com.binance.api.client.domain.account.NewOrder.limitBuy;
 import static com.binance.api.client.domain.account.NewOrder.marketBuy;
 
-import com.binance.api.client.BinanceApiAsyncRestClient;
-import com.binance.api.client.BinanceApiClientFactory;
+import com.binance.api.client.BinanceAPIAsyncRestClient;
+import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.TimeInForce;
 import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
@@ -18,8 +18,8 @@ public class OrdersExampleAsync
 {
 	public static void main(String[] args)
 	{
-		BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
-		BinanceApiAsyncRestClient client = factory.newAsyncRestClient();
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
+		BinanceAPIAsyncRestClient client = factory.newAsyncRestClient();
 
 		// Getting list of open orders
 		client.getOpenOrders( new OrderRequest( "LINKETH" ), response -> System.out.println( response ) );

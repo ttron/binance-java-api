@@ -2,7 +2,7 @@ package com.binance.api.client.domain.event;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-import com.binance.api.client.constant.BinanceApiConstants;
+import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -420,7 +420,7 @@ public class MarketTickersEvent
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceApiConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
 				.append( "eventTime", timestamp ).append( "symbol", symbol ).append( "priceChange", priceChange )
 				.append( "priceChangePercent", priceChangePercent ).append( "weightedAveragePrice", weightedAveragePrice )
 				.append( "previousDaysClosePrice", previousDaysClosePrice )

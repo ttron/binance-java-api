@@ -12,8 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see <a href="http://www.investopedia.com/terms/t/timeinforce.asp">http://www.investopedia.com/terms/t/timeinforce.asp</a>
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public enum TimeInForce {
-  GTC,
-  IOC,
-  FOK
+public enum TimeInForce
+{
+	GTC, IOC, FOK
 }
