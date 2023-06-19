@@ -15,6 +15,7 @@ import com.binance.api.client.domain.TimeInForce;
  */
 public class NewNewOrder extends NewOrder
 {
+
 	private Long cancelOrderId;
 
 	private String cancelOrigClientOrderId;

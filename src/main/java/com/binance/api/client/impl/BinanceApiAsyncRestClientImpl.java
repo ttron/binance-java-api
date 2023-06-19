@@ -4,8 +4,9 @@ import static com.binance.api.client.impl.BinanceAPIServiceGenerator.createServi
 
 import java.util.List;
 
-import com.binance.api.client.IBinanceAPIAsyncRestClient;
+import com.binance.api.client.BinanceAPIService;
 import com.binance.api.client.BinanceApiCallback;
+import com.binance.api.client.IBinanceAPIAsyncRestClient;
 import com.binance.api.client.config.BinanceApiConfig;
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.account.BinanceAccount;

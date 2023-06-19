@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @see NewOrderResponse
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public enum NewOrderResponseType {
-    ACK,
-    RESULT,
-    FULL
+public enum NewOrderResponseType
+{
+	ACK, RESULT, FULL
 }
-

@@ -5,6 +5,7 @@ import static com.binance.api.client.impl.BinanceAPIServiceGenerator.executeSync
 
 import java.util.List;
 
+import com.binance.api.client.BinanceAPIService;
 import com.binance.api.client.BinanceApiSwapRestClient;
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.SwapRemoveType;

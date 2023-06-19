@@ -1,88 +1,106 @@
 package com.binance.api.client.domain.market;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents the best price/qty on the order book for a given symbol.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BookTicker {
+public class BookTicker
+{
+	/**
+	 * Ticker symbol.
+	 */
+	private String symbol;
 
-  /**
-   * Ticker symbol.
-   */
-  private String symbol;
+	/**
+	 * Bid price.
+	 */
+	private String bidPrice;
 
-  /**
-   * Bid price.
-   */
-  private String bidPrice;
+	/**
+	 * Bid quantity
+	 */
+	private String bidQty;
 
-  /**
-   * Bid quantity
-   */
-  private String bidQty;
+	/**
+	 * Ask price.
+	 */
+	private String askPrice;
 
-  /**
-   * Ask price.
-   */
-  private String askPrice;
+	/**
+	 * Ask quantity.
+	 */
+	private String askQty;
 
-  /**
-   * Ask quantity.
-   */
-  private String askQty;
+	public String getSymbol()
+	{
+		return symbol;
+	}
 
-  public String getSymbol() {
-    return symbol;
-  }
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
+	public void setSymbol(String symbol)
+	{
+		this.symbol = symbol;
+	}
 
-  public String getBidPrice() {
-    return bidPrice;
-  }
 
-  public void setBidPrice(String bidPrice) {
-    this.bidPrice = bidPrice;
-  }
+	public String getBidPrice()
+	{
+		return bidPrice;
+	}
 
-  public String getBidQty() {
-    return bidQty;
-  }
 
-  public void setBidQty(String bidQty) {
-    this.bidQty = bidQty;
-  }
+	public void setBidPrice(String bidPrice)
+	{
+		this.bidPrice = bidPrice;
+	}
 
-  public String getAskPrice() {
-    return askPrice;
-  }
 
-  public void setAskPrice(String askPrice) {
-    this.askPrice = askPrice;
-  }
+	public String getBidQty()
+	{
+		return bidQty;
+	}
 
-  public String getAskQty() {
-    return askQty;
-  }
 
-  public void setAskQty(String askQty) {
-    this.askQty = askQty;
-  }
+	public void setBidQty(String bidQty)
+	{
+		this.bidQty = bidQty;
+	}
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
-        .append("symbol", symbol)
-        .append("bidPrice", bidPrice)
-        .append("bidQty", bidQty)
-        .append("askPrice", askPrice)
-        .append("askQty", askQty)
-        .toString();
-  }
+
+	public String getAskPrice()
+	{
+		return askPrice;
+	}
+
+
+	public void setAskPrice(String askPrice)
+	{
+		this.askPrice = askPrice;
+	}
+
+
+	public String getAskQty()
+	{
+		return askQty;
+	}
+
+
+	public void setAskQty(String askQty)
+	{
+		this.askQty = askQty;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
+				.append( "bidPrice", bidPrice ).append( "bidQty", bidQty ).append( "askPrice", askPrice )
+				.append( "askQty", askQty ).toString();
+	}
 }

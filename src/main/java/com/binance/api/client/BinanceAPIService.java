@@ -1,4 +1,4 @@
-package com.binance.api.client.impl;
+package com.binance.api.client;
 
 import java.util.List;
 

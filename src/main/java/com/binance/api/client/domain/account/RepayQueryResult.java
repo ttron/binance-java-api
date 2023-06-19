@@ -1,8 +1,8 @@
 package com.binance.api.client.domain.account;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * History of account withdrawals.
@@ -10,32 +10,40 @@ import java.util.List;
  * @see Withdraw
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RepayQueryResult {
+public class RepayQueryResult
+{
 
-  private int total;
-  private List<Repay> rows;
+	private int total;
 
-  public int getTotal() {
-    return total;
-  }
+	private List<Repay> rows;
 
-  public void setTotal(int total) {
-    this.total = total;
-  }
+	public int getTotal()
+	{
+		return total;
+	}
 
-  public List<Repay> getRows() {
-    return rows;
-  }
 
-  public void setRows(List<Repay> rows) {
-    this.rows = rows;
-  }
+	public void setTotal(int total)
+	{
+		this.total = total;
+	}
 
-  @Override
-  public String toString() {
-    return "RepayQueryResult{" +
-            "total=" + total +
-            ", rows=" + rows +
-            '}';
-  }
+
+	public List<Repay> getRows()
+	{
+		return rows;
+	}
+
+
+	public void setRows(List<Repay> rows)
+	{
+		this.rows = rows;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return "RepayQueryResult{" + "total=" + total + ", rows=" + rows + '}';
+	}
 }

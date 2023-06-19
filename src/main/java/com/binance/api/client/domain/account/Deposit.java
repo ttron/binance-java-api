@@ -1,88 +1,106 @@
 package com.binance.api.client.domain.account;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A deposit that was done to a Binance account.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Deposit {
+public class Deposit
+{
+	/**
+	 * Amount deposited.
+	 */
+	private String amount;
 
-  /**
-   * Amount deposited.
-   */
-  private String amount;
+	/**
+	 * Symbol.
+	 */
+	private String asset;
 
-  /**
-   * Symbol.
-   */
-  private String asset;
+	/**
+	 * Deposit time.
+	 */
+	private String insertTime;
 
-  /**
-   * Deposit time.
-   */
-  private String insertTime;
+	/**
+	 * Transaction id
+	 */
+	private String txId;
 
-  /**
-   * Transaction id
-   */
-  private String txId;
+	/**
+	 * (0:pending,1:success)
+	 */
+	private int status;
 
-  /**
-   * (0:pending,1:success)
-   */
-  private int status;
+	public String getAmount()
+	{
+		return amount;
+	}
 
-  public String getAmount() {
-    return amount;
-  }
 
-  public void setAmount(String amount) {
-    this.amount = amount;
-  }
+	public void setAmount(String amount)
+	{
+		this.amount = amount;
+	}
 
-  public String getAsset() {
-    return asset;
-  }
 
-  public void setAsset(String asset) {
-    this.asset = asset;
-  }
+	public String getAsset()
+	{
+		return asset;
+	}
 
-  public String getInsertTime() {
-    return insertTime;
-  }
 
-  public void setInsertTime(String insertTime) {
-    this.insertTime = insertTime;
-  }
+	public void setAsset(String asset)
+	{
+		this.asset = asset;
+	}
 
-  public String getTxId() {
-    return txId;
-  }
 
-  public void setTxId(String txId) {
-    this.txId = txId;
-  }
+	public String getInsertTime()
+	{
+		return insertTime;
+	}
 
-  public int getStatus() {
-    return status;
-  }
 
-  public void setStatus(int status) {
-    this.status = status;
-  }
+	public void setInsertTime(String insertTime)
+	{
+		this.insertTime = insertTime;
+	}
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
-        .append("amount", amount)
-        .append("asset", asset)
-        .append("insertTime", insertTime)
-        .append("txId", txId)
-        .append("status", status)
-        .toString();
-  }
+
+	public String getTxId()
+	{
+		return txId;
+	}
+
+
+	public void setTxId(String txId)
+	{
+		this.txId = txId;
+	}
+
+
+	public int getStatus()
+	{
+		return status;
+	}
+
+
+	public void setStatus(int status)
+	{
+		this.status = status;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "amount", amount )
+				.append( "asset", asset ).append( "insertTime", insertTime ).append( "txId", txId ).append( "status", status )
+				.toString();
+	}
 }

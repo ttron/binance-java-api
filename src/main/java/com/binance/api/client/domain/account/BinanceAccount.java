@@ -64,7 +64,6 @@ public class BinanceAccount extends CYYExchangeAccount
 	 */
 	private long updateTime;
 
-
 	/**
 	 * Returns the asset balance for a given symbol.
 	 *
@@ -80,17 +79,20 @@ public class BinanceAccount extends CYYExchangeAccount
 				return assetBalance;
 			}
 		}
-		AssetBalance emptyBalance = new AssetBalance();
-		emptyBalance.setAsset( symbol );
-		emptyBalance.setFree( "0" );
-		emptyBalance.setLocked( "0" );
-		return emptyBalance;
+
+		AssetBalance empty = new AssetBalance();
+		empty.setAsset( symbol );
+		empty.setFree( "0" );
+		empty.setLocked( "0" );
+		return empty;
 	}
+
 
 	public List<AssetBalance> getBalances()
 	{
 		return balances;
 	}
+
 
 	public int getBuyerCommission()
 	{
