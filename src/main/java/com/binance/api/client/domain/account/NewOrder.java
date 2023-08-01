@@ -52,7 +52,7 @@ public class NewOrder
 	/**
 	 * A unique id for the order. Automatically generated if not sent.
 	 */
-	private String newClientOrderId;
+	protected String newClientOrderId;
 
 	/**
 	 * Used with stop orders.

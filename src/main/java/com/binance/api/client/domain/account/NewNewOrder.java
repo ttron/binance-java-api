@@ -30,11 +30,12 @@ public class NewNewOrder extends NewOrder
 	 * @param timeInForce
 	 * @param quantity
 	 */
-	public NewNewOrder(long cancelOrderId, String symbol, OrderSide side, OrderType type, TimeInForce timeInForce,
-			String quantity, String price)
+	public NewNewOrder(long cancelOrderId, String newClientOrderId, String symbol, OrderSide side, OrderType type,
+			TimeInForce timeInForce, String quantity, String price)
 	{
 		super( symbol, side, type, timeInForce, quantity, price );
 		this.cancelOrderId = cancelOrderId;
+		this.newClientOrderId = newClientOrderId;
 	}
 
 

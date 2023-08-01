@@ -8,13 +8,13 @@ import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import xyz.tsst.billions.cryptocurrency.CYYExchangeAccount;
+import xyz.tsst.billions.cryptocurrency.CYYAccount;
 
 /**
  * Account information.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BinanceAccount extends CYYExchangeAccount
+public class BinanceAccount extends CYYAccount
 {
 	/**
 	 * List of asset balances of this account.
