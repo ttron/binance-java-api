@@ -8,7 +8,7 @@ import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import xyz.tsst.billions.cryptocurrency.CYYAccount;
+import xyz.tsst.billions.crypto.CYYAccount;
 
 /**
  * Account information.

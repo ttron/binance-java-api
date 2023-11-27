@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import xyz.tsst.billions.cryptocurrency.CYYOrder;
+import xyz.tsst.billions.crypto.CYYOrder;
 
 /**
  * An order book entry consisting of price and quantity.
@@ -24,7 +24,7 @@ public class BinanceOrder extends CYYOrder
 		// .append( "quantity", getAmount() ).toString();
 
 		return "BinanceOrder [currencyPair=" + (getCurrencyPair() != null ? getCurrencyPair().getCode() : "null")
-				+ ", orderNumber=" + getExchangeOrderId() + ", fee rate=" + getPercentFee()
+				+ ", orderNumber=" + getExchangeOrderId() + ", fee rate=" + getFeeRate()
 				+ (getIdDirection() == 0 ? ", sell " : ", buy ") + getAmount() + " @ " + getPrice() + "]";
 	}
 }
