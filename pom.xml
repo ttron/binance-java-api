@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.binance.api</groupId>
 	<artifactId>binance-api-client</artifactId>
-	<version>1.0.4</version>
+	<version>1.1.0</version>
 	<licenses>
 		<license>
 			<name>The MIT License</name>
@@ -89,8 +89,8 @@
 		</dependency>
 		<dependency>
 			<groupId>xyz.tsst.billions</groupId>
-			<artifactId>cryptocurrency</artifactId>
-			<version>1.2.0</version>
+			<artifactId>crypto</artifactId>
+			<version>1.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
