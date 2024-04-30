@@ -2,10 +2,10 @@ package com.binance.api.client;
 
 import static com.binance.api.client.impl.BinanceAPIServiceGenerator.getSharedClient;
 
+import com.binance.api.client.impl.BinanceAPIRestClientImpl;
 import com.binance.api.client.impl.BinanceApiAsyncMarginRestClientImpl;
 import com.binance.api.client.impl.BinanceApiAsyncRestClientImpl;
 import com.binance.api.client.impl.BinanceApiMarginRestClientImpl;
-import com.binance.api.client.impl.BinanceAPIRestClientImpl;
 import com.binance.api.client.impl.BinanceApiSwapRestClientImpl;
 import com.binance.api.client.impl.BinanceApiWebSocketClientImpl;
 
