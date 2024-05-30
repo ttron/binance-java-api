@@ -47,6 +47,9 @@ public interface IBinanceAPIRestClient
 	CancelOrderResponse cancelOrder(CancelOrderRequest cancelOrderRequest);
 
 
+	CancelReplaceOrderResponse cancelReplace(NewNewOrder order);
+
+
 	/**
 	 * Close out a new user data stream.
 	 *
@@ -56,19 +59,30 @@ public interface IBinanceAPIRestClient
 
 
 	/**
+	 * Get 24 hour price change statistics for all symbols.
+	 */
+	List<TickerStatistics> get24HAllPriceStatistics();
+
+
+	/**
 	 * Get 24 hour price change statistics.
 	 *
 	 * @param symbol ticker symbol (e.g. ETHBTC)
 	 */
-	TickerStatistics get24HrPriceStatistics(String symbol);
+	TickerStatistics get24HPriceStatistics(String symbol);
+
+
+	List<TickerStatistics> getAllTradingDayPriceStatistics();
+
+
+	TickerStatistics getTradingDayPriceStatistics(String symbol);
+	// Market Data endpoints
 
 
 	/**
 	 * Get current account information using default parameters.
 	 */
 	BinanceAccount getAccount();
-
-	// Market Data endpoints
 
 
 	/**
@@ -100,12 +114,6 @@ public interface IBinanceAPIRestClient
 	 * @return a list of aggregate trades for the given symbol
 	 */
 	List<AggTrade> getAggTrades(String symbol, String fromId, Integer limit, Long startTime, Long endTime);
-
-
-	/**
-	 * Get 24 hour price change statistics for all symbols.
-	 */
-	List<TickerStatistics> getAll24HrPriceStatistics();
 
 
 	/**
@@ -164,6 +172,8 @@ public interface IBinanceAPIRestClient
 	 */
 	DepositAddress getDepositAddress(String asset);
 
+	// Account endpoints
+
 
 	/**
 	 * Fetch account deposit history.
@@ -171,8 +181,6 @@ public interface IBinanceAPIRestClient
 	 * @return deposit history, containing a list of deposits
 	 */
 	DepositHistory getDepositHistory(String asset);
-
-	// Account endpoints
 
 
 	/**
@@ -307,9 +315,6 @@ public interface IBinanceAPIRestClient
 	 * @return a response containing details about the newly placed order.
 	 */
 	NewOrderResponse newOrder(NewOrder order);
-
-
-	CancelReplaceOrderResponse cancelReplace(NewNewOrder order);
 
 
 	/**

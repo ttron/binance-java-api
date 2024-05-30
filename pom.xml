@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.binance.api</groupId>
 	<artifactId>binance-api-client</artifactId>
-	<version>1.1.0-57</version>
+	<version>1.1.1-57</version>
 	<licenses>
 		<license>
 			<name>The MIT License</name>

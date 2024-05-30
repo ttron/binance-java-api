@@ -80,9 +80,16 @@ public class BinanceAPIRestClientImpl implements IBinanceAPIRestClient
 
 
 	@Override
-	public TickerStatistics get24HrPriceStatistics(String symbol)
+	public TickerStatistics get24HPriceStatistics(String symbol)
 	{
 		return executeSync( binanceAPIService.get24HrPriceStatistics( symbol ) );
+	}
+
+
+	@Override
+	public TickerStatistics getTradingDayPriceStatistics(String symbol)
+	{
+		return executeSync( binanceAPIService.getTradingDayPriceStatistics( symbol ) );
 	}
 
 	// Market Data endpoints
@@ -117,9 +124,16 @@ public class BinanceAPIRestClientImpl implements IBinanceAPIRestClient
 
 
 	@Override
-	public List<TickerStatistics> getAll24HrPriceStatistics()
+	public List<TickerStatistics> get24HAllPriceStatistics()
 	{
 		return executeSync( binanceAPIService.getAll24HrPriceStatistics() );
+	}
+
+
+	@Override
+	public List<TickerStatistics> getAllTradingDayPriceStatistics()
+	{
+		return executeSync( binanceAPIService.getAllTradingDayPriceStatistics() );
 	}
 
 
