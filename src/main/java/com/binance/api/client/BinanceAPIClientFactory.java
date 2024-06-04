@@ -1,13 +1,21 @@
 package com.binance.api.client;
 
-import static com.binance.api.client.impl.BinanceAPIServiceGenerator.getSharedClient;
+import static com.binance.api.client.BinanceAPIServiceGenerator.getSharedClient;
 
-import com.binance.api.client.impl.BinanceAPIRestClientImpl;
-import com.binance.api.client.impl.BinanceApiAsyncMarginRestClientImpl;
-import com.binance.api.client.impl.BinanceApiAsyncRestClientImpl;
-import com.binance.api.client.impl.BinanceApiMarginRestClientImpl;
-import com.binance.api.client.impl.BinanceApiSwapRestClientImpl;
-import com.binance.api.client.impl.BinanceApiWebSocketClientImpl;
+import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
+import com.binance.api.client.derivative.impl.BinanceFutureAPIRestClientImpl;
+import com.binance.api.client.spot.BinanceApiAsyncMarginRestClient;
+import com.binance.api.client.spot.BinanceApiMarginRestClient;
+import com.binance.api.client.spot.BinanceApiSwapRestClient;
+import com.binance.api.client.spot.BinanceApiWebSocketClient;
+import com.binance.api.client.spot.IBinanceSpotAPIAsyncRestClient;
+import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
+import com.binance.api.client.spot.impl.BinanceApiAsyncMarginRestClientImpl;
+import com.binance.api.client.spot.impl.BinanceApiMarginRestClientImpl;
+import com.binance.api.client.spot.impl.BinanceApiSwapRestClientImpl;
+import com.binance.api.client.spot.impl.BinanceApiWebSocketClientImpl;
+import com.binance.api.client.spot.impl.BinanceSpotAPIAsyncRestClientImpl;
+import com.binance.api.client.spot.impl.BinanceSpotAPIRestClientImpl;
 
 /**
  * A factory for creating BinanceApi client objects.
@@ -65,18 +73,24 @@ public class BinanceAPIClientFactory
 	/**
 	 * Creates a new synchronous/blocking REST client.
 	 */
-	public IBinanceAPIRestClient newRestClient()
+	public IBinanceSpotAPIRestClient newSpotRestClient()
 	{
-		return new BinanceAPIRestClientImpl( apiKey, secret );
+		return new BinanceSpotAPIRestClientImpl( apiKey, secret );
+	}
+
+
+	public IBinanceFutureAPIRestClient newFutureRestClient()
+	{
+		return new BinanceFutureAPIRestClientImpl( apiKey, secret );
 	}
 
 
 	/**
 	 * Creates a new asynchronous/non-blocking REST client.
 	 */
-	public IBinanceAPIAsyncRestClient newAsyncRestClient()
+	public IBinanceSpotAPIAsyncRestClient newAsyncRestClient()
 	{
-		return new BinanceApiAsyncRestClientImpl( apiKey, secret );
+		return new BinanceSpotAPIAsyncRestClientImpl( apiKey, secret );
 	}
 
 

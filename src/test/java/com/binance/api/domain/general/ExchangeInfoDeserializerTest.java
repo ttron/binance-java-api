@@ -84,7 +84,7 @@ public class ExchangeInfoDeserializerTest {
       testRateLimit(rateLimits.get(1), RateLimitType.ORDERS, RateLimitInterval.SECOND, 10);
       testRateLimit(rateLimits.get(2), RateLimitType.ORDERS, RateLimitInterval.DAY, 100000);
 
-      List<SymbolInfo> symbols = exchangeInfo.getSymbols();
+      List<? extends SymbolInfo> symbols = exchangeInfo.getSymbols();
       assertEquals(symbols.size(), 1);
       SymbolInfo symbolInfo = symbols.get(0);
       assertEquals(symbolInfo.getSymbol(), "ETHBTC");

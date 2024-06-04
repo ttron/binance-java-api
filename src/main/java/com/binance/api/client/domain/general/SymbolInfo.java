@@ -14,66 +14,41 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SymbolInfo
 {
-
-	private String symbol;
-
-	private SymbolStatus status;
-
 	private String baseAsset;
 
 	private Integer baseAssetPrecision;
 
-	private String quoteAsset;
+	private String contractType;
 
-	private Integer quotePrecision;
-
-	private List<OrderType> orderTypes;
-
-	private boolean icebergAllowed;
-
-	private boolean ocoAllowed;
-
-	private boolean quoteOrderQtyMarketAllowed;
-
-	private boolean isSpotTradingAllowed;
-
-	private boolean isMarginTradingAllowed;
+	private long deliveryDate, onboardDate;
 
 	private List<SymbolFilter> filters;
 
-	public String getSymbol()
-	{
-		return symbol;
-	}
+	private boolean icebergAllowed;
 
+	private boolean isMarginTradingAllowed;
 
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
-	}
+	private boolean isSpotTradingAllowed;
 
+	private boolean ocoAllowed;
 
-	public SymbolStatus getStatus()
-	{
-		return status;
-	}
+	private List<OrderType> orderTypes;
 
+	private String quoteAsset;
 
-	public void setStatus(SymbolStatus status)
-	{
-		this.status = status;
-	}
+	private boolean quoteOrderQtyMarketAllowed;
 
+	private Integer quotePrecision;
+
+	private int settlePlan;
+
+	private SymbolStatus status;
+
+	private String symbol;
 
 	public String getBaseAsset()
 	{
 		return baseAsset;
-	}
-
-
-	public void setBaseAsset(String baseAsset)
-	{
-		this.baseAsset = baseAsset;
 	}
 
 
@@ -83,105 +58,15 @@ public class SymbolInfo
 	}
 
 
-	public void setBaseAssetPrecision(Integer baseAssetPrecision)
+	public String getContractType()
 	{
-		this.baseAssetPrecision = baseAssetPrecision;
+		return contractType;
 	}
 
 
-	public String getQuoteAsset()
+	public long getDeliveryDate()
 	{
-		return quoteAsset;
-	}
-
-
-	public void setQuoteAsset(String quoteAsset)
-	{
-		this.quoteAsset = quoteAsset;
-	}
-
-
-	public Integer getQuotePrecision()
-	{
-		return quotePrecision;
-	}
-
-
-	public void setQuotePrecision(Integer quotePrecision)
-	{
-		this.quotePrecision = quotePrecision;
-	}
-
-
-	public List<OrderType> getOrderTypes()
-	{
-		return orderTypes;
-	}
-
-
-	public void setOrderTypes(List<OrderType> orderTypes)
-	{
-		this.orderTypes = orderTypes;
-	}
-
-
-	public boolean isIcebergAllowed()
-	{
-		return icebergAllowed;
-	}
-
-
-	public void setIcebergAllowed(boolean icebergAllowed)
-	{
-		this.icebergAllowed = icebergAllowed;
-	}
-
-
-	public boolean isOcoAllowed()
-	{
-		return ocoAllowed;
-	}
-
-
-	public void setOcoAllowed(boolean ocoAllowed)
-	{
-		this.ocoAllowed = ocoAllowed;
-	}
-
-
-	public boolean isQuoteOrderQtyMarketAllowed()
-	{
-		return quoteOrderQtyMarketAllowed;
-	}
-
-
-	public void setQuoteOrderQtyMarketAllowed(boolean quoteOrderQtyMarketAllowed)
-	{
-		this.quoteOrderQtyMarketAllowed = quoteOrderQtyMarketAllowed;
-	}
-
-
-	public boolean isSpotTradingAllowed()
-	{
-		return isSpotTradingAllowed;
-	}
-
-
-	public void setIsSpotTradingAllowed(boolean isSpotTradingAllowed)
-	{
-		this.isSpotTradingAllowed = isSpotTradingAllowed;
-	}
-
-
-	public boolean isMarginTradingAllowed()
-	{
-		return isMarginTradingAllowed;
-	}
-
-
-	public void setIsMarginTradingAllowed(boolean isMarginTradingAllowed)
-	{
-		this.isMarginTradingAllowed = isMarginTradingAllowed;
+		return deliveryDate;
 	}
 
 
@@ -191,9 +76,45 @@ public class SymbolInfo
 	}
 
 
-	public void setFilters(List<SymbolFilter> filters)
+	public long getOnboardDate()
 	{
-		this.filters = filters;
+		return onboardDate;
+	}
+
+
+	public List<OrderType> getOrderTypes()
+	{
+		return orderTypes;
+	}
+
+
+	public String getQuoteAsset()
+	{
+		return quoteAsset;
+	}
+
+
+	public Integer getQuotePrecision()
+	{
+		return quotePrecision;
+	}
+
+
+	public int getSettlePlan()
+	{
+		return settlePlan;
+	}
+
+
+	public SymbolStatus getStatus()
+	{
+		return status;
+	}
+
+
+	public String getSymbol()
+	{
+		return symbol;
 	}
 
 
@@ -204,6 +125,138 @@ public class SymbolInfo
 	public SymbolFilter getSymbolFilter(FilterType filterType)
 	{
 		return filters.stream().filter( symbolFilter -> symbolFilter.getFilterType() == filterType ).findFirst().get();
+	}
+
+
+	public boolean isIcebergAllowed()
+	{
+		return icebergAllowed;
+	}
+
+
+	public boolean isMarginTradingAllowed()
+	{
+		return isMarginTradingAllowed;
+	}
+
+
+	public boolean isOcoAllowed()
+	{
+		return ocoAllowed;
+	}
+
+
+	public boolean isQuoteOrderQtyMarketAllowed()
+	{
+		return quoteOrderQtyMarketAllowed;
+	}
+
+
+	public boolean isSpotTradingAllowed()
+	{
+		return isSpotTradingAllowed;
+	}
+
+
+	public void setBaseAsset(String baseAsset)
+	{
+		this.baseAsset = baseAsset;
+	}
+
+
+	public void setBaseAssetPrecision(Integer baseAssetPrecision)
+	{
+		this.baseAssetPrecision = baseAssetPrecision;
+	}
+
+
+	public void setContractType(String contractType)
+	{
+		this.contractType = contractType;
+	}
+
+
+	public void setDeliveryDate(long deliveryDate)
+	{
+		this.deliveryDate = deliveryDate;
+	}
+
+
+	public void setFilters(List<SymbolFilter> filters)
+	{
+		this.filters = filters;
+	}
+
+
+	public void setIcebergAllowed(boolean icebergAllowed)
+	{
+		this.icebergAllowed = icebergAllowed;
+	}
+
+
+	public void setIsMarginTradingAllowed(boolean isMarginTradingAllowed)
+	{
+		this.isMarginTradingAllowed = isMarginTradingAllowed;
+	}
+
+
+	public void setIsSpotTradingAllowed(boolean isSpotTradingAllowed)
+	{
+		this.isSpotTradingAllowed = isSpotTradingAllowed;
+	}
+
+
+	public void setOcoAllowed(boolean ocoAllowed)
+	{
+		this.ocoAllowed = ocoAllowed;
+	}
+
+
+	public void setOnboardDate(long onboardDate)
+	{
+		this.onboardDate = onboardDate;
+	}
+
+
+	public void setOrderTypes(List<OrderType> orderTypes)
+	{
+		this.orderTypes = orderTypes;
+	}
+
+
+	public void setQuoteAsset(String quoteAsset)
+	{
+		this.quoteAsset = quoteAsset;
+	}
+
+
+	public void setQuoteOrderQtyMarketAllowed(boolean quoteOrderQtyMarketAllowed)
+	{
+		this.quoteOrderQtyMarketAllowed = quoteOrderQtyMarketAllowed;
+	}
+
+
+	public void setQuotePrecision(Integer quotePrecision)
+	{
+		this.quotePrecision = quotePrecision;
+	}
+
+
+	public void setSettlePlan(int settlePlan)
+	{
+		this.settlePlan = settlePlan;
+	}
+
+
+	public void setStatus(SymbolStatus status)
+	{
+		this.status = status;
+	}
+
+
+	public void setSymbol(String symbol)
+	{
+		this.symbol = symbol;
 	}
 
 
