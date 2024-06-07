@@ -7,22 +7,21 @@ package com.binance.api.examples.derivative;
 
 import java.util.List;
 
-import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.FilterType;
 import com.binance.api.client.domain.general.SymbolFilter;
 import com.binance.api.client.domain.general.SymbolInfo;
+import com.binance.api.examples.ExampleBase;
 
 /**
  * @Ttron May 31, 2024
  */
-public class FutureGeneralEndpointsExample
+public class FutureGeneralEndpointsExample extends ExampleBase
 {
 	public static void main(String[] args)
 	{
-		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
-		IBinanceFutureAPIRestClient client = factory.newFutureRestClient();
+		IBinanceFutureAPIRestClient client = createFutureClient();
 
 		// Test connectivity
 		// client.ping();

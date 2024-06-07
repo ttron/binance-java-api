@@ -7,7 +7,7 @@ import com.binance.api.client.constant.BinanceAPIConstants;
 /**
  * Binance API error object.
  */
-public class BinanceApiError
+public class BinanceAPIError
 {
 	/**
 	 * Error code.

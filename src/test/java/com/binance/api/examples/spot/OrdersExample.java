@@ -15,7 +15,7 @@ import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.OrderRequest;
 import com.binance.api.client.domain.account.request.OrderStatusRequest;
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -46,7 +46,7 @@ public class OrdersExample
 			CancelOrderResponse cancelOrderResponse = client.cancelOrder( new CancelOrderRequest( "LINKETH", 756762l ) );
 			System.out.println( cancelOrderResponse );
 		}
-		catch (BinanceApiException e)
+		catch (BinanceAPIException e)
 		{
 			System.out.println( e.getError().getMsg() );
 		}

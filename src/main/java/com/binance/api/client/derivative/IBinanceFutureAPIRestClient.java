@@ -5,7 +5,10 @@
  */
 package com.binance.api.client.derivative;
 
+import java.util.List;
+
 import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.market.OpenInterest;
 
 /**
  * @Ttron May 31, 2024
@@ -13,15 +16,18 @@ import com.binance.api.client.domain.general.ExchangeInfo;
 public interface IBinanceFutureAPIRestClient
 {
 	/**
-	 * Test connectivity to the Rest API.
-	 */
-	void ping();
-
-
-	/**
 	 * @return Current exchange trading rules and symbol information
 	 */
 	ExchangeInfo getExchangeInfo();
+
+
+	OpenInterest getOpenInterest(String symbol);
+
+
+	List<OpenInterest> getOpenInterestStatistics(String symbol, String period, int limit);
+
+
+	List<OpenInterest> getOpenInterestStatistics(String symbol, String period, int limit, Long epochFrom, Long epochTo);
 
 
 	/**
@@ -30,4 +36,10 @@ public interface IBinanceFutureAPIRestClient
 	 * @return current server time.
 	 */
 	Long getServerTime();
+
+
+	/**
+	 * Test connectivity to the Rest API.
+	 */
+	void ping();
 }

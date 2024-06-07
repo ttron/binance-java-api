@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
@@ -19,9 +19,9 @@ public class ExchangeInfo
 
 	private Long serverTime;
 
-	private List<SymbolInfo> symbols;
-
 	// private List<String> exchangeFilters;
+
+	private List<SymbolInfo> symbols;
 
 	private String timezone;
 
@@ -44,7 +44,7 @@ public class ExchangeInfo
 	public SymbolInfo getSymbolInfo(String symbol)
 	{
 		return symbols.stream().filter( symbolInfo -> symbolInfo.getSymbol().equals( symbol ) ).findFirst()
-				.orElseThrow( () -> new BinanceApiException( "Unable to obtain information for symbol " + symbol ) );
+				.orElseThrow( () -> new BinanceAPIException( "Unable to obtain information for symbol " + symbol ) );
 	}
 
 

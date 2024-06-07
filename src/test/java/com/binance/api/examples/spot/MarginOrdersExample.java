@@ -13,7 +13,7 @@ import com.binance.api.client.domain.account.NewOrderResponseType;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.OrderRequest;
 import com.binance.api.client.domain.account.request.OrderStatusRequest;
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.binance.api.client.spot.BinanceApiMarginRestClient;
 
 /**
@@ -41,7 +41,7 @@ public class MarginOrdersExample
 			CancelOrderResponse cancelOrderResponse = client.cancelOrder( new CancelOrderRequest( "LINKETH", 756762l ) );
 			System.out.println( cancelOrderResponse );
 		}
-		catch (BinanceApiException e)
+		catch (BinanceAPIException e)
 		{
 			System.out.println( e.getError().getMsg() );
 		}

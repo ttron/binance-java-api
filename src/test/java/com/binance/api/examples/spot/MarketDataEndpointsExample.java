@@ -10,7 +10,7 @@ import com.binance.api.client.domain.market.CandlestickInterval;
 import com.binance.api.client.domain.market.OrderBook;
 import com.binance.api.client.domain.market.TickerPrice;
 import com.binance.api.client.domain.market.TickerStatistics;
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -53,7 +53,7 @@ public class MarketDataEndpointsExample
 		{
 			client.getOrderBook( "UNKNOWN", 10 );
 		}
-		catch (BinanceApiException e)
+		catch (BinanceAPIException e)
 		{
 			System.out.println( e.getError().getCode() ); // -1121
 			System.out.println( e.getError().getMsg() ); // Invalid symbol

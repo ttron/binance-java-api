@@ -1,12 +1,12 @@
 package com.binance.api.client.spot.impl;
 
-import static com.binance.api.client.BinanceAPIServiceGenerator.getBinanceApiError;
+import static com.binance.api.client.BinanceAPIServiceGenerator.getBinanceAPIError;
 
 import java.io.IOException;
 
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.binance.api.client.spot.BinanceApiCallback;
-import com.binance.api.client.spot.BinanceApiError;
+import com.binance.api.client.spot.BinanceAPIError;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,12 +44,12 @@ public class BinanceApiCallbackAdapter<T> implements Callback<T>
 			}
 			try
 			{
-				BinanceApiError apiError = getBinanceApiError( response );
-				onFailure( call, new BinanceApiException( apiError ) );
+				BinanceAPIError apiError = getBinanceAPIError( response );
+				onFailure( call, new BinanceAPIException( apiError ) );
 			}
 			catch (IOException e)
 			{
-				onFailure( call, new BinanceApiException( e ) );
+				onFailure( call, new BinanceAPIException( e ) );
 			}
 		}
 	}
@@ -58,13 +58,13 @@ public class BinanceApiCallbackAdapter<T> implements Callback<T>
 	@Override
 	public void onFailure(Call<T> call, Throwable throwable)
 	{
-		if (throwable instanceof BinanceApiException)
+		if (throwable instanceof BinanceAPIException)
 		{
 			callback.onFailure( throwable );
 		}
 		else
 		{
-			callback.onFailure( new BinanceApiException( throwable ) );
+			callback.onFailure( new BinanceAPIException( throwable ) );
 		}
 	}
 }

@@ -1,20 +1,19 @@
 package com.binance.api.examples.spot;
 
-import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.general.FilterType;
 import com.binance.api.client.domain.general.SymbolFilter;
 import com.binance.api.client.domain.general.SymbolInfo;
 import com.binance.api.client.spot.IBinanceSpotAPIAsyncRestClient;
+import com.binance.api.examples.ExampleBase;
 
 /**
  * Examples on how to use the general endpoints.
  */
-public class GeneralEndpointsExampleAsync
+public class GeneralEndpointsExampleAsync extends ExampleBase
 {
 	public static void main(String[] args) throws InterruptedException
 	{
-		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
-		IBinanceSpotAPIAsyncRestClient client = factory.newAsyncRestClient();
+		IBinanceSpotAPIAsyncRestClient client = createSpotAsyncClient();
 
 		// Test connectivity
 		client.ping( response -> System.out.println( "Ping succeeded." ) );

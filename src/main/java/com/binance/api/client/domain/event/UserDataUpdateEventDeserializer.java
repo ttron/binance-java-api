@@ -1,7 +1,7 @@
 package com.binance.api.client.domain.event;
 
 import com.binance.api.client.domain.event.UserDataUpdateEvent.UserDataUpdateEventType;
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -58,7 +58,7 @@ public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUp
     try {
       return mapper.readValue(json, clazz);
     } catch (IOException e) {
-      throw new BinanceApiException(e);
+      throw new BinanceAPIException(e);
     }
   }
 }

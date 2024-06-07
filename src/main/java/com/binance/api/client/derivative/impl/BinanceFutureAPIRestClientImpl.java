@@ -9,9 +9,12 @@ import static com.binance.api.client.BinanceAPIServiceGenerator.createService;
 import static com.binance.api.client.BinanceAPIServiceGenerator.executeSync;
 import static com.binance.api.client.config.BinanceAPIConfig.getFutureBaseUrl;
 
+import java.util.List;
+
 import com.binance.api.client.BinanceFutureAPIService;
 import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
 import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.market.OpenInterest;
 
 /**
  * @Ttron May 31, 2024
@@ -44,5 +47,26 @@ public class BinanceFutureAPIRestClientImpl implements IBinanceFutureAPIRestClie
 	public void ping()
 	{
 		executeSync( binanceAPIService.ping() );
+	}
+
+
+	@Override
+	public OpenInterest getOpenInterest(String symbol)
+	{
+		return executeSync( binanceAPIService.getOpenInterest( symbol ) );
+	}
+
+
+	@Override
+	public List<OpenInterest> getOpenInterestStatistics(String symbol, String peroid, int limit, Long epochFrom, Long epochTo)
+	{
+		return executeSync( binanceAPIService.getOpenInterestStatistics( symbol, peroid, limit, epochFrom, epochTo ) );
+	}
+
+
+	@Override
+	public List<OpenInterest> getOpenInterestStatistics(String symbol, String period, int limit)
+	{
+		return getOpenInterestStatistics( symbol, period, limit, null, null );
 	}
 }

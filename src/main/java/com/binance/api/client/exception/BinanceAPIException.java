@@ -1,25 +1,25 @@
 package com.binance.api.client.exception;
 
-import com.binance.api.client.spot.BinanceApiError;
+import com.binance.api.client.spot.BinanceAPIError;
 
 /**
  * An exception which can occur while invoking methods of the Binance API.
  */
-public class BinanceApiException extends RuntimeException
+public class BinanceAPIException extends RuntimeException
 {
 	private static final long serialVersionUID = 3788669840036201041L;
 
 	/**
 	   * Error response object returned by Binance API.
 	   */
-	private BinanceApiError error;
+	private BinanceAPIError error;
 
 	/**
 	 * Instantiates a new binance api exception.
 	 *
 	 * @param error an error response object
 	 */
-	public BinanceApiException(BinanceApiError error)
+	public BinanceAPIException(BinanceAPIError error)
 	{
 		this.error = error;
 	}
@@ -28,7 +28,7 @@ public class BinanceApiException extends RuntimeException
 	/**
 	 * Instantiates a new binance api exception.
 	 */
-	public BinanceApiException()
+	public BinanceAPIException()
 	{
 		super();
 	}
@@ -39,7 +39,7 @@ public class BinanceApiException extends RuntimeException
 	 *
 	 * @param message the message
 	 */
-	public BinanceApiException(String message)
+	public BinanceAPIException(String message)
 	{
 		super( message );
 	}
@@ -50,7 +50,7 @@ public class BinanceApiException extends RuntimeException
 	 *
 	 * @param cause the cause
 	 */
-	public BinanceApiException(Throwable cause)
+	public BinanceAPIException(Throwable cause)
 	{
 		super( cause );
 	}
@@ -62,7 +62,7 @@ public class BinanceApiException extends RuntimeException
 	 * @param message the message
 	 * @param cause the cause
 	 */
-	public BinanceApiException(String message, Throwable cause)
+	public BinanceAPIException(String message, Throwable cause)
 	{
 		super( message, cause );
 	}
@@ -71,7 +71,7 @@ public class BinanceApiException extends RuntimeException
 	/**
 	 * @return the response error object from Binance API, or null if no response object was returned (e.g. server returned 500).
 	 */
-	public BinanceApiError getError()
+	public BinanceAPIError getError()
 	{
 		return error;
 	}

@@ -2,7 +2,7 @@ package com.binance.api.client.spot.impl;
 
 import java.io.IOException;
 
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.binance.api.client.spot.BinanceApiCallback;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,7 +49,7 @@ public class BinanceApiWebSocketListener<T> extends WebSocketListener
 		}
 		catch (IOException e)
 		{
-			throw new BinanceApiException( e );
+			throw new BinanceAPIException( e );
 		}
 	}
 

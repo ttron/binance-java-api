@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.binance.api.client.exception.BinanceApiException;
+import com.binance.api.client.exception.BinanceAPIException;
 import com.binance.api.client.security.AuthenticationInterceptor;
-import com.binance.api.client.spot.BinanceApiError;
+import com.binance.api.client.spot.BinanceAPIError;
 
 import okhttp3.Dispatcher;
 import okhttp3.OkHttpClient;
@@ -31,8 +31,8 @@ public class BinanceAPIServiceGenerator
 	private static final Converter.Factory converterFactory = JacksonConverterFactory.create();
 
 	@SuppressWarnings("unchecked")
-	private static final Converter<ResponseBody, BinanceApiError> errorBodyConverter = (Converter<ResponseBody, BinanceApiError>) converterFactory
-			.responseBodyConverter( BinanceApiError.class, new Annotation[0], null );
+	private static final Converter<ResponseBody, BinanceAPIError> errorBodyConverter = (Converter<ResponseBody, BinanceAPIError>) converterFactory
+			.responseBodyConverter( BinanceAPIError.class, new Annotation[0], null );
 
 	private static final OkHttpClient sharedClient;
 
@@ -93,7 +93,7 @@ public class BinanceAPIServiceGenerator
 	/**
 	 * Execute a REST call and block until the response is received.
 	 */
-	public static <T> T executeSync(Call<T> call) throws BinanceApiException
+	public static <T> T executeSync(Call<T> call) throws BinanceAPIException
 	{
 		try
 		{
@@ -104,13 +104,13 @@ public class BinanceAPIServiceGenerator
 			}
 			else
 			{
-				BinanceApiError apiError = getBinanceApiError( response );
-				throw new BinanceApiException( apiError );
+				BinanceAPIError apiError = getBinanceAPIError( response );
+				throw new BinanceAPIException( apiError );
 			}
 		}
 		catch (IOException e)
 		{
-			throw new BinanceApiException( e );
+			throw new BinanceAPIException( e );
 		}
 	}
 
@@ -118,7 +118,7 @@ public class BinanceAPIServiceGenerator
 	/**
 	 * Extracts and converts the response error body into an object.
 	 */
-	public static BinanceApiError getBinanceApiError(Response<?> response) throws IOException, BinanceApiException
+	public static BinanceAPIError getBinanceAPIError(Response<?> response) throws IOException, BinanceAPIException
 	{
 		return errorBodyConverter.convert( response.errorBody() );
 	}
