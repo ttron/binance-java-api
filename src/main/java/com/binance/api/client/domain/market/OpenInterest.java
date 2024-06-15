@@ -21,6 +21,8 @@ public class OpenInterest
 
 	private String symbol;
 
+	private long time;
+
 	private long timestamp;
 
 	public double getOpenInterest()
@@ -44,6 +46,12 @@ public class OpenInterest
 	public String getSymbol()
 	{
 		return symbol;
+	}
+
+
+	public long getTime()
+	{
+		return time;
 	}
 
 
@@ -74,6 +82,12 @@ public class OpenInterest
 	public void setSymbol(String symbol)
 	{
 		this.symbol = symbol;
+	}
+
+
+	public void setTime(long time)
+	{
+		this.time = time;
 	}
 
 
