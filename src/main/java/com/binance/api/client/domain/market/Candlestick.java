@@ -15,97 +15,48 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Candlestick
 {
+	// [
+	// [
+	// 1499040000000, // Kline open time
+	// "0.01634790", // Open price
+	// "0.80000000", // High price
+	// "0.01575800", // Low price
+	// "0.01577100", // Close price
+	// "148976.11427815", // Volume
+	// 1499644799999, // Kline Close time
+	// "2434.19055334", // Quote asset volume
+	// 308, // Number of trades
+	// "1756.87402397", // Taker buy base asset volume
+	// "28.46694368", // Taker buy quote asset volume
+	// "0" // Unused field, ignore.
+	// ]
+	// ]
+
 	private Long openTime;
 
-	private String open;
+	private Double open;
 
-	private String high;
+	private Double high;
 
-	private String low;
+	private Double low;
 
-	private String close;
+	private Double close;
 
-	private String volume;
+	private Double volume;
 
 	private Long closeTime;
 
-	private String quoteAssetVolume;
+	private Double quoteAssetVolume;
 
 	private Long numberOfTrades;
 
-	private String takerBuyBaseAssetVolume;
+	private Double takerBuyBaseAssetVolume;
 
-	private String takerBuyQuoteAssetVolume;
+	private Double takerBuyQuoteAssetVolume;
 
-	public Long getOpenTime()
-	{
-		return openTime;
-	}
-
-
-	public void setOpenTime(Long openTime)
-	{
-		this.openTime = openTime;
-	}
-
-
-	public String getOpen()
-	{
-		return open;
-	}
-
-
-	public void setOpen(String open)
-	{
-		this.open = open;
-	}
-
-
-	public String getHigh()
-	{
-		return high;
-	}
-
-
-	public void setHigh(String high)
-	{
-		this.high = high;
-	}
-
-
-	public String getLow()
-	{
-		return low;
-	}
-
-
-	public void setLow(String low)
-	{
-		this.low = low;
-	}
-
-
-	public String getClose()
+	public Double getClose()
 	{
 		return close;
-	}
-
-
-	public void setClose(String close)
-	{
-		this.close = close;
-	}
-
-
-	public String getVolume()
-	{
-		return volume;
-	}
-
-
-	public void setVolume(String volume)
-	{
-		this.volume = volume;
 	}
 
 
@@ -115,21 +66,15 @@ public class Candlestick
 	}
 
 
-	public void setCloseTime(Long closeTime)
+	public Double getHigh()
 	{
-		this.closeTime = closeTime;
+		return high;
 	}
 
 
-	public String getQuoteAssetVolume()
+	public Double getLow()
 	{
-		return quoteAssetVolume;
-	}
-
-
-	public void setQuoteAssetVolume(String quoteAssetVolume)
-	{
-		this.quoteAssetVolume = quoteAssetVolume;
+		return low;
 	}
 
 
@@ -139,43 +84,114 @@ public class Candlestick
 	}
 
 
+	public Double getOpen()
+	{
+		return open;
+	}
+
+
+	public Long getOpenTime()
+	{
+		return openTime;
+	}
+
+
+	public Double getQuoteAssetVolume()
+	{
+		return quoteAssetVolume;
+	}
+
+
+	public Double getTakerBuyBaseAssetVolume()
+	{
+		return takerBuyBaseAssetVolume;
+	}
+
+
+	public Double getTakerBuyQuoteAssetVolume()
+	{
+		return takerBuyQuoteAssetVolume;
+	}
+
+
+	public Double getVolume()
+	{
+		return volume;
+	}
+
+
+	public void setClose(Double close)
+	{
+		this.close = close;
+	}
+
+
+	public void setCloseTime(Long closeTime)
+	{
+		this.closeTime = closeTime;
+	}
+
+
+	public void setHigh(Double high)
+	{
+		this.high = high;
+	}
+
+
+	public void setLow(Double low)
+	{
+		this.low = low;
+	}
+
+
 	public void setNumberOfTrades(Long numberOfTrades)
 	{
 		this.numberOfTrades = numberOfTrades;
 	}
 
 
-	public String getTakerBuyBaseAssetVolume()
+	public void setOpen(Double open)
 	{
-		return takerBuyBaseAssetVolume;
+		this.open = open;
 	}
 
 
-	public void setTakerBuyBaseAssetVolume(String takerBuyBaseAssetVolume)
+	public void setOpenTime(Long openTime)
+	{
+		this.openTime = openTime;
+	}
+
+
+	public void setQuoteAssetVolume(Double quoteAssetVolume)
+	{
+		this.quoteAssetVolume = quoteAssetVolume;
+	}
+
+
+	public void setTakerBuyBaseAssetVolume(Double takerBuyBaseAssetVolume)
 	{
 		this.takerBuyBaseAssetVolume = takerBuyBaseAssetVolume;
 	}
 
 
-	public String getTakerBuyQuoteAssetVolume()
+	public void setTakerBuyQuoteAssetVolume(Double takerBuyQuoteAssetVolume)
 	{
-		return takerBuyQuoteAssetVolume;
+		this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
 	}
 
 
-	public void setTakerBuyQuoteAssetVolume(String takerBuyQuoteAssetVolume)
+	public void setVolume(Double volume)
 	{
-		this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
+		this.volume = volume;
 	}
 
 
 	@Override
 	public String toString()
 	{
-		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "openTime", openTime )
-				.append( "open", open ).append( "high", high ).append( "low", low ).append( "close", close )
-				.append( "volume", volume ).append( "closeTime", closeTime ).append( "quoteAssetVolume", quoteAssetVolume )
-				.append( "numberOfTrades", numberOfTrades ).append( "takerBuyBaseAssetVolume", takerBuyBaseAssetVolume )
-				.append( "takerBuyQuoteAssetVolume", takerBuyQuoteAssetVolume ).toString();
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "EPH_FROM", openTime )
+				.append( "EPH_TO", closeTime ).append( "O", open ).append( "H", high ).append( "L", low ).append( "C", close )
+				.append( "V_B", volume ).append( "V_Q", quoteAssetVolume ).append( "numberOfTrades", numberOfTrades )
+				.append( "takerBuyV_B", takerBuyBaseAssetVolume ).append( "takerBuyV_Q", takerBuyQuoteAssetVolume ).toString();
 	}
 }

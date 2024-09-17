@@ -1,11 +1,11 @@
 package com.binance.api.client.domain.event;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * An interval candlestick for a symbol providing informations on price that can be used to produce candlestick charts.
@@ -13,209 +13,269 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @JsonDeserialize(using = CandlestickEventDeserializer.class)
 @JsonSerialize(using = CandlestickEventSerializer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CandlestickEvent {
+public class CandlestickEvent
+{
+	private Double close;
 
-  private String eventType;
+	private Long closeTime;
 
-  private long eventTime;
+	private long eventTime;
 
-  private String symbol;
+	private String eventType;
 
-  private Long openTime;
+	private Long firstTradeId;
 
-  private String open;
+	private Double high;
 
-  private String high;
+	private String intervalId;
 
-  private String low;
+	private Boolean isBarFinal;
 
-  private String close;
+	private Long lastTradeId;
 
-  private String volume;
+	private Double low;
 
-  private Long closeTime;
+	private Long numberOfTrades;
 
-  private String intervalId;
+	private Double open;
 
-  private Long firstTradeId;
+	private Long openTime;
 
-  private Long lastTradeId;
+	private Double quoteAssetVolume;
 
-  private String quoteAssetVolume;
+	private String symbol;
 
-  private Long numberOfTrades;
+	private Double takerBuyBaseAssetVolume;
 
-  private String takerBuyBaseAssetVolume;
+	private Double takerBuyQuoteAssetVolume;
 
-  private String takerBuyQuoteAssetVolume;
+	private Double volume;
 
-  private Boolean isBarFinal;
+	public Boolean getBarFinal()
+	{
+		return isBarFinal;
+	}
 
-  public String getEventType() {
-    return eventType;
-  }
 
-  public void setEventType(String eventType) {
-    this.eventType = eventType;
-  }
+	public Double getClose()
+	{
+		return close;
+	}
 
-  public long getEventTime() {
-    return eventTime;
-  }
 
-  public void setEventTime(long eventTime) {
-    this.eventTime = eventTime;
-  }
+	public Long getCloseTime()
+	{
+		return closeTime;
+	}
 
-  public String getSymbol() {
-    return symbol;
-  }
 
-  public void setSymbol(String symbol) {
-    this.symbol = symbol;
-  }
+	public long getEventTime()
+	{
+		return eventTime;
+	}
 
-  public Long getOpenTime() {
-    return openTime;
-  }
 
-  public void setOpenTime(Long openTime) {
-    this.openTime = openTime;
-  }
+	public String getEventType()
+	{
+		return eventType;
+	}
 
-  public String getOpen() {
-    return open;
-  }
 
-  public void setOpen(String open) {
-    this.open = open;
-  }
+	public Long getFirstTradeId()
+	{
+		return firstTradeId;
+	}
 
-  public String getHigh() {
-    return high;
-  }
 
-  public void setHigh(String high) {
-    this.high = high;
-  }
+	public Double getHigh()
+	{
+		return high;
+	}
 
-  public String getLow() {
-    return low;
-  }
 
-  public void setLow(String low) {
-    this.low = low;
-  }
+	public String getIntervalId()
+	{
+		return intervalId;
+	}
 
-  public String getClose() {
-    return close;
-  }
 
-  public void setClose(String close) {
-    this.close = close;
-  }
+	public Long getLastTradeId()
+	{
+		return lastTradeId;
+	}
 
-  public String getVolume() {
-    return volume;
-  }
 
-  public void setVolume(String volume) {
-    this.volume = volume;
-  }
+	public Double getLow()
+	{
+		return low;
+	}
 
-  public Long getCloseTime() {
-    return closeTime;
-  }
 
-  public void setCloseTime(Long closeTime) {
-    this.closeTime = closeTime;
-  }
+	public Long getNumberOfTrades()
+	{
+		return numberOfTrades;
+	}
 
-  public String getIntervalId() {
-    return intervalId;
-  }
 
-  public void setIntervalId(String intervalId) {
-    this.intervalId = intervalId;
-  }
+	public Double getOpen()
+	{
+		return open;
+	}
 
-  public Long getFirstTradeId() {
-    return firstTradeId;
-  }
 
-  public void setFirstTradeId(Long firstTradeId) {
-    this.firstTradeId = firstTradeId;
-  }
+	public Long getOpenTime()
+	{
+		return openTime;
+	}
 
-  public Long getLastTradeId() {
-    return lastTradeId;
-  }
 
-  public void setLastTradeId(Long lastTradeId) {
-    this.lastTradeId = lastTradeId;
-  }
+	public Double getQuoteAssetVolume()
+	{
+		return quoteAssetVolume;
+	}
 
-  public String getQuoteAssetVolume() {
-    return quoteAssetVolume;
-  }
 
-  public void setQuoteAssetVolume(String quoteAssetVolume) {
-    this.quoteAssetVolume = quoteAssetVolume;
-  }
+	public String getSymbol()
+	{
+		return symbol;
+	}
 
-  public Long getNumberOfTrades() {
-    return numberOfTrades;
-  }
 
-  public void setNumberOfTrades(Long numberOfTrades) {
-    this.numberOfTrades = numberOfTrades;
-  }
+	public Double getTakerBuyBaseAssetVolume()
+	{
+		return takerBuyBaseAssetVolume;
+	}
 
-  public String getTakerBuyBaseAssetVolume() {
-    return takerBuyBaseAssetVolume;
-  }
 
-  public void setTakerBuyBaseAssetVolume(String takerBuyBaseAssetVolume) {
-    this.takerBuyBaseAssetVolume = takerBuyBaseAssetVolume;
-  }
+	public Double getTakerBuyQuoteAssetVolume()
+	{
+		return takerBuyQuoteAssetVolume;
+	}
 
-  public String getTakerBuyQuoteAssetVolume() {
-    return takerBuyQuoteAssetVolume;
-  }
 
-  public void setTakerBuyQuoteAssetVolume(String takerBuyQuoteAssetVolume) {
-    this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
-  }
+	public Double getVolume()
+	{
+		return volume;
+	}
 
-  public Boolean getBarFinal() {
-    return isBarFinal;
-  }
 
-  public void setBarFinal(Boolean barFinal) {
-    isBarFinal = barFinal;
-  }
+	public void setBarFinal(Boolean barFinal)
+	{
+		isBarFinal = barFinal;
+	}
 
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE)
-        .append("eventType", eventType)
-        .append("eventTime", eventTime)
-        .append("symbol", symbol)
-        .append("openTime", openTime)
-        .append("open", open)
-        .append("high", high)
-        .append("low", low)
-        .append("close", close)
-        .append("volume", volume)
-        .append("closeTime", closeTime)
-        .append("intervalId", intervalId)
-        .append("firstTradeId", firstTradeId)
-        .append("lastTradeId", lastTradeId)
-        .append("quoteAssetVolume", quoteAssetVolume)
-        .append("numberOfTrades", numberOfTrades)
-        .append("takerBuyBaseAssetVolume", takerBuyBaseAssetVolume)
-        .append("takerBuyQuoteAssetVolume", takerBuyQuoteAssetVolume)
-        .append("isBarFinal", isBarFinal)
-        .toString();
-  }
+
+	public void setClose(Double close)
+	{
+		this.close = close;
+	}
+
+
+	public void setCloseTime(Long closeTime)
+	{
+		this.closeTime = closeTime;
+	}
+
+
+	public void setEventTime(long eventTime)
+	{
+		this.eventTime = eventTime;
+	}
+
+
+	public void setEventType(String eventType)
+	{
+		this.eventType = eventType;
+	}
+
+
+	public void setFirstTradeId(Long firstTradeId)
+	{
+		this.firstTradeId = firstTradeId;
+	}
+
+
+	public void setHigh(Double high)
+	{
+		this.high = high;
+	}
+
+
+	public void setIntervalId(String intervalId)
+	{
+		this.intervalId = intervalId;
+	}
+
+
+	public void setLastTradeId(Long lastTradeId)
+	{
+		this.lastTradeId = lastTradeId;
+	}
+
+
+	public void setLow(Double low)
+	{
+		this.low = low;
+	}
+
+
+	public void setNumberOfTrades(Long numberOfTrades)
+	{
+		this.numberOfTrades = numberOfTrades;
+	}
+
+
+	public void setOpen(Double open)
+	{
+		this.open = open;
+	}
+
+
+	public void setOpenTime(Long openTime)
+	{
+		this.openTime = openTime;
+	}
+
+
+	public void setQuoteAssetVolume(Double quoteAssetVolume)
+	{
+		this.quoteAssetVolume = quoteAssetVolume;
+	}
+
+
+	public void setSymbol(String symbol)
+	{
+		this.symbol = symbol;
+	}
+
+
+	public void setTakerBuyBaseAssetVolume(Double takerBuyBaseAssetVolume)
+	{
+		this.takerBuyBaseAssetVolume = takerBuyBaseAssetVolume;
+	}
+
+
+	public void setTakerBuyQuoteAssetVolume(Double takerBuyQuoteAssetVolume)
+	{
+		this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
+	}
+
+
+	public void setVolume(Double volume)
+	{
+		this.volume = volume;
+	}
+
+
+	@Override
+	public String toString()
+	{
+		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "eventType", eventType )
+				.append( "eventTime", eventTime ).append( "symbol", symbol ).append( "openTime", openTime ).append( "open", open )
+				.append( "high", high ).append( "low", low ).append( "close", close ).append( "volume", volume )
+				.append( "closeTime", closeTime ).append( "intervalId", intervalId ).append( "firstTradeId", firstTradeId )
+				.append( "lastTradeId", lastTradeId ).append( "quoteAssetVolume", quoteAssetVolume )
+				.append( "numberOfTrades", numberOfTrades ).append( "takerBuyBaseAssetVolume", takerBuyBaseAssetVolume )
+				.append( "takerBuyQuoteAssetVolume", takerBuyQuoteAssetVolume ).append( "isBarFinal", isBarFinal ).toString();
+	}
 }
