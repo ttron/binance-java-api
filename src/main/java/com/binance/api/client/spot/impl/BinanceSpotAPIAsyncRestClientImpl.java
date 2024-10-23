@@ -71,6 +71,13 @@ public class BinanceSpotAPIAsyncRestClientImpl implements IBinanceSpotAPIAsyncRe
 
 
 	@Override
+	public void getAll24HrPriceStatistics(BinanceApiCallback<List<TickerStatistics>> callback)
+	{
+		binanceApiService.getAll24HrPriceStatistics().enqueue( new BinanceApiCallbackAdapter<>( callback ) );
+	}
+
+
+	@Override
 	public void get24HrPriceStatistics(String symbol, BinanceApiCallback<TickerStatistics> callback)
 	{
 		binanceApiService.get24HrPriceStatistics( symbol ).enqueue( new BinanceApiCallbackAdapter<>( callback ) );
@@ -108,13 +115,6 @@ public class BinanceSpotAPIAsyncRestClientImpl implements IBinanceSpotAPIAsyncRe
 	{
 		binanceApiService.getAggTrades( symbol, fromId, limit, startTime, endTime )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
-	}
-
-
-	@Override
-	public void getAll24HrPriceStatistics(BinanceApiCallback<List<TickerStatistics>> callback)
-	{
-		binanceApiService.getAll24HrPriceStatistics().enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
 

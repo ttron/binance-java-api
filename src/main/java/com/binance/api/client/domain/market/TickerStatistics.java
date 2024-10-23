@@ -14,12 +14,12 @@ public class TickerStatistics
 	/**
 	 * Ask price.
 	 */
-	private String askPrice;
+	private double askPrice;
 
 	/**
 	 * Bid price.
 	 */
-	private String bidPrice;
+	private double bidPrice;
 
 	/**
 	 * Close time.
@@ -29,7 +29,7 @@ public class TickerStatistics
 	/**
 	 * Total number of trades during the last 24 hours.
 	 */
-	private long count;
+	private int count;
 
 	/**
 	 * First trade id.
@@ -39,7 +39,7 @@ public class TickerStatistics
 	/**
 	 * Highest price during the past 24 hours.
 	 */
-	private String highPrice;
+	private double highPrice;
 
 	/**
 	 * Last trade id.
@@ -49,17 +49,17 @@ public class TickerStatistics
 	/**
 	 * Last price.
 	 */
-	private String lastPrice;
+	private double lastPrice;
 
 	/**
 	 * Lowest price during the past 24 hours.
 	 */
-	private String lowPrice;
+	private double lowPrice;
 
 	/**
 	 * Open price 24 hours ago.
 	 */
-	private String openPrice;
+	private double openPrice;
 
 	/**
 	 * Open time.
@@ -69,20 +69,19 @@ public class TickerStatistics
 	/**
 	 * Previous close price.
 	 */
-	private String prevClosePrice;
+	private double prevClosePrice;
 
 	/**
 	 * Price change during the last 24 hours.
 	 */
-	private String priceChange;
+	private double priceChange;
 
 	/**
 	 * Price change, in percentage, during the last 24 hours.
 	 */
-	private String priceChangePercent;
+	private double priceChangePercent;
 
-
-	private String quoteVolume;
+	private double quoteVolume;
 
 	/**
 	 * Ticker symbol.
@@ -92,22 +91,24 @@ public class TickerStatistics
 	/**
 	 * Total volume during the past 24 hours.
 	 */
-	private String volume;
+	private double volume;
 
 	/**
 	 * Weighted average price.
 	 */
-	private String weightedAvgPrice;
+	private double weightedAvgPrice;
 
-	public String getAskPrice()
+	public double getAskPrice()
 	{
 		return askPrice;
 	}
 
-	public String getBidPrice()
+
+	public double getBidPrice()
 	{
 		return bidPrice;
 	}
+
 
 	public long getCloseTime()
 	{
@@ -115,7 +116,7 @@ public class TickerStatistics
 	}
 
 
-	public long getCount()
+	public int getCount()
 	{
 		return count;
 	}
@@ -127,7 +128,7 @@ public class TickerStatistics
 	}
 
 
-	public String getHighPrice()
+	public double getHighPrice()
 	{
 		return highPrice;
 	}
@@ -139,19 +140,19 @@ public class TickerStatistics
 	}
 
 
-	public String getLastPrice()
+	public double getLastPrice()
 	{
 		return lastPrice;
 	}
 
 
-	public String getLowPrice()
+	public double getLowPrice()
 	{
 		return lowPrice;
 	}
 
 
-	public String getOpenPrice()
+	public double getOpenPrice()
 	{
 		return openPrice;
 	}
@@ -163,25 +164,25 @@ public class TickerStatistics
 	}
 
 
-	public String getPrevClosePrice()
+	public double getPrevClosePrice()
 	{
 		return prevClosePrice;
 	}
 
 
-	public String getPriceChange()
+	public double getPriceChange()
 	{
 		return priceChange;
 	}
 
 
-	public String getPriceChangePercent()
+	public double getPriceChangePercent()
 	{
 		return priceChangePercent;
 	}
 
 
-	public String getQuoteVolume()
+	public double getQuoteVolume()
 	{
 		return quoteVolume;
 	}
@@ -193,25 +194,25 @@ public class TickerStatistics
 	}
 
 
-	public String getVolume()
+	public double getVolume()
 	{
 		return volume;
 	}
 
 
-	public String getWeightedAvgPrice()
+	public double getWeightedAvgPrice()
 	{
 		return weightedAvgPrice;
 	}
 
 
-	public void setAskPrice(String askPrice)
+	public void setAskPrice(double askPrice)
 	{
 		this.askPrice = askPrice;
 	}
 
 
-	public void setBidPrice(String bidPrice)
+	public void setBidPrice(double bidPrice)
 	{
 		this.bidPrice = bidPrice;
 	}
@@ -223,7 +224,7 @@ public class TickerStatistics
 	}
 
 
-	public void setCount(long count)
+	public void setCount(int count)
 	{
 		this.count = count;
 	}
@@ -235,7 +236,7 @@ public class TickerStatistics
 	}
 
 
-	public void setHighPrice(String highPrice)
+	public void setHighPrice(double highPrice)
 	{
 		this.highPrice = highPrice;
 	}
@@ -247,19 +248,19 @@ public class TickerStatistics
 	}
 
 
-	public void setLastPrice(String lastPrice)
+	public void setLastPrice(double lastPrice)
 	{
 		this.lastPrice = lastPrice;
 	}
 
 
-	public void setLowPrice(String lowPrice)
+	public void setLowPrice(double lowPrice)
 	{
 		this.lowPrice = lowPrice;
 	}
 
 
-	public void setOpenPrice(String openPrice)
+	public void setOpenPrice(double openPrice)
 	{
 		this.openPrice = openPrice;
 	}
@@ -271,25 +272,25 @@ public class TickerStatistics
 	}
 
 
-	public void setPrevClosePrice(String prevClosePrice)
+	public void setPrevClosePrice(double prevClosePrice)
 	{
 		this.prevClosePrice = prevClosePrice;
 	}
 
 
-	public void setPriceChange(String priceChange)
+	public void setPriceChange(double priceChange)
 	{
 		this.priceChange = priceChange;
 	}
 
 
-	public void setPriceChangePercent(String priceChangePercent)
+	public void setPriceChangePercent(double priceChangePercent)
 	{
 		this.priceChangePercent = priceChangePercent;
 	}
 
 
-	public void setQuoteVolume(String quoteVolume)
+	public void setQuoteVolume(double quoteVolume)
 	{
 		this.quoteVolume = quoteVolume;
 	}
@@ -301,13 +302,13 @@ public class TickerStatistics
 	}
 
 
-	public void setVolume(String volume)
+	public void setVolume(double volume)
 	{
 		this.volume = volume;
 	}
 
 
-	public void setWeightedAvgPrice(String weightedAvgPrice)
+	public void setWeightedAvgPrice(double weightedAvgPrice)
 	{
 		this.weightedAvgPrice = weightedAvgPrice;
 	}
@@ -317,11 +318,12 @@ public class TickerStatistics
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
-				.append( "priceChange", priceChange ).append( "priceChangePercent", priceChangePercent )
+				.append( "DIFF", priceChange ).append( "DIFF_PRNT", priceChangePercent )
 				.append( "weightedAvgPrice", weightedAvgPrice ).append( "prevClosePrice", prevClosePrice )
 				.append( "lastPrice", lastPrice ).append( "bidPrice", bidPrice ).append( "askPrice", askPrice )
 				.append( "openPrice", openPrice ).append( "highPrice", highPrice ).append( "lowPrice", lowPrice )
-				.append( "volume", volume ).append( "openTime", openTime ).append( "closeTime", closeTime )
-				.append( "firstId", firstId ).append( "lastId", lastId ).append( "count", count ).toString();
+				.append( "VOL", volume ).append( "VOL_Q", quoteVolume ).append( "openTime", openTime )
+				.append( "closeTime", closeTime ).append( "firstId", firstId ).append( "lastId", lastId ).append( "count", count )
+				.toString();
 	}
 }

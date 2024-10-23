@@ -103,15 +103,15 @@ public interface BinanceSpotAPIService
 
 
 	@GET("/api/v3/ticker/24hr")
+	Call<List<TickerStatistics>> getAll24HrPriceStatistics();
+
+
+	@GET("/api/v3/ticker/24hr")
 	Call<TickerStatistics> get24HrPriceStatistics(@Query("symbol") String symbol);
 
 
 	@GET("/api/v3/ticker/tradingDay")
 	Call<TickerStatistics> getTradingDayPriceStatistics(@Query("symbol") String symbol);
-
-
-	@GET("/api/v3/ticker/24hr")
-	Call<List<TickerStatistics>> getAll24HrPriceStatistics();
 
 
 	@GET("/api/v3/ticker/tradingDay")
