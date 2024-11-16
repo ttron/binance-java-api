@@ -43,9 +43,9 @@ public class NewOrderResponse
 	 */
 	private String clientOrderId;
 
-	private String cummulativeQuoteQty;
+	private double cummulativeQuoteQty;
 
-	private String executedQty;
+	private double executedQty;
 
 	// @JsonSetter(nulls = Nulls.AS_EMPTY)
 	private List<Trade> fills;
@@ -55,9 +55,9 @@ public class NewOrderResponse
 	 */
 	private Long orderId;
 
-	private String origQty;
+	private double origQty;
 
-	private String price;
+	private double price;
 
 	private OrderSide side;
 
@@ -83,13 +83,13 @@ public class NewOrderResponse
 	}
 
 
-	public String getCummulativeQuoteQty()
+	public double getCummulativeQuoteQty()
 	{
 		return cummulativeQuoteQty;
 	}
 
 
-	public String getExecutedQty()
+	public double getExecutedQty()
 	{
 		return executedQty;
 	}
@@ -107,13 +107,13 @@ public class NewOrderResponse
 	}
 
 
-	public String getOrigQty()
+	public double getOrigQty()
 	{
 		return origQty;
 	}
 
 
-	public String getPrice()
+	public double getPrice()
 	{
 		return price;
 	}
@@ -161,13 +161,13 @@ public class NewOrderResponse
 	}
 
 
-	public void setCummulativeQuoteQty(String cummulativeQuoteQty)
+	public void setCummulativeQuoteQty(double cummulativeQuoteQty)
 	{
 		this.cummulativeQuoteQty = cummulativeQuoteQty;
 	}
 
 
-	public void setExecutedQty(String executedQty)
+	public void setExecutedQty(double executedQty)
 	{
 		this.executedQty = executedQty;
 	}
@@ -185,13 +185,13 @@ public class NewOrderResponse
 	}
 
 
-	public void setOrigQty(String origQty)
+	public void setOrigQty(double origQty)
 	{
 		this.origQty = origQty;
 	}
 
 
-	public void setPrice(String price)
+	public void setPrice(double price)
 	{
 		this.price = price;
 	}

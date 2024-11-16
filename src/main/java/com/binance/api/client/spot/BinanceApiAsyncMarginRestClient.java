@@ -25,13 +25,13 @@ public interface BinanceApiAsyncMarginRestClient
 	/**
 	 * Get current margin account information (async).
 	 */
-	void getAccount(Long recvWindow, Long timestamp, BinanceApiCallback<MarginAccount> callback);
+	void getAccount(Long recvWindow, Long timestamp, BinanceAPICallback<MarginAccount> callback);
 
 
 	/**
 	 * Get current margin account information using default parameters (async).
 	 */
-	void getAccount(BinanceApiCallback<MarginAccount> callback);
+	void getAccount(BinanceAPICallback<MarginAccount> callback);
 
 
 	/**
@@ -40,7 +40,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param orderRequest order request parameters
 	 * @param callback the callback that handles the response
 	 */
-	void getOpenOrders(OrderRequest orderRequest, BinanceApiCallback<List<BinanceOrder>> callback);
+	void getOpenOrders(OrderRequest orderRequest, BinanceAPICallback<List<BinanceOrder>> callback);
 
 
 	/**
@@ -49,7 +49,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param order the new order to submit.
 	 * @return a response containing details about the newly placed order.
 	 */
-	void newOrder(MarginNewOrder order, BinanceApiCallback<MarginNewOrderResponse> callback);
+	void newOrder(MarginNewOrder order, BinanceAPICallback<MarginNewOrderResponse> callback);
 
 
 	/**
@@ -57,7 +57,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 *
 	 * @param cancelOrderRequest order status request parameters
 	 */
-	void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceApiCallback<CancelOrderResponse> callback);
+	void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceAPICallback<CancelOrderResponse> callback);
 
 
 	/**
@@ -66,7 +66,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param orderStatusRequest order status request options/filters
 	 * @return an order
 	 */
-	void getOrderStatus(OrderStatusRequest orderStatusRequest, BinanceApiCallback<BinanceOrder> callback);
+	void getOrderStatus(OrderStatusRequest orderStatusRequest, BinanceAPICallback<BinanceOrder> callback);
 
 
 	/**
@@ -75,7 +75,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param symbol symbol to get trades from
 	 * @return a list of trades
 	 */
-	void getMyTrades(String symbol, BinanceApiCallback<List<Trade>> callback);
+	void getMyTrades(String symbol, BinanceAPICallback<List<Trade>> callback);
 
 	// User stream endpoints
 
@@ -85,7 +85,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 *
 	 * @return a listen key that can be used with data streams
 	 */
-	void startUserDataStream(BinanceApiCallback<ListenKey> callback);
+	void startUserDataStream(BinanceAPICallback<ListenKey> callback);
 
 
 	/**
@@ -93,7 +93,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 *
 	 * @param listenKey listen key that identifies a data stream
 	 */
-	void keepAliveUserDataStream(String listenKey, BinanceApiCallback<Void> callback);
+	void keepAliveUserDataStream(String listenKey, BinanceAPICallback<Void> callback);
 
 
 	/**
@@ -102,7 +102,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param amount amount to repay
 	 * @return transaction id
 	 */
-	void transfer(String asset, String amount, TransferType type, BinanceApiCallback<MarginTransaction> callback);
+	void transfer(String asset, String amount, TransferType type, BinanceAPICallback<MarginTransaction> callback);
 
 
 	/**
@@ -111,7 +111,7 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param amount amount to repay
 	 * @return transaction id
 	 */
-	void borrow(String asset, String amount, BinanceApiCallback<MarginTransaction> callback);
+	void borrow(String asset, String amount, BinanceAPICallback<MarginTransaction> callback);
 
 
 	/**
@@ -120,6 +120,6 @@ public interface BinanceApiAsyncMarginRestClient
 	 * @param amount amount to repay
 	 * @return transaction id
 	 */
-	void repay(String asset, String amount, BinanceApiCallback<MarginTransaction> callback);
+	void repay(String asset, String amount, BinanceAPICallback<MarginTransaction> callback);
 
 }

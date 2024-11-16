@@ -4,7 +4,7 @@ import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.event.AccountUpdateEvent;
 import com.binance.api.client.domain.event.OrderTradeUpdateEvent;
 import com.binance.api.client.domain.event.UserDataUpdateEvent.UserDataUpdateEventType;
-import com.binance.api.client.spot.BinanceApiWebSocketClient;
+import com.binance.api.client.spot.BinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -15,17 +15,16 @@ import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
  */
 public class UserDataStreamExample
 {
-
 	public static void main(String[] args)
 	{
-		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance( "YOUR_API_KEY", "YOUR_SECRET" );
+		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance( args[0], args[1] );
 		IBinanceSpotAPIRestClient client = factory.newSpotRestClient();
 
 		// First, we obtain a listenKey which is required to interact with the user data stream
 		String listenKey = client.startUserDataStream();
 
 		// Then, we open a new web socket client, and provide a callback that is called on every update
-		BinanceApiWebSocketClient webSocketClient = factory.newWebSocketClient();
+		BinanceAPIWebSocketClient webSocketClient = factory.newWebSocketClient();
 
 		// Listen for changes in the account
 		webSocketClient.onUserDataUpdateEvent( listenKey, response -> {
@@ -48,6 +47,7 @@ public class UserDataStreamExample
 				System.out.println( orderTradeUpdateEvent.getPrice() );
 			}
 		} );
+
 		System.out.println( "Waiting for events..." );
 
 		// We can keep alive the user data stream

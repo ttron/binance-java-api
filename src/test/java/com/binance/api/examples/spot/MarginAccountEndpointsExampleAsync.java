@@ -4,7 +4,7 @@ import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.TransferType;
 import com.binance.api.client.domain.account.MarginTransaction;
 import com.binance.api.client.spot.BinanceApiAsyncMarginRestClient;
-import com.binance.api.client.spot.BinanceApiCallback;
+import com.binance.api.client.spot.BinanceAPICallback;
 
 /**
  * Examples on how to get margin account information asynchronously.

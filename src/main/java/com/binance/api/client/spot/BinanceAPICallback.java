@@ -6,7 +6,7 @@ package com.binance.api.client.spot;
  * @param <T> the return type from the callback
  */
 @FunctionalInterface
-public interface BinanceApiCallback<T>
+public interface BinanceAPICallback<T>
 {
 	/**
 	 * Called whenever a response comes back from the Binance API.

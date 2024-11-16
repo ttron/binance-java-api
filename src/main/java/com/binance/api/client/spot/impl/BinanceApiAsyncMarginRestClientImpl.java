@@ -19,7 +19,7 @@ import com.binance.api.client.domain.account.request.OrderRequest;
 import com.binance.api.client.domain.account.request.OrderStatusRequest;
 import com.binance.api.client.domain.event.ListenKey;
 import com.binance.api.client.spot.BinanceApiAsyncMarginRestClient;
-import com.binance.api.client.spot.BinanceApiCallback;
+import com.binance.api.client.spot.BinanceAPICallback;
 
 /**
  * Implementation of Binance's Margin REST API using Retrofit with asynchronous/non-blocking method calls.
@@ -37,14 +37,14 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void getAccount(Long recvWindow, Long timestamp, BinanceApiCallback<MarginAccount> callback)
+	public void getAccount(Long recvWindow, Long timestamp, BinanceAPICallback<MarginAccount> callback)
 	{
 		binanceApiService.getMarginAccount( recvWindow, timestamp ).enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
 
 	@Override
-	public void getAccount(BinanceApiCallback<MarginAccount> callback)
+	public void getAccount(BinanceAPICallback<MarginAccount> callback)
 	{
 		long timestamp = System.currentTimeMillis();
 		binanceApiService.getMarginAccount( BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
@@ -53,7 +53,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void getOpenOrders(OrderRequest orderRequest, BinanceApiCallback<List<BinanceOrder>> callback)
+	public void getOpenOrders(OrderRequest orderRequest, BinanceAPICallback<List<BinanceOrder>> callback)
 	{
 		binanceApiService
 				.getOpenMarginOrders( orderRequest.getSymbol(), orderRequest.getRecvWindow(), orderRequest.getTimestamp() )
@@ -62,7 +62,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void newOrder(MarginNewOrder order, BinanceApiCallback<MarginNewOrderResponse> callback)
+	public void newOrder(MarginNewOrder order, BinanceAPICallback<MarginNewOrderResponse> callback)
 	{
 		binanceApiService
 				.newMarginOrder( order.getSymbol(), order.getSide(), order.getType(), order.getTimeInForce(), order.getQuantity(),
@@ -73,7 +73,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceApiCallback<CancelOrderResponse> callback)
+	public void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceAPICallback<CancelOrderResponse> callback)
 	{
 		binanceApiService
 				.cancelMarginOrder( cancelOrderRequest.getSymbol(), cancelOrderRequest.getOrderId(),
@@ -84,7 +84,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void getOrderStatus(OrderStatusRequest orderStatusRequest, BinanceApiCallback<BinanceOrder> callback)
+	public void getOrderStatus(OrderStatusRequest orderStatusRequest, BinanceAPICallback<BinanceOrder> callback)
 	{
 		binanceApiService.getMarginOrderStatus( orderStatusRequest.getSymbol(), orderStatusRequest.getOrderId(),
 				orderStatusRequest.getOrigClientOrderId(), orderStatusRequest.getRecvWindow(), orderStatusRequest.getTimestamp() )
@@ -93,7 +93,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void getMyTrades(String symbol, BinanceApiCallback<List<Trade>> callback)
+	public void getMyTrades(String symbol, BinanceAPICallback<List<Trade>> callback)
 	{
 		binanceApiService
 				.getMyTrades( symbol, null, null, BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW, System.currentTimeMillis() )
@@ -104,21 +104,21 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void startUserDataStream(BinanceApiCallback<ListenKey> callback)
+	public void startUserDataStream(BinanceAPICallback<ListenKey> callback)
 	{
 		binanceApiService.startMarginUserDataStream().enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
 
 	@Override
-	public void keepAliveUserDataStream(String listenKey, BinanceApiCallback<Void> callback)
+	public void keepAliveUserDataStream(String listenKey, BinanceAPICallback<Void> callback)
 	{
 		binanceApiService.keepAliveMarginUserDataStream( listenKey ).enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 
 
 	@Override
-	public void transfer(String asset, String amount, TransferType type, BinanceApiCallback<MarginTransaction> callback)
+	public void transfer(String asset, String amount, TransferType type, BinanceAPICallback<MarginTransaction> callback)
 	{
 		long timestamp = System.currentTimeMillis();
 		binanceApiService
@@ -128,7 +128,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void borrow(String asset, String amount, BinanceApiCallback<MarginTransaction> callback)
+	public void borrow(String asset, String amount, BinanceAPICallback<MarginTransaction> callback)
 	{
 		long timestamp = System.currentTimeMillis();
 		binanceApiService.borrow( asset, amount, BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )
@@ -137,7 +137,7 @@ public class BinanceApiAsyncMarginRestClientImpl implements BinanceApiAsyncMargi
 
 
 	@Override
-	public void repay(String asset, String amount, BinanceApiCallback<MarginTransaction> callback)
+	public void repay(String asset, String amount, BinanceAPICallback<MarginTransaction> callback)
 	{
 		long timestamp = System.currentTimeMillis();
 		binanceApiService.repay( asset, amount, BinanceAPIConstants.DEFAULT_MARGIN_RECEIVING_WINDOW, timestamp )

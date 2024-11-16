@@ -317,6 +317,9 @@ public interface IBinanceSpotAPIRestClient
 	NewOrderResponse newOrder(NewOrder order);
 
 
+	NewOrderResponse newOrderOneCancelstheOther(NewOrder order);
+
+
 	/**
 	 * Test new order creation and signature/recvWindow long. Creates and validates a new order but does not send it into the matching engine.
 	 *

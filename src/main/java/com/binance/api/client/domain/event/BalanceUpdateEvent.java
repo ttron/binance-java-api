@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BalanceUpdateEvent
 {
-
 	@JsonProperty("e")
 	private String eventType;
 

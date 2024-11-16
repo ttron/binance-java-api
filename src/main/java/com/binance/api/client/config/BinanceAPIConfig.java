@@ -11,13 +11,11 @@ public class BinanceAPIConfig
 	private static String BASE_DOMAIN = "binance.com";
 
 	/**
-	 * Set the URL base domain name (e.g., binance.com).
-	 *
-	 * @param baseDomain Base domain name
+	 * Asset info base URL.
 	 */
-	public static void setBaseDomain(final String baseDomain)
+	public static String getAssetInfoApiBaseUrl()
 	{
-		BASE_DOMAIN = baseDomain;
+		return String.format( "https://%s/", getBaseDomain() );
 	}
 
 
@@ -33,20 +31,20 @@ public class BinanceAPIConfig
 
 
 	/**
-	 * Spot REST API base URL.
-	 */
-	public static String getSpotBaseUrl()
-	{
-		return String.format( "https://api.%s", getBaseDomain() );
-	}
-
-
-	/**
 	 * Future REST API base URL.
 	 */
 	public static String getFutureBaseUrl()
 	{
 		return String.format( "https://fapi.%s", getBaseDomain() );
+	}
+
+
+	/**
+	 * Spot REST API base URL.
+	 */
+	public static String getSpotBaseUrl()
+	{
+		return String.format( "https://api.%s", getBaseDomain() );
 	}
 
 
@@ -60,10 +58,21 @@ public class BinanceAPIConfig
 
 
 	/**
-	 * Asset info base URL.
+	 * Testnet Spot REST API base URL.
 	 */
-	public static String getAssetInfoApiBaseUrl()
+	public static String getTestnetSpotBaseUrl()
 	{
-		return String.format( "https://%s/", getBaseDomain() );
+		return "https://testnet.binance.vision";
+	}
+
+
+	/**
+	 * Set the URL base domain name (e.g., binance.com).
+	 *
+	 * @param baseDomain Base domain name
+	 */
+	public static void setBaseDomain(final String baseDomain)
+	{
+		BASE_DOMAIN = baseDomain;
 	}
 }

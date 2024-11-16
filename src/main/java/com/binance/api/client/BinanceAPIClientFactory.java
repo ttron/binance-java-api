@@ -1,19 +1,20 @@
 package com.binance.api.client;
 
 import static com.binance.api.client.BinanceAPIServiceGenerator.getSharedClient;
+import static com.binance.api.client.config.BinanceAPIConfig.getTestnetSpotBaseUrl;
 
 import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
 import com.binance.api.client.derivative.impl.BinanceFutureAPIRestClientImpl;
 import com.binance.api.client.spot.BinanceApiAsyncMarginRestClient;
 import com.binance.api.client.spot.BinanceApiMarginRestClient;
 import com.binance.api.client.spot.BinanceApiSwapRestClient;
-import com.binance.api.client.spot.BinanceApiWebSocketClient;
+import com.binance.api.client.spot.BinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIAsyncRestClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 import com.binance.api.client.spot.impl.BinanceApiAsyncMarginRestClientImpl;
 import com.binance.api.client.spot.impl.BinanceApiMarginRestClientImpl;
 import com.binance.api.client.spot.impl.BinanceApiSwapRestClientImpl;
-import com.binance.api.client.spot.impl.BinanceApiWebSocketClientImpl;
+import com.binance.api.client.spot.impl.BinanceAPIWebSocketClientImpl;
 import com.binance.api.client.spot.impl.BinanceSpotAPIAsyncRestClientImpl;
 import com.binance.api.client.spot.impl.BinanceSpotAPIRestClientImpl;
 
@@ -79,6 +80,18 @@ public class BinanceAPIClientFactory
 	}
 
 
+	/**
+	 * Creates a new synchronous/blocking REST client.
+	 */
+	public IBinanceSpotAPIRestClient newTestnetSpotRestClient()
+	{
+		// return new BinanceSpotAPIRestClientImpl(getTestnetSpotBaseUrl(), apiKey, secret );
+		return new BinanceSpotAPIRestClientImpl( getTestnetSpotBaseUrl(),
+				"ZbVX6p8OsybSLEI1q0XKaoItuJhEujFDmkhloMfIEFV8AQWxuWrUhKjIkQCtSu8S",
+				"6rJBMeUfj8s5OQEkxDMSOJTai0X3StDGMd2FtxXSRbmqczUzgsbqGfIJfl2OAiXH" );
+	}
+
+
 	public IBinanceFutureAPIRestClient newFutureRestClient()
 	{
 		return new BinanceFutureAPIRestClientImpl( apiKey, secret );
@@ -115,9 +128,9 @@ public class BinanceAPIClientFactory
 	/**
 	 * Creates a new web socket client used for handling data streams.
 	 */
-	public BinanceApiWebSocketClient newWebSocketClient()
+	public BinanceAPIWebSocketClient newWebSocketClient()
 	{
-		return new BinanceApiWebSocketClientImpl( getSharedClient() );
+		return new BinanceAPIWebSocketClientImpl( getSharedClient() );
 	}
 
 

@@ -39,25 +39,25 @@ public interface IBinanceSpotAPIAsyncRestClient
 	/**
 	 * Test connectivity to the Rest API.
 	 */
-	void ping(BinanceApiCallback<Void> callback);
+	void ping(BinanceAPICallback<Void> callback);
 
 
 	/**
 	 * Check server time.
 	 */
-	void getServerTime(BinanceApiCallback<ServerTime> callback);
+	void getServerTime(BinanceAPICallback<ServerTime> callback);
 
 
 	/**
 	 * Current exchange trading rules and symbol information
 	 */
-	void getSpotExchangeInfo(BinanceApiCallback<ExchangeInfo> callback);
+	void getSpotExchangeInfo(BinanceAPICallback<ExchangeInfo> callback);
 
 
 	/**
 	 * ALL supported assets and whether or not they can be withdrawn.
 	 */
-	void getAllAssets(BinanceApiCallback<List<Asset>> callback);
+	void getAllAssets(BinanceAPICallback<List<Asset>> callback);
 
 	// Market Data endpoints
 
@@ -69,7 +69,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param limit depth of the order book (max 100)
 	 * @param callback the callback that handles the response
 	 */
-	void getOrderBook(String symbol, Integer limit, BinanceApiCallback<OrderBook> callback);
+	void getOrderBook(String symbol, Integer limit, BinanceAPICallback<OrderBook> callback);
 
 
 	/**
@@ -79,7 +79,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param limit of last trades (Default 500; max 1000.)
 	 * @param callback the callback that handles the response
 	 */
-	void getTrades(String symbol, Integer limit, BinanceApiCallback<List<TradeHistoryItem>> callback);
+	void getTrades(String symbol, Integer limit, BinanceAPICallback<List<TradeHistoryItem>> callback);
 
 
 	/**
@@ -90,7 +90,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param fromId TradeId to fetch from. Default gets most recent trades.
 	 * @param callback the callback that handles the response
 	 */
-	void getHistoricalTrades(String symbol, Integer limit, Long fromId, BinanceApiCallback<List<TradeHistoryItem>> callback);
+	void getHistoricalTrades(String symbol, Integer limit, Long fromId, BinanceAPICallback<List<TradeHistoryItem>> callback);
 
 
 	/**
@@ -109,15 +109,15 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @return a list of aggregate trades for the given symbol
 	 */
 	void getAggTrades(String symbol, String fromId, Integer limit, Long startTime, Long endTime,
-			BinanceApiCallback<List<AggTrade>> callback);
+			BinanceAPICallback<List<AggTrade>> callback);
 
 
 	/**
 	 * Return the most recent aggregate trades for <code>symbol</code>
 	 *
-	 * @see #getAggTrades(String, String, Integer, Long, Long, BinanceApiCallback)
+	 * @see #getAggTrades(String, String, Integer, Long, Long, BinanceAPICallback)
 	 */
-	void getAggTrades(String symbol, BinanceApiCallback<List<AggTrade>> callback);
+	void getAggTrades(String symbol, BinanceAPICallback<List<AggTrade>> callback);
 
 
 	/**
@@ -131,15 +131,15 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param callback the callback that handles the response containing a candlestick bar for the given symbol and interval
 	 */
 	void getCandlestickBars(String symbol, CandlestickInterval interval, Integer limit, Long startTime, Long endTime,
-			BinanceApiCallback<List<Candlestick>> callback);
+			BinanceAPICallback<List<Candlestick>> callback);
 
 
 	/**
 	 * Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
 	 *
-	 * @see #getCandlestickBars(String, CandlestickInterval, BinanceApiCallback)
+	 * @see #getCandlestickBars(String, CandlestickInterval, BinanceAPICallback)
 	 */
-	void getCandlestickBars(String symbol, CandlestickInterval interval, BinanceApiCallback<List<Candlestick>> callback);
+	void getCandlestickBars(String symbol, CandlestickInterval interval, BinanceAPICallback<List<Candlestick>> callback);
 
 
 	/**
@@ -148,7 +148,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param symbol ticker symbol (e.g. ETHBTC)
 	 * @param callback the callback that handles the response
 	 */
-	void get24HrPriceStatistics(String symbol, BinanceApiCallback<TickerStatistics> callback);
+	void get24HrPriceStatistics(String symbol, BinanceAPICallback<TickerStatistics> callback);
 
 
 	/**
@@ -156,7 +156,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * 
 	 * @param callback the callback that handles the response
 	 */
-	void getAll24HrPriceStatistics(BinanceApiCallback<List<TickerStatistics>> callback);
+	void getAll24HrPriceStatistics(BinanceAPICallback<List<TickerStatistics>> callback);
 
 
 	/**
@@ -164,7 +164,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 *
 	 * @param callback the callback that handles the response
 	 */
-	void getAllPrices(BinanceApiCallback<List<TickerPrice>> callback);
+	void getAllPrices(BinanceAPICallback<List<TickerPrice>> callback);
 
 
 	/**
@@ -173,7 +173,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param symbol ticker symbol (e.g. ETHBTC)
 	 * @param callback the callback that handles the response
 	 */
-	void getPrice(String symbol, BinanceApiCallback<TickerPrice> callback);
+	void getPrice(String symbol, BinanceAPICallback<TickerPrice> callback);
 
 
 	/**
@@ -181,7 +181,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 *
 	 * @param callback the callback that handles the response
 	 */
-	void getBookTickers(BinanceApiCallback<List<BookTicker>> callback);
+	void getBookTickers(BinanceAPICallback<List<BookTicker>> callback);
 
 	// Account endpoints
 
@@ -192,7 +192,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param order the new order to submit.
 	 * @param callback the callback that handles the response
 	 */
-	void newOrder(NewOrder order, BinanceApiCallback<NewOrderResponse> callback);
+	void newOrder(NewOrder order, BinanceAPICallback<NewOrderResponse> callback);
 
 
 	/**
@@ -201,7 +201,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param order the new TEST order to submit.
 	 * @param callback the callback that handles the response
 	 */
-	void newOrderTest(NewOrder order, BinanceApiCallback<Void> callback);
+	void newOrderTest(NewOrder order, BinanceAPICallback<Void> callback);
 
 
 	/**
@@ -210,7 +210,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param orderStatusRequest order status request parameters
 	 * @param callback the callback that handles the response
 	 */
-	void getOrderStatus(OrderStatusRequest orderStatusRequest, BinanceApiCallback<BinanceOrder> callback);
+	void getOrderStatus(OrderStatusRequest orderStatusRequest, BinanceAPICallback<BinanceOrder> callback);
 
 
 	/**
@@ -219,7 +219,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param cancelOrderRequest order status request parameters
 	 * @param callback the callback that handles the response
 	 */
-	void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceApiCallback<CancelOrderResponse> callback);
+	void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceAPICallback<CancelOrderResponse> callback);
 
 
 	/**
@@ -228,7 +228,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param orderRequest order request parameters
 	 * @param callback the callback that handles the response
 	 */
-	void getOpenOrders(OrderRequest orderRequest, BinanceApiCallback<List<BinanceOrder>> callback);
+	void getOpenOrders(OrderRequest orderRequest, BinanceAPICallback<List<BinanceOrder>> callback);
 
 
 	/**
@@ -237,19 +237,19 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param orderRequest order request parameters
 	 * @param callback the callback that handles the response
 	 */
-	void getAllOrders(AllOrdersRequest orderRequest, BinanceApiCallback<List<BinanceOrder>> callback);
+	void getAllOrders(AllOrdersRequest orderRequest, BinanceAPICallback<List<BinanceOrder>> callback);
 
 
 	/**
 	 * Get current account information (async).
 	 */
-	void getAccount(Long recvWindow, Long timestamp, BinanceApiCallback<BinanceAccount> callback);
+	void getAccount(Long recvWindow, Long timestamp, BinanceAPICallback<BinanceAccount> callback);
 
 
 	/**
 	 * Get current account information using default parameters (async).
 	 */
-	void getAccount(BinanceApiCallback<BinanceAccount> callback);
+	void getAccount(BinanceAPICallback<BinanceAccount> callback);
 
 
 	/**
@@ -261,7 +261,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param callback the callback that handles the response with a list of trades
 	 */
 	void getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp,
-			BinanceApiCallback<List<Trade>> callback);
+			BinanceAPICallback<List<Trade>> callback);
 
 
 	/**
@@ -271,7 +271,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param limit default 500; max 1000
 	 * @param callback the callback that handles the response with a list of trades
 	 */
-	void getMyTrades(String symbol, Integer limit, BinanceApiCallback<List<Trade>> callback);
+	void getMyTrades(String symbol, Integer limit, BinanceAPICallback<List<Trade>> callback);
 
 
 	/**
@@ -280,7 +280,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param symbol symbol to get trades from
 	 * @param callback the callback that handles the response with a list of trades
 	 */
-	void getMyTrades(String symbol, BinanceApiCallback<List<Trade>> callback);
+	void getMyTrades(String symbol, BinanceAPICallback<List<Trade>> callback);
 
 
 	/**
@@ -295,7 +295,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param addressTag Secondary address identifier for coins like XRP,XMR etc.
 	 */
 	void withdraw(String asset, String address, String amount, String name, String addressTag,
-			BinanceApiCallback<WithdrawResult> callback);
+			BinanceAPICallback<WithdrawResult> callback);
 
 
 	/**
@@ -303,7 +303,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 *
 	 * @param callback the callback that handles the response and returns the deposit history
 	 */
-	void getDepositHistory(String asset, BinanceApiCallback<DepositHistory> callback);
+	void getDepositHistory(String asset, BinanceAPICallback<DepositHistory> callback);
 
 
 	/**
@@ -311,7 +311,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 *
 	 * @param callback the callback that handles the response and returns the withdraw history
 	 */
-	void getWithdrawHistory(String asset, BinanceApiCallback<WithdrawHistory> callback);
+	void getWithdrawHistory(String asset, BinanceAPICallback<WithdrawHistory> callback);
 
 
 	/**
@@ -319,7 +319,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 *
 	 * @param callback the callback that handles the response and returns the deposit address
 	 */
-	void getDepositAddress(String asset, BinanceApiCallback<DepositAddress> callback);
+	void getDepositAddress(String asset, BinanceAPICallback<DepositAddress> callback);
 
 	// User stream endpoints
 
@@ -329,7 +329,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 *
 	 * @param callback the callback that handles the response which contains a listenKey
 	 */
-	void startUserDataStream(BinanceApiCallback<ListenKey> callback);
+	void startUserDataStream(BinanceAPICallback<ListenKey> callback);
 
 
 	/**
@@ -338,7 +338,7 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param listenKey listen key that identifies a data stream
 	 * @param callback the callback that handles the response which contains a listenKey
 	 */
-	void keepAliveUserDataStream(String listenKey, BinanceApiCallback<Void> callback);
+	void keepAliveUserDataStream(String listenKey, BinanceAPICallback<Void> callback);
 
 
 	/**
@@ -347,5 +347,5 @@ public interface IBinanceSpotAPIAsyncRestClient
 	 * @param listenKey listen key that identifies a data stream
 	 * @param callback the callback that handles the response which contains a listenKey
 	 */
-	void closeUserDataStream(String listenKey, BinanceApiCallback<Void> callback);
+	void closeUserDataStream(String listenKey, BinanceAPICallback<Void> callback);
 }

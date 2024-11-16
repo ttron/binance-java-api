@@ -17,8 +17,8 @@ import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.event.DepthEvent;
 import com.binance.api.client.domain.market.OrderBook;
 import com.binance.api.client.domain.market.OrderBookEntry;
-import com.binance.api.client.spot.BinanceApiCallback;
-import com.binance.api.client.spot.BinanceApiWebSocketClient;
+import com.binance.api.client.spot.BinanceAPICallback;
+import com.binance.api.client.spot.BinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -50,7 +50,7 @@ public class DepthCacheExample
 
 	private final IBinanceSpotAPIRestClient restClient;
 
-	private final BinanceApiWebSocketClient wsClient;
+	private final BinanceAPIWebSocketClient wsClient;
 
 	private final WsCallback wsCallback = new WsCallback();
 
@@ -257,7 +257,7 @@ public class DepthCacheExample
 		new DepthCacheExample( "ETHBTC" );
 	}
 
-	private final class WsCallback implements BinanceApiCallback<DepthEvent>
+	private final class WsCallback implements BinanceAPICallback<DepthEvent>
 	{
 
 		private final AtomicReference<Consumer<DepthEvent>> handler = new AtomicReference<>();

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.market.AggTrade;
-import com.binance.api.client.spot.BinanceApiWebSocketClient;
+import com.binance.api.client.spot.BinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -50,7 +50,7 @@ public class AggTradesCacheExample
 	private void startAggTradesEventStreaming(String symbol)
 	{
 		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
-		BinanceApiWebSocketClient client = factory.newWebSocketClient();
+		BinanceAPIWebSocketClient client = factory.newWebSocketClient();
 
 		client.onAggTradeEvent( symbol.toLowerCase(), response -> {
 			Long aggregatedTradeId = response.getAggregatedTradeId();

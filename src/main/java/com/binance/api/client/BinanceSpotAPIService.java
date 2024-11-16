@@ -162,6 +162,50 @@ public interface BinanceSpotAPIService
 			@Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
 
+	/**
+	 * Send in an one-cancels-the-other (OCO) pair, where activation of one order immediately cancels the other.
+	 * An OCO has 2 orders called the above order and below order.
+	 * One of the orders must be a LIMIT_MAKER order and the other must be STOP_LOSS or STOP_LOSS_LIMIT order.
+	 * Price restrictions:
+	 * If the OCO is on the SELL side: LIMIT_MAKER price > Last Traded Price > stopPrice
+	 * If the OCO is on the BUY side: LIMIT_MAKER price < Last Traded Price < stopPrice
+	 * OCOs add 2 orders to the unfilled order count, EXCHANGE_MAX_ORDERS filter, and the MAX_NUM_ORDERS filter.
+	 * @return
+	 */
+	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+	@POST("/api/v3/orderList/oco")
+	Call<NewOrderResponse> newOrderOneCancelstheOther(@Query("symbol") String symbol, @Query("side") OrderSide side,
+			@Query("quantity") String quantity, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+
+	/**
+	 * 
+	 * @param symbol
+	 * @param side
+	 * @param quantity
+	 * @param recvWindow
+	 * @param timestamp
+	 * @return
+	 */
+	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+	@POST("/api/v3/orderList/oto")
+	Call<NewOrderResponse> newOrderOneTriggerstheOther(@Query("symbol") String symbol, @Query("side") OrderSide side,
+			@Query("quantity") String quantity, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+
+	/**
+	 * @param symbol
+	 * @param side
+	 * @param quantity
+	 * @param recvWindow
+	 * @param timestamp
+	 * @return
+	 */
+	@POST("/api/v3/orderList/otoco")
+	Call<NewOrderResponse> newOrderOneTriggersOneCancelstheOther(@Query("symbol") String symbol, @Query("side") OrderSide side,
+			@Query("quantity") String quantity, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
 	@POST("/api/v3/order/test")
 	Call<Void> newOrderTest(@Query("symbol") String symbol, @Query("side") OrderSide side, @Query("type") OrderType type,

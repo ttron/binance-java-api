@@ -53,6 +53,12 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 		binanceAPIService = createService( BinanceSpotAPIService.class, getSpotBaseUrl(), apiKey, secret );
 	}
 
+
+	public BinanceSpotAPIRestClientImpl(String url, String apiKey, String secret)
+	{
+		binanceAPIService = createService( BinanceSpotAPIService.class, url, apiKey, secret );
+	}
+
 	// General endpoints
 
 
@@ -74,6 +80,16 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 
 
 	@Override
+	public CancelReplaceOrderResponse cancelReplace(NewNewOrder order)
+	{
+		return executeSync( binanceAPIService.cancelReplace( order.getSymbol(), order.getSide(), order.getType(), order.getMode(),
+				order.getTimeInForce(), order.getQuantity(), order.getPrice(), order.getCancelOrderId(),
+				order.getCancelOrigClientOrderId(), order.getNewClientOrderId(), order.getStopPrice(), order.getIcebergQty(),
+				order.getNewOrderRespType(), order.getRecvWindow(), order.getTimestamp() ) );
+	}
+
+
+	@Override
 	public void closeUserDataStream(String listenKey)
 	{
 		executeSync( binanceAPIService.closeAliveUserDataStream( listenKey ) );
@@ -81,19 +97,19 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 
 
 	@Override
+	public List<TickerStatistics> get24HAllPriceStatistics()
+	{
+		return executeSync( binanceAPIService.getAll24HrPriceStatistics() );
+	}
+
+	// Market Data endpoints
+
+
+	@Override
 	public TickerStatistics get24HPriceStatistics(String symbol)
 	{
 		return executeSync( binanceAPIService.get24HrPriceStatistics( symbol ) );
 	}
-
-
-	@Override
-	public TickerStatistics getTradingDayPriceStatistics(String symbol)
-	{
-		return executeSync( binanceAPIService.getTradingDayPriceStatistics( symbol ) );
-	}
-
-	// Market Data endpoints
 
 
 	@Override
@@ -125,20 +141,6 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 
 
 	@Override
-	public List<TickerStatistics> get24HAllPriceStatistics()
-	{
-		return executeSync( binanceAPIService.getAll24HrPriceStatistics() );
-	}
-
-
-	@Override
-	public List<TickerStatistics> getAllTradingDayPriceStatistics()
-	{
-		return executeSync( binanceAPIService.getAllTradingDayPriceStatistics() );
-	}
-
-
-	@Override
 	public List<Asset> getAllAssets()
 	{
 		return executeSync(
@@ -158,6 +160,13 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 	public List<TickerPrice> getAllPrices()
 	{
 		return executeSync( binanceAPIService.getLatestPrices() );
+	}
+
+
+	@Override
+	public List<TickerStatistics> getAllTradingDayPriceStatistics()
+	{
+		return executeSync( binanceAPIService.getAllTradingDayPriceStatistics() );
 	}
 
 
@@ -296,6 +305,13 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 
 
 	@Override
+	public TickerStatistics getTradingDayPriceStatistics(String symbol)
+	{
+		return executeSync( binanceAPIService.getTradingDayPriceStatistics( symbol ) );
+	}
+
+
+	@Override
 	public WithdrawHistory getWithdrawHistory(String asset)
 	{
 		return executeSync( binanceAPIService.getWithdrawHistory( asset, BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW,
@@ -332,12 +348,10 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 
 
 	@Override
-	public CancelReplaceOrderResponse cancelReplace(NewNewOrder order)
+	public NewOrderResponse newOrderOneCancelstheOther(NewOrder order)
 	{
-		return executeSync( binanceAPIService.cancelReplace( order.getSymbol(), order.getSide(), order.getType(), order.getMode(),
-				order.getTimeInForce(), order.getQuantity(), order.getPrice(), order.getCancelOrderId(),
-				order.getCancelOrigClientOrderId(), order.getNewClientOrderId(), order.getStopPrice(), order.getIcebergQty(),
-				order.getNewOrderRespType(), order.getRecvWindow(), order.getTimestamp() ) );
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	// User stream endpoints

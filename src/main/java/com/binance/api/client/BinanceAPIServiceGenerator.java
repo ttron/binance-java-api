@@ -84,7 +84,6 @@ public class BinanceAPIServiceGenerator
 			OkHttpClient adaptedClient = sharedClient.newBuilder().addInterceptor( interceptor ).build();
 			retrofitBuilder.client( adaptedClient );
 		}
-
 		Retrofit retrofit = retrofitBuilder.build();
 		return retrofit.create( serviceClass );
 	}

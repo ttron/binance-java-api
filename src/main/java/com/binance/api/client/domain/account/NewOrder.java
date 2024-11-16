@@ -15,24 +15,88 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class NewOrder
 {
 	/**
-	 * Symbol to place the order on.
+	 * Places a LIMIT buy order for the given <code>quantity</code> and <code>price</code>.
+	 * @param symbol
+	 * @param timeInForce
+	 * @param quantity
+	 * @param price
+	 * @return a new order which is pre-configured with LIMIT as the order type and BUY as the order side.
 	 */
-	private String symbol;
+	public static NewOrder limitBuy(String symbol, TimeInForce timeInForce, String quantity, String price)
+	{
+		return new NewOrder( symbol, OrderSide.BUY, OrderType.LIMIT, timeInForce, quantity, price );
+	}
+
 
 	/**
-	 * Buy/Sell order side.
+	 * Places a LIMIT sell order for the given <code>quantity</code> and <code>price</code>.
+	 *
+	 * @return a new order which is pre-configured with LIMIT as the order type and SELL as the order side.
 	 */
-	private OrderSide side;
+	public static NewOrder limitSell(String symbol, TimeInForce timeInForce, String quantity, String price)
+	{
+		return new NewOrder( symbol, OrderSide.SELL, OrderType.LIMIT, timeInForce, quantity, price );
+	}
+
 
 	/**
-	 * Type of order.
+	 * Places a MARKET buy order for the given <code>quantity</code>.
+	 *
+	 * @return a new order which is pre-configured with MARKET as the order type and BUY as the order side.
 	 */
-	private OrderType type;
+	public static NewOrder marketBuy(String symbol, String quantity)
+	{
+		return new NewOrder( symbol, OrderSide.BUY, OrderType.MARKET, null, quantity );
+	}
+
+
+	public static NewOrder marketBuy(String unid, String symbol, String quantity)
+	{
+		return new NewOrder( symbol, OrderSide.BUY, OrderType.MARKET, null, quantity ).newClientOrderId( unid );
+	}
+
+
+	public static NewOrder marketBuyQuote(String unid, String symbol, String quoteQuantity)
+	{
+		return new NewOrder( symbol, OrderSide.BUY, null, quoteQuantity ).newClientOrderId( unid );
+	}
+
 
 	/**
-	 * Time in force to indicate how long will the order remain active.
+	 * Places a MARKET sell order for the given <code>quantity</code>.
+	 *
+	 * @return a new order which is pre-configured with MARKET as the order type and SELL as the order side.
 	 */
-	private TimeInForce timeInForce;
+	public static NewOrder marketSell(String symbol, String quantity)
+	{
+		return new NewOrder( symbol, OrderSide.SELL, OrderType.MARKET, null, quantity );
+	}
+
+
+	public static NewOrder marketSell(String unid, String symbol, String quantity)
+	{
+		return new NewOrder( symbol, OrderSide.SELL, OrderType.MARKET, null, quantity ).newClientOrderId( unid );
+	}
+
+	/**
+	 * Used with iceberg orders.
+	 */
+	private String icebergQty;
+
+	/**
+	 * A unique id for the order. Automatically generated if not sent.
+	 */
+	protected String newClientOrderId;
+
+	/**
+	 * Set the response JSON. ACK, RESULT, or FULL; default: RESULT.
+	 */
+	private NewOrderResponseType newOrderRespType;
+
+	/**
+	 * Price.
+	 */
+	private String price;
 
 	/**
 	 * Quantity.
@@ -45,14 +109,14 @@ public class NewOrder
 	private String quoteOrderQty;
 
 	/**
-	 * Price.
+	 * Receiving window.
 	 */
-	private String price;
+	private Long recvWindow;
 
 	/**
-	 * A unique id for the order. Automatically generated if not sent.
+	 * Buy/Sell order side.
 	 */
-	protected String newClientOrderId;
+	private OrderSide side;
 
 	/**
 	 * Used with stop orders.
@@ -60,24 +124,24 @@ public class NewOrder
 	private String stopPrice;
 
 	/**
-	 * Used with iceberg orders.
+	 * Symbol to place the order on.
 	 */
-	private String icebergQty;
+	private String symbol;
 
 	/**
-	 * Set the response JSON. ACK, RESULT, or FULL; default: RESULT.
+	 * Time in force to indicate how long will the order remain active.
 	 */
-	private NewOrderResponseType newOrderRespType;
-
-	/**
-	 * Receiving window.
-	 */
-	private Long recvWindow;
+	private TimeInForce timeInForce;
 
 	/**
 	 * Order timestamp.
 	 */
 	private long timestamp;
+
+	/**
+	 * Type of order.
+	 */
+	private OrderType type;
 
 	/**
 	 * Creates a new order with all required parameters.
@@ -105,94 +169,22 @@ public class NewOrder
 	}
 
 
-	public String getSymbol()
-	{
-		return symbol;
-	}
-
-
-	public NewOrder symbol(String symbol)
+	public NewOrder(String symbol, OrderSide side, String quantity, String quoteQuantity)
 	{
 		this.symbol = symbol;
-		return this;
-	}
-
-
-	public OrderSide getSide()
-	{
-		return side;
-	}
-
-
-	public NewOrder side(OrderSide side)
-	{
 		this.side = side;
-		return this;
-	}
-
-
-	public OrderType getType()
-	{
-		return type;
-	}
-
-
-	public NewOrder type(OrderType type)
-	{
-		this.type = type;
-		return this;
-	}
-
-
-	public TimeInForce getTimeInForce()
-	{
-		return timeInForce;
-	}
-
-
-	public NewOrder timeInForce(TimeInForce timeInForce)
-	{
-		this.timeInForce = timeInForce;
-		return this;
-	}
-
-
-	public String getQuantity()
-	{
-		return quantity;
-	}
-
-
-	public NewOrder quantity(String quantity)
-	{
+		this.type = OrderType.MARKET;
 		this.quantity = quantity;
-		return this;
+		this.quantity = quoteQuantity;
+		this.newOrderRespType = NewOrderResponseType.RESULT;
+		this.timestamp = System.currentTimeMillis();
+		this.recvWindow = BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW;
 	}
 
 
-	public String getQuoteOrderQty()
+	public String getIcebergQty()
 	{
-		return quoteOrderQty;
-	}
-
-
-	public NewOrder quoteOrderQty(String quoteOrderQty)
-	{
-		this.quoteOrderQty = quoteOrderQty;
-		return this;
-	}
-
-
-	public String getPrice()
-	{
-		return price;
-	}
-
-
-	public NewOrder price(String price)
-	{
-		this.price = price;
-		return this;
+		return icebergQty;
 	}
 
 
@@ -202,10 +194,39 @@ public class NewOrder
 	}
 
 
-	public NewOrder newClientOrderId(String newClientOrderId)
+	public NewOrderResponseType getNewOrderRespType()
 	{
-		this.newClientOrderId = newClientOrderId;
-		return this;
+		return newOrderRespType;
+	}
+
+
+	public String getPrice()
+	{
+		return price;
+	}
+
+
+	public String getQuantity()
+	{
+		return quantity;
+	}
+
+
+	public String getQuoteOrderQty()
+	{
+		return quoteOrderQty;
+	}
+
+
+	public Long getRecvWindow()
+	{
+		return recvWindow;
+	}
+
+
+	public OrderSide getSide()
+	{
+		return side;
 	}
 
 
@@ -215,16 +236,27 @@ public class NewOrder
 	}
 
 
-	public NewOrder stopPrice(String stopPrice)
+	public String getSymbol()
 	{
-		this.stopPrice = stopPrice;
-		return this;
+		return symbol;
 	}
 
 
-	public String getIcebergQty()
+	public TimeInForce getTimeInForce()
 	{
-		return icebergQty;
+		return timeInForce;
+	}
+
+
+	public long getTimestamp()
+	{
+		return timestamp;
+	}
+
+
+	public OrderType getType()
+	{
+		return type;
 	}
 
 
@@ -235,9 +267,10 @@ public class NewOrder
 	}
 
 
-	public NewOrderResponseType getNewOrderRespType()
+	public NewOrder newClientOrderId(String newClientOrderId)
 	{
-		return newOrderRespType;
+		this.newClientOrderId = newClientOrderId;
+		return this;
 	}
 
 
@@ -248,9 +281,24 @@ public class NewOrder
 	}
 
 
-	public Long getRecvWindow()
+	public NewOrder price(String price)
 	{
-		return recvWindow;
+		this.price = price;
+		return this;
+	}
+
+
+	public NewOrder quantity(String quantity)
+	{
+		this.quantity = quantity;
+		return this;
+	}
+
+
+	public NewOrder quoteOrderQty(String quoteOrderQty)
+	{
+		this.quoteOrderQty = quoteOrderQty;
+		return this;
 	}
 
 
@@ -261,9 +309,31 @@ public class NewOrder
 	}
 
 
-	public long getTimestamp()
+	public NewOrder side(OrderSide side)
 	{
-		return timestamp;
+		this.side = side;
+		return this;
+	}
+
+
+	public NewOrder stopPrice(String stopPrice)
+	{
+		this.stopPrice = stopPrice;
+		return this;
+	}
+
+
+	public NewOrder symbol(String symbol)
+	{
+		this.symbol = symbol;
+		return this;
+	}
+
+
+	public NewOrder timeInForce(TimeInForce timeInForce)
+	{
+		this.timeInForce = timeInForce;
+		return this;
 	}
 
 
@@ -274,61 +344,21 @@ public class NewOrder
 	}
 
 
-	/**
-	 * Places a MARKET buy order for the given <code>quantity</code>.
-	 *
-	 * @return a new order which is pre-configured with MARKET as the order type and BUY as the order side.
-	 */
-	public static NewOrder marketBuy(String symbol, String quantity)
-	{
-		return new NewOrder( symbol, OrderSide.BUY, OrderType.MARKET, null, quantity );
-	}
-
-
-	/**
-	 * Places a MARKET sell order for the given <code>quantity</code>.
-	 *
-	 * @return a new order which is pre-configured with MARKET as the order type and SELL as the order side.
-	 */
-	public static NewOrder marketSell(String symbol, String quantity)
-	{
-		return new NewOrder( symbol, OrderSide.SELL, OrderType.MARKET, null, quantity );
-	}
-
-
-	/**
-	 * Places a LIMIT buy order for the given <code>quantity</code> and <code>price</code>.
-	 * @param symbol
-	 * @param timeInForce
-	 * @param quantity
-	 * @param price
-	 * @return a new order which is pre-configured with LIMIT as the order type and BUY as the order side.
-	 */
-	public static NewOrder limitBuy(String symbol, TimeInForce timeInForce, String quantity, String price)
-	{
-		return new NewOrder( symbol, OrderSide.BUY, OrderType.LIMIT, timeInForce, quantity, price );
-	}
-
-
-	/**
-	 * Places a LIMIT sell order for the given <code>quantity</code> and <code>price</code>.
-	 *
-	 * @return a new order which is pre-configured with LIMIT as the order type and SELL as the order side.
-	 */
-	public static NewOrder limitSell(String symbol, TimeInForce timeInForce, String quantity, String price)
-	{
-		return new NewOrder( symbol, OrderSide.SELL, OrderType.LIMIT, timeInForce, quantity, price );
-	}
-
-
 	@Override
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
-				.append( "side", side ).append( "type", type ).append( "timeInForce", timeInForce ).append( "quantity", quantity )
-				.append( "quoteOrderQty", quoteOrderQty ).append( "price", price ).append( "newClientOrderId", newClientOrderId )
-				.append( "stopPrice", stopPrice ).append( "icebergQty", icebergQty )
-				.append( "newOrderRespType", newOrderRespType ).append( "recvWindow", recvWindow )
-				.append( "timestamp", timestamp ).toString();
+				.append( "side", side ).append( "type", type ).append( "quantity", quantity )
+				.append( "quoteOrderQty", quoteOrderQty ).append( "price", price ).append( "stopPrice", stopPrice )
+				.append( "newClientOrderId", newClientOrderId ).append( "timestamp", timestamp )
+				.append( "icebergQty", icebergQty ).append( "newOrderRespType", newOrderRespType )
+				.append( "recvWindow", recvWindow ).append( "timeInForce", timeInForce ).toString();
+	}
+
+
+	public NewOrder type(OrderType type)
+	{
+		this.type = type;
+		return this;
 	}
 }

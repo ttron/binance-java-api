@@ -5,7 +5,7 @@ import static com.binance.api.client.BinanceAPIServiceGenerator.getBinanceAPIErr
 import java.io.IOException;
 
 import com.binance.api.client.exception.BinanceAPIException;
-import com.binance.api.client.spot.BinanceApiCallback;
+import com.binance.api.client.spot.BinanceAPICallback;
 import com.binance.api.client.spot.BinanceAPIError;
 
 import retrofit2.Call;
@@ -17,9 +17,9 @@ import retrofit2.Response;
  */
 public class BinanceApiCallbackAdapter<T> implements Callback<T>
 {
-	private final BinanceApiCallback<T> callback;
+	private final BinanceAPICallback<T> callback;
 
-	public BinanceApiCallbackAdapter(BinanceApiCallback<T> callback)
+	public BinanceApiCallbackAdapter(BinanceAPICallback<T> callback)
 	{
 		this.callback = callback;
 	}

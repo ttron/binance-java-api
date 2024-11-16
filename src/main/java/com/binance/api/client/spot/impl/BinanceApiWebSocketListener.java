@@ -3,7 +3,7 @@ package com.binance.api.client.spot.impl;
 import java.io.IOException;
 
 import com.binance.api.client.exception.BinanceAPIException;
-import com.binance.api.client.spot.BinanceApiCallback;
+import com.binance.api.client.spot.BinanceAPICallback;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectReader;
@@ -17,7 +17,7 @@ import okhttp3.WebSocketListener;
  */
 public class BinanceApiWebSocketListener<T> extends WebSocketListener
 {
-	private BinanceApiCallback<T> callback;
+	private BinanceAPICallback<T> callback;
 
 	private static final ObjectMapper mapper = new ObjectMapper();
 
@@ -25,14 +25,14 @@ public class BinanceApiWebSocketListener<T> extends WebSocketListener
 
 	private boolean closing = false;
 
-	public BinanceApiWebSocketListener(BinanceApiCallback<T> callback, Class<T> eventClass)
+	public BinanceApiWebSocketListener(BinanceAPICallback<T> callback, Class<T> eventClass)
 	{
 		this.callback = callback;
 		this.objectReader = mapper.readerFor( eventClass );
 	}
 
 
-	public BinanceApiWebSocketListener(BinanceApiCallback<T> callback, TypeReference<T> eventTypeReference)
+	public BinanceApiWebSocketListener(BinanceAPICallback<T> callback, TypeReference<T> eventTypeReference)
 	{
 		this.callback = callback;
 		this.objectReader = mapper.readerFor( eventTypeReference );
