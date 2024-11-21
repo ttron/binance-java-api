@@ -129,24 +129,23 @@ public interface BinanceSpotAPIService
 	@GET("/api/v1/ticker/allBookTickers")
 	Call<List<BookTicker>> getBookTickers();
 
+
 	// Account endpoints
-
-
-	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
-	@POST("/api/v3/order")
-	Call<NewOrderResponse> newOrder(@Query("symbol") String symbol, @Query("side") OrderSide side, @Query("type") OrderType type,
-			@Query("timeInForce") TimeInForce timeInForce, @Query("quantity") String quantity, @Query("price") String price,
-			@Query("newClientOrderId") String newClientOrderId, @Query("stopPrice") String stopPrice,
-			@Query("icebergQty") String icebergQty, @Query("newOrderRespType") NewOrderResponseType newOrderRespType,
-			@Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
-
-
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
 	@POST("/api/v3/order/cancelReplace")
 	Call<CancelReplaceOrderResponse> cancelReplace(@Query("symbol") String symbol, @Query("side") OrderSide side,
 			@Query("type") OrderType type, @Query("cancelReplaceMode") CancelReplaceMode mode,
 			@Query("timeInForce") TimeInForce timeInForce, @Query("quantity") String quantity, @Query("price") String price,
 			@Query("cancelOrderId") Long cancelOrderId, @Query("cancelOrigClientOrderId") String cancelOrigClientOrderId,
+			@Query("newClientOrderId") String newClientOrderId, @Query("stopPrice") String stopPrice,
+			@Query("icebergQty") String icebergQty, @Query("newOrderRespType") NewOrderResponseType newOrderRespType,
+			@Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
+
+
+	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
+	@POST("/api/v3/order")
+	Call<NewOrderResponse> newOrder(@Query("symbol") String symbol, @Query("side") OrderSide side, @Query("type") OrderType type,
+			@Query("timeInForce") TimeInForce timeInForce, @Query("quantity") String quantity, @Query("price") String price,
 			@Query("newClientOrderId") String newClientOrderId, @Query("stopPrice") String stopPrice,
 			@Query("icebergQty") String icebergQty, @Query("newOrderRespType") NewOrderResponseType newOrderRespType,
 			@Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
@@ -209,7 +208,8 @@ public interface BinanceSpotAPIService
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER)
 	@POST("/api/v3/order/test")
 	Call<Void> newOrderTest(@Query("symbol") String symbol, @Query("side") OrderSide side, @Query("type") OrderType type,
-			@Query("timeInForce") TimeInForce timeInForce, @Query("quantity") String quantity, @Query("price") String price,
+			@Query("timeInForce") TimeInForce timeInForce, @Query("quantity") String quantity,
+			@Query("quoteOrderQty") String quoteOrderQty, @Query("price") String price,
 			@Query("newClientOrderId") String newClientOrderId, @Query("stopPrice") String stopPrice,
 			@Query("icebergQty") String icebergQty, @Query("newOrderRespType") NewOrderResponseType newOrderRespType,
 			@Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);

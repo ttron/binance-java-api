@@ -309,8 +309,8 @@ public class BinanceSpotAPIAsyncRestClientImpl implements IBinanceSpotAPIAsyncRe
 	{
 		binanceApiService
 				.newOrderTest( order.getSymbol(), order.getSide(), order.getType(), order.getTimeInForce(), order.getQuantity(),
-						order.getPrice(), order.getNewClientOrderId(), order.getStopPrice(), order.getIcebergQty(),
-						order.getNewOrderRespType(), order.getRecvWindow(), order.getTimestamp() )
+						order.getQuoteOrderQty(), order.getPrice(), order.getNewClientOrderId(), order.getStopPrice(),
+						order.getIcebergQty(), order.getNewOrderRespType(), order.getRecvWindow(), order.getTimestamp() )
 				.enqueue( new BinanceApiCallbackAdapter<>( callback ) );
 	}
 

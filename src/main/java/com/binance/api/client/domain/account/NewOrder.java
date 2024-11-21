@@ -175,7 +175,7 @@ public class NewOrder
 		this.side = side;
 		this.type = OrderType.MARKET;
 		this.quantity = quantity;
-		this.quantity = quoteQuantity;
+		this.quoteOrderQty = quoteQuantity;
 		this.newOrderRespType = NewOrderResponseType.RESULT;
 		this.timestamp = System.currentTimeMillis();
 		this.recvWindow = BinanceAPIConstants.DEFAULT_RECEIVING_WINDOW;

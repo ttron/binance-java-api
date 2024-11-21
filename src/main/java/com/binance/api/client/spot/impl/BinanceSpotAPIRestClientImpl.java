@@ -361,8 +361,9 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 	public void newOrderTest(NewOrder order)
 	{
 		executeSync( binanceAPIService.newOrderTest( order.getSymbol(), order.getSide(), order.getType(), order.getTimeInForce(),
-				order.getQuantity(), order.getPrice(), order.getNewClientOrderId(), order.getStopPrice(), order.getIcebergQty(),
-				order.getNewOrderRespType(), order.getRecvWindow(), order.getTimestamp() ) );
+				order.getQuantity(), order.getQuoteOrderQty(), order.getPrice(), order.getNewClientOrderId(),
+				order.getStopPrice(), order.getIcebergQty(), order.getNewOrderRespType(), order.getRecvWindow(),
+				order.getTimestamp() ) );
 	}
 
 
