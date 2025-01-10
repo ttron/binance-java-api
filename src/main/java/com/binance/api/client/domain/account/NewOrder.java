@@ -348,8 +348,8 @@ public class NewOrder
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
-				.append( "side", side ).append( "type", type ).append( "quantity", quantity )
-				.append( "quoteOrderQty", quoteOrderQty ).append( "price", price ).append( "stopPrice", stopPrice )
+				.append( "side", side ).append( "type", type ).append( "quantity", quantity ).append( "price", price )
+				.append( "quoteOrderQty", quoteOrderQty ).append( "stopPrice", stopPrice )
 				.append( "newClientOrderId", newClientOrderId ).append( "timestamp", timestamp )
 				.append( "icebergQty", icebergQty ).append( "newOrderRespType", newOrderRespType )
 				.append( "recvWindow", recvWindow ).append( "timeInForce", timeInForce ).toString();

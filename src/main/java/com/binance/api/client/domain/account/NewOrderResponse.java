@@ -237,9 +237,10 @@ public class NewOrderResponse
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
-				.append( "orderId", orderId ).append( "clientOrderId", clientOrderId ).append( "transactTime", transactTime )
-				.append( "price", price ).append( "origQty", origQty ).append( "executedQty", executedQty )
-				.append( "status", status ).append( "timeInForce", timeInForce ).append( "type", type ).append( "side", side )
+				.append( "side", side ).append( "type", type ).append( "status", status ).append( "origQty", origQty )
+				.append( "price", price ).append( "executedQty", executedQty ).append( "orderId", orderId )
+				.append( "clientOrderId", clientOrderId ).append( "transactTime", transactTime )
+				.append( "timeInForce", timeInForce )
 				.append( "fills", Optional.ofNullable( fills ).orElse( Collections.emptyList() ).stream().map( Object::toString )
 						.collect( Collectors.joining( ", " ) ) )
 				.toString();
