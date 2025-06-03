@@ -4,7 +4,7 @@ import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.event.AccountUpdateEvent;
 import com.binance.api.client.domain.event.OrderTradeUpdateEvent;
 import com.binance.api.client.domain.event.UserDataUpdateEvent.UserDataUpdateEventType;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -24,7 +24,7 @@ public class UserDataStreamExample
 		String listenKey = client.startUserDataStream();
 
 		// Then, we open a new web socket client, and provide a callback that is called on every update
-		BinanceAPIWebSocketClient webSocketClient = factory.newWebSocketClient();
+		IBinanceAPIWebSocketClient webSocketClient = factory.newWebSocketClient();
 
 		// Listen for changes in the account
 		webSocketClient.onUserDataUpdateEvent( listenKey, response -> {

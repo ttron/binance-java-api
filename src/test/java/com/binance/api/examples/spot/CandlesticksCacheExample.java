@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.market.Candlestick;
 import com.binance.api.client.domain.market.CandlestickInterval;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -51,7 +51,7 @@ public class CandlesticksCacheExample
 	private void startCandlestickEventStreaming(String symbol, CandlestickInterval interval)
 	{
 		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
-		BinanceAPIWebSocketClient client = factory.newWebSocketClient();
+		IBinanceAPIWebSocketClient client = factory.newWebSocketClient();
 
 		client.onCandlestickEvent( symbol.toLowerCase(), interval, response -> {
 			Long openTime = response.getOpenTime();

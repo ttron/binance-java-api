@@ -21,6 +21,8 @@ public class ExchangeInfo
 
 	// private List<String> exchangeFilters;
 
+	private List<SmartOrderRouting> sors;
+
 	private List<SymbolInfo> symbols;
 
 	private String timezone;
@@ -34,6 +36,19 @@ public class ExchangeInfo
 	public Long getServerTime()
 	{
 		return serverTime;
+	}
+
+
+	public SmartOrderRouting getSmartOrderRouting(String baseAsset)
+	{
+		return sors.stream().filter( sor -> sor.getBaseAsset().equals( baseAsset ) ).findFirst()
+				.orElseThrow( () -> new BinanceAPIException( "Unable to obtain information for symbol " + baseAsset ) );
+	}
+
+
+	public List<SmartOrderRouting> getSors()
+	{
+		return sors;
 	}
 
 
@@ -69,6 +84,12 @@ public class ExchangeInfo
 	public void setServerTime(Long serverTime)
 	{
 		this.serverTime = serverTime;
+	}
+
+
+	public void setSors(List<SmartOrderRouting> sors)
+	{
+		this.sors = sors;
 	}
 
 

@@ -18,7 +18,7 @@ import com.binance.api.client.domain.event.DepthEvent;
 import com.binance.api.client.domain.market.OrderBook;
 import com.binance.api.client.domain.market.OrderBookEntry;
 import com.binance.api.client.spot.BinanceAPICallback;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -50,7 +50,7 @@ public class DepthCacheExample
 
 	private final IBinanceSpotAPIRestClient restClient;
 
-	private final BinanceAPIWebSocketClient wsClient;
+	private final IBinanceAPIWebSocketClient wsClient;
 
 	private final WsCallback wsCallback = new WsCallback();
 

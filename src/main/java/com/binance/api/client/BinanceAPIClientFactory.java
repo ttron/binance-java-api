@@ -8,7 +8,7 @@ import com.binance.api.client.derivative.impl.BinanceFutureAPIRestClientImpl;
 import com.binance.api.client.spot.BinanceApiAsyncMarginRestClient;
 import com.binance.api.client.spot.BinanceApiMarginRestClient;
 import com.binance.api.client.spot.BinanceApiSwapRestClient;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIAsyncRestClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 import com.binance.api.client.spot.impl.BinanceApiAsyncMarginRestClientImpl;
@@ -128,7 +128,7 @@ public class BinanceAPIClientFactory
 	/**
 	 * Creates a new web socket client used for handling data streams.
 	 */
-	public BinanceAPIWebSocketClient newWebSocketClient()
+	public IBinanceAPIWebSocketClient newWebSocketClient()
 	{
 		return new BinanceAPIWebSocketClientImpl( getSharedClient() );
 	}

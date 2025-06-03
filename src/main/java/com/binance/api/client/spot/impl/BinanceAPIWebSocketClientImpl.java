@@ -14,7 +14,7 @@ import com.binance.api.client.domain.event.TickerEvent;
 import com.binance.api.client.domain.event.UserDataUpdateEvent;
 import com.binance.api.client.domain.market.CandlestickInterval;
 import com.binance.api.client.spot.BinanceAPICallback;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import okhttp3.OkHttpClient;
@@ -24,7 +24,7 @@ import okhttp3.WebSocket;
 /**
  * Binance API WebSocket client implementation using OkHttp.
  */
-public class BinanceAPIWebSocketClientImpl implements BinanceAPIWebSocketClient, Closeable
+public class BinanceAPIWebSocketClientImpl implements IBinanceAPIWebSocketClient, Closeable
 {
 	private final OkHttpClient client;
 

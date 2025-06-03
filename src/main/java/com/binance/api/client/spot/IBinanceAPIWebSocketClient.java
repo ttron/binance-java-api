@@ -14,7 +14,7 @@ import com.binance.api.client.domain.market.CandlestickInterval;
 /**
  * Binance API data streaming facade, supporting streaming of events through web sockets.
  */
-public interface BinanceAPIWebSocketClient extends Closeable
+public interface IBinanceAPIWebSocketClient extends Closeable
 {
 
 	/**
@@ -25,6 +25,8 @@ public interface BinanceAPIWebSocketClient extends Closeable
 	 * @return a {@link Closeable} that allows the underlying web socket to be closed.
 	 */
 	Closeable onDepthEvent(String symbols, BinanceAPICallback<DepthEvent> callback);
+
+	// Closeable onAny(String symbols, BinanceAPICallback<DepthEvent> callback);
 
 
 	/**

@@ -8,7 +8,7 @@ import java.util.TreeMap;
 import com.binance.api.client.BinanceAPIClientFactory;
 import com.binance.api.client.domain.account.AssetBalance;
 import com.binance.api.client.domain.account.BinanceAccount;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
 /**
@@ -61,7 +61,7 @@ public class AccountBalanceCacheExample
 	 */
 	private void startAccountBalanceEventStreaming(String listenKey)
 	{
-		BinanceAPIWebSocketClient client = clientFactory.newWebSocketClient();
+		IBinanceAPIWebSocketClient client = clientFactory.newWebSocketClient();
 
 		client.onUserDataUpdateEvent( listenKey, response -> {
 			if (response.getEventType() == ACCOUNT_UPDATE)

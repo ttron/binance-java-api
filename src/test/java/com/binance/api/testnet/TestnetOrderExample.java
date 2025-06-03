@@ -43,7 +43,5 @@ public class TestnetOrderExample
 		// Getting list of all orders with a limit of 10
 		List<BinanceOrder> allOrders = client.getAllOrders( new AllOrdersRequest( "DOGEUSDT" ).limit( 10 ) );
 		System.out.println( allOrders );
-
-		// TODO Auto-generated method stub
 	}
 }

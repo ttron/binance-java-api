@@ -2,6 +2,7 @@ package com.binance.api.examples.spot;
 
 import com.binance.api.client.domain.general.ExchangeInfo;
 import com.binance.api.client.domain.general.FilterType;
+import com.binance.api.client.domain.general.SmartOrderRouting;
 import com.binance.api.client.domain.general.SymbolFilter;
 import com.binance.api.client.domain.general.SymbolInfo;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
@@ -10,7 +11,7 @@ import com.binance.api.examples.ExampleBase;
 /**
  * Examples on how to use the general endpoints.
  */
-public class GeneralEndpointsExample extends ExampleBase
+public class ExchangeInfoExample extends ExampleBase
 {
 	public static void main(String[] args)
 	{
@@ -61,5 +62,11 @@ public class GeneralEndpointsExample extends ExampleBase
 		// List<Asset> allAssets = client.getAllAssets();
 		// System.out.println( allAssets.stream().filter( asset -> asset.getAssetCode().equals( "BNB" )
 		// ).findFirst().get() );
+
+		if (exchangeInfo.getSors() != null)
+		{
+			SmartOrderRouting sor = exchangeInfo.getSmartOrderRouting( "ETH" );
+			System.out.println( sor );
+		}
 	}
 }

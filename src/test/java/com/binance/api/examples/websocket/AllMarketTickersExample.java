@@ -1,7 +1,7 @@
-package com.binance.api.examples.spot;
+package com.binance.api.examples.websocket;
 
 import com.binance.api.client.BinanceAPIClientFactory;
-import com.binance.api.client.spot.BinanceAPIWebSocketClient;
+import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 
 /**
  * All market tickers channel examples.
@@ -14,7 +14,7 @@ public class AllMarketTickersExample
 	public static void main(String[] args)
 	{
 		BinanceAPIClientFactory factory = BinanceAPIClientFactory.newInstance();
-		BinanceAPIWebSocketClient client = factory.newWebSocketClient();
+		IBinanceAPIWebSocketClient client = factory.newWebSocketClient();
 		client.onAllMarketTickersEvent( event -> {
 			System.out.println( event );
 		} );
