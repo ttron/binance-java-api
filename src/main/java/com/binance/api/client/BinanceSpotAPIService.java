@@ -178,7 +178,7 @@ public interface BinanceSpotAPIService
 
 
 	/**
-	 * 
+	 *
 	 * @param symbol
 	 * @param side
 	 * @param quantity
@@ -290,16 +290,19 @@ public interface BinanceSpotAPIService
 	// User stream endpoints
 
 
+	@Deprecated
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
 	@POST("/api/v1/userDataStream")
 	Call<ListenKey> startUserDataStream();
 
 
+	@Deprecated
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
 	@PUT("/api/v1/userDataStream")
 	Call<Void> keepAliveUserDataStream(@Query("listenKey") String listenKey);
 
 
+	@Deprecated
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
 	@DELETE("/api/v1/userDataStream")
 	Call<Void> closeAliveUserDataStream(@Query("listenKey") String listenKey);
@@ -397,11 +400,13 @@ public interface BinanceSpotAPIService
 			@Query("fromId") Long fromId, @Query("recvWindow") Long recvWindow, @Query("timestamp") Long timestamp);
 
 
+	@Deprecated
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
 	@POST("/sapi/v1/userDataStream")
 	Call<ListenKey> startMarginUserDataStream();
 
 
+	@Deprecated
 	@Headers(BinanceAPIConstants.ENDPOINT_SECURITY_TYPE_APIKEY_HEADER)
 	@PUT("/sapi/v1/userDataStream")
 	Call<Void> keepAliveMarginUserDataStream(@Query("listenKey") String listenKey);

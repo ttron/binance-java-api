@@ -1,3 +1,6 @@
+# 2025-10-16: Release 1.3.2-57 available
+1. BILL-298User data stream endpoints (Deprecated)
+
 # 2024-11-31: Release 1.3.0-57 available
 1. BILL-269 Testnet Support
 1. newOrder add parameter quoteOrderQty

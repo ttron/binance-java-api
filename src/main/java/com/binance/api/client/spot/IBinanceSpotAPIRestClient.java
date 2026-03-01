@@ -341,6 +341,7 @@ public interface IBinanceSpotAPIRestClient
 	 *
 	 * @return a listen key that can be used with data streams
 	 */
+	@Deprecated
 	String startUserDataStream();
 
 

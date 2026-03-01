@@ -374,6 +374,7 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 	}
 
 
+	@Deprecated
 	@Override
 	public String startUserDataStream()
 	{
