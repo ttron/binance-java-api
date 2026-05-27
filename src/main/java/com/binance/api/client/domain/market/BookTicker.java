@@ -3,18 +3,15 @@ package com.binance.api.client.domain.market;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
+import com.binance.api.client.domain.SymbolRR;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Represents the best price/qty on the order book for a given symbol.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BookTicker
+public class BookTicker extends SymbolRR
 {
-	/**
-	 * Ticker symbol.
-	 */
-	private String symbol;
 
 	/**
 	 * Bid price.
@@ -35,18 +32,6 @@ public class BookTicker
 	 * Ask quantity.
 	 */
 	private String askQty;
-
-	public String getSymbol()
-	{
-		return symbol;
-	}
-
-
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
-	}
-
 
 	public String getBidPrice()
 	{

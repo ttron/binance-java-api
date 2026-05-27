@@ -1,3 +1,8 @@
+# 2025-05-16: Release 1.3.3-57 available
+1. + Current Average Price @ /api/v3/avgPrice
+1. + BinanceDerivativeAPI/24hr Ticker Price Change Statistics, https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/24hr-Ticker-Price-Change-Statistics
+1. + BinanceDerivativeAPI/Mark Price, https://developers.binance.com/docs/derivatives/usds-margined-futures/market-data/rest-api/Mark-Price
+
 # 2025-10-16: Release 1.3.2-57 available
 1. BILL-298User data stream endpoints (Deprecated)
 

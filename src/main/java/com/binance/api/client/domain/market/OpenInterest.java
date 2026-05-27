@@ -5,21 +5,20 @@
  */
 package com.binance.api.client.domain.market;
 
+import com.binance.api.client.domain.SymbolRR;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @MR006 Jun 5, 2024
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OpenInterest
+public class OpenInterest extends SymbolRR
 {
 	private double openInterest;
 
 	private double sumOpenInterest;
 
 	private double sumOpenInterestValue;
-
-	private String symbol;
 
 	private long time;
 
@@ -40,12 +39,6 @@ public class OpenInterest
 	public double getSumOpenInterestValue()
 	{
 		return sumOpenInterestValue;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
 	}
 
 
@@ -76,12 +69,6 @@ public class OpenInterest
 	public void setSumOpenInterestValue(double sumOpenInterestValue)
 	{
 		this.sumOpenInterestValue = sumOpenInterestValue;
-	}
-
-
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
 	}
 
 

@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.OrderSide;
 import com.binance.api.client.domain.OrderType;
+import com.binance.api.client.domain.SymbolRR;
 import com.binance.api.client.domain.TimeInForce;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -12,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * A trade order to enter or exit a position.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class NewOrder
+public class NewOrder extends SymbolRR
 {
 	/**
 	 * Places a LIMIT buy order for the given <code>quantity</code> and <code>price</code>.
@@ -124,11 +125,6 @@ public class NewOrder
 	private String stopPrice;
 
 	/**
-	 * Symbol to place the order on.
-	 */
-	private String symbol;
-
-	/**
 	 * Time in force to indicate how long will the order remain active.
 	 */
 	private TimeInForce timeInForce;
@@ -233,12 +229,6 @@ public class NewOrder
 	public String getStopPrice()
 	{
 		return stopPrice;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
 	}
 
 

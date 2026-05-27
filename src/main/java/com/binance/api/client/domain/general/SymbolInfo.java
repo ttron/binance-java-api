@@ -6,31 +6,49 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
 import com.binance.api.client.domain.OrderType;
+import com.binance.api.client.domain.SymbolRR;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Symbol information (base/quote).
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SymbolInfo
+public class SymbolInfo extends SymbolRR
 {
+	// "symbol": "ETHBTC",
+	// "status": "TRADING",
+	// "baseAsset": "ETH",
+	// "baseAssetPrecision": 8,
+	// "quoteAsset": "BTC",
+	// "quotePrecision": 8, // will be removed in future api versions (v4+)
+	// "quoteAssetPrecision": 8,
+	// "baseCommissionPrecision": 8,
+	// "quoteCommissionPrecision": 8,
+	// "icebergAllowed": true,
+	// "ocoAllowed": true,
+	// "otoAllowed": true,
+	// "opoAllowed": true,
+	// "quoteOrderQtyMarketAllowed": true,
+	// "allowTrailingStop": false,
+	// "cancelReplaceAllowed": false,
+	// "amendAllowed": false,
+	// "pegInstructionsAllowed": true,
+	// "isSpotTradingAllowed": true,
+	// "isMarginTradingAllowed": true,
+
 	private String baseAsset;
 
-	private Integer baseAssetPrecision;
+	private int baseAssetPrecision;
 
-	private String contractType;
-
-	private long deliveryDate, onboardDate;
+	private int baseCommissionPrecision, quoteCommissionPrecision;
 
 	private List<SymbolFilter> filters;
 
 	private boolean icebergAllowed;
 
-	private boolean isMarginTradingAllowed;
+	private boolean isMarginTradingAllowed, isSpotTradingAllowed;
 
-	private boolean isSpotTradingAllowed;
-
-	private boolean ocoAllowed;
+	private boolean ocoAllowed, opoAllowed, otoAllowed;
 
 	private List<OrderType> orderTypes;
 
@@ -38,13 +56,9 @@ public class SymbolInfo
 
 	private boolean quoteOrderQtyMarketAllowed;
 
-	private Integer quotePrecision;
-
-	private int settlePlan;
+	private int quotePrecision;
 
 	private SymbolStatus status;
-
-	private String symbol;
 
 	public String getBaseAsset()
 	{
@@ -58,27 +72,15 @@ public class SymbolInfo
 	}
 
 
-	public String getContractType()
+	public int getBaseCommissionPrecision()
 	{
-		return contractType;
-	}
-
-
-	public long getDeliveryDate()
-	{
-		return deliveryDate;
+		return baseCommissionPrecision;
 	}
 
 
 	public List<SymbolFilter> getFilters()
 	{
 		return filters;
-	}
-
-
-	public long getOnboardDate()
-	{
-		return onboardDate;
 	}
 
 
@@ -94,27 +96,21 @@ public class SymbolInfo
 	}
 
 
+	public int getQuoteCommissionPrecision()
+	{
+		return quoteCommissionPrecision;
+	}
+
+
 	public Integer getQuotePrecision()
 	{
 		return quotePrecision;
 	}
 
 
-	public int getSettlePlan()
-	{
-		return settlePlan;
-	}
-
-
 	public SymbolStatus getStatus()
 	{
 		return status;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
 	}
 
 
@@ -146,6 +142,18 @@ public class SymbolInfo
 	}
 
 
+	public boolean isOpoAllowed()
+	{
+		return opoAllowed;
+	}
+
+
+	public boolean isOtoAllowed()
+	{
+		return otoAllowed;
+	}
+
+
 	public boolean isQuoteOrderQtyMarketAllowed()
 	{
 		return quoteOrderQtyMarketAllowed;
@@ -164,21 +172,21 @@ public class SymbolInfo
 	}
 
 
+	public void setBaseAssetPrecision(int baseAssetPrecision)
+	{
+		this.baseAssetPrecision = baseAssetPrecision;
+	}
+
+
 	public void setBaseAssetPrecision(Integer baseAssetPrecision)
 	{
 		this.baseAssetPrecision = baseAssetPrecision;
 	}
 
 
-	public void setContractType(String contractType)
+	public void setBaseCommissionPrecision(int baseCommissionPrecision)
 	{
-		this.contractType = contractType;
-	}
-
-
-	public void setDeliveryDate(long deliveryDate)
-	{
-		this.deliveryDate = deliveryDate;
+		this.baseCommissionPrecision = baseCommissionPrecision;
 	}
 
 
@@ -206,15 +214,21 @@ public class SymbolInfo
 	}
 
 
+	public void setMarginTradingAllowed(boolean isMarginTradingAllowed)
+	{
+		this.isMarginTradingAllowed = isMarginTradingAllowed;
+	}
+
+
 	public void setOcoAllowed(boolean ocoAllowed)
 	{
 		this.ocoAllowed = ocoAllowed;
 	}
 
 
-	public void setOnboardDate(long onboardDate)
+	public void setOpoAllowed(boolean opoAllowed)
 	{
-		this.onboardDate = onboardDate;
+		this.opoAllowed = opoAllowed;
 	}
 
 
@@ -224,9 +238,21 @@ public class SymbolInfo
 	}
 
 
+	public void setOtoAllowed(boolean otoAllowed)
+	{
+		this.otoAllowed = otoAllowed;
+	}
+
+
 	public void setQuoteAsset(String quoteAsset)
 	{
 		this.quoteAsset = quoteAsset;
+	}
+
+
+	public void setQuoteCommissionPrecision(int quoteCommissionPrecision)
+	{
+		this.quoteCommissionPrecision = quoteCommissionPrecision;
 	}
 
 
@@ -236,27 +262,27 @@ public class SymbolInfo
 	}
 
 
+	public void setQuotePrecision(int quotePrecision)
+	{
+		this.quotePrecision = quotePrecision;
+	}
+
+
 	public void setQuotePrecision(Integer quotePrecision)
 	{
 		this.quotePrecision = quotePrecision;
 	}
 
 
-	public void setSettlePlan(int settlePlan)
+	public void setSpotTradingAllowed(boolean isSpotTradingAllowed)
 	{
-		this.settlePlan = settlePlan;
+		this.isSpotTradingAllowed = isSpotTradingAllowed;
 	}
 
 
 	public void setStatus(SymbolStatus status)
 	{
 		this.status = status;
-	}
-
-
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
 	}
 
 

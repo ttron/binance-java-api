@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.binance.api.client.BinanceAPIClientFactory;
-import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
+import com.binance.api.client.derivative.IBinanceDerivativeAPIRestClient;
 import com.binance.api.client.spot.IBinanceSpotAPIAsyncRestClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
 
@@ -22,11 +22,11 @@ public class ExampleBase
 
 	static BinanceAPIClientFactory FACTORY;
 
-	protected static IBinanceFutureAPIRestClient createFutureClient()
+	protected static IBinanceDerivativeAPIRestClient createDerivativeClient()
 	{
 		if (FACTORY == null)
 			FACTORY = BinanceAPIClientFactory.newInstance();
-		IBinanceFutureAPIRestClient client = FACTORY.newFutureRestClient();
+		IBinanceDerivativeAPIRestClient client = FACTORY.newFutureRestClient();
 		return client;
 	}
 

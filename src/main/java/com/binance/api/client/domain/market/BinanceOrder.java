@@ -23,8 +23,8 @@ public class BinanceOrder extends CYYOrder
 		// "price", getPrice() )
 		// .append( "quantity", getAmount() ).toString();
 
-		return "BinanceOrder [currencyPair=" + (getCurrencyPair() != null ? getCurrencyPair().getCode() : "null")
-				+ ", orderNumber=" + getExchangeOrderId() + ", fee rate=" + getFeeRate()
-				+ (getIdDirection() == 0 ? ", sell " : ", buy ") + getAmount() + " @ " + getPrice() + "]";
+		return "BinanceOrder [currencyPair=" + (getCryptoPair() != null ? getCryptoPair().getCode() : "null") + ", orderNumber="
+				+ getExchangeOrderId() + ", fee rate=" + getFeeRate() + (getIdDirection() == 0 ? ", sell " : ", buy ")
+				+ getAmount() + " @ " + getPrice() + "]";
 	}
 }

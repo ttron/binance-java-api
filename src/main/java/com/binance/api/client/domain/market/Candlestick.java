@@ -3,6 +3,7 @@ package com.binance.api.client.domain.market;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
+import com.binance.api.client.domain.SymbolOHLC;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -13,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonFormat(shape = JsonFormat.Shape.ARRAY)
 @JsonPropertyOrder()
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Candlestick
+public class Candlestick extends SymbolOHLC
 {
 	// [
 	// [
@@ -32,33 +33,17 @@ public class Candlestick
 	// ]
 	// ]
 
-	private Long openTime;
-
-	private Double open;
-
-	private Double high;
-
-	private Double low;
-
-	private Double close;
-
-	private Double volume;
-
 	private Long closeTime;
 
-	private Double quoteAssetVolume;
-
 	private Long numberOfTrades;
+
+	private Long openTime;
+
+	private Double quoteAssetVolume;
 
 	private Double takerBuyBaseAssetVolume;
 
 	private Double takerBuyQuoteAssetVolume;
-
-	public Double getClose()
-	{
-		return close;
-	}
-
 
 	public Long getCloseTime()
 	{
@@ -66,27 +51,9 @@ public class Candlestick
 	}
 
 
-	public Double getHigh()
-	{
-		return high;
-	}
-
-
-	public Double getLow()
-	{
-		return low;
-	}
-
-
 	public Long getNumberOfTrades()
 	{
 		return numberOfTrades;
-	}
-
-
-	public Double getOpen()
-	{
-		return open;
 	}
 
 
@@ -114,45 +81,15 @@ public class Candlestick
 	}
 
 
-	public Double getVolume()
-	{
-		return volume;
-	}
-
-
-	public void setClose(Double close)
-	{
-		this.close = close;
-	}
-
-
 	public void setCloseTime(Long closeTime)
 	{
 		this.closeTime = closeTime;
 	}
 
 
-	public void setHigh(Double high)
-	{
-		this.high = high;
-	}
-
-
-	public void setLow(Double low)
-	{
-		this.low = low;
-	}
-
-
 	public void setNumberOfTrades(Long numberOfTrades)
 	{
 		this.numberOfTrades = numberOfTrades;
-	}
-
-
-	public void setOpen(Double open)
-	{
-		this.open = open;
 	}
 
 
@@ -177,12 +114,6 @@ public class Candlestick
 	public void setTakerBuyQuoteAssetVolume(Double takerBuyQuoteAssetVolume)
 	{
 		this.takerBuyQuoteAssetVolume = takerBuyQuoteAssetVolume;
-	}
-
-
-	public void setVolume(Double volume)
-	{
-		this.volume = volume;
 	}
 
 

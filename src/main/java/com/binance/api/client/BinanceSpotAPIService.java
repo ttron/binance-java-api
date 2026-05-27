@@ -41,6 +41,7 @@ import com.binance.api.client.domain.general.ServerTime;
 import com.binance.api.client.domain.market.AggTrade;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
+import com.binance.api.client.domain.market.CurrentAveragePrice;
 import com.binance.api.client.domain.market.OrderBook;
 import com.binance.api.client.domain.market.TickerPrice;
 import com.binance.api.client.domain.market.TickerStatistics;
@@ -104,6 +105,10 @@ public interface BinanceSpotAPIService
 
 	@GET("/api/v3/ticker/24hr")
 	Call<List<TickerStatistics>> getAll24HrPriceStatistics();
+
+
+	@GET("/api/v3/avgPrice")
+	Call<CurrentAveragePrice> getCurrentAveragePrice(@Query("symbol") String symbol);
 
 
 	@GET("/api/v3/ticker/24hr")

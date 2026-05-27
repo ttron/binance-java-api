@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServerTime
 {
-	private Long serverTime;
+	protected Long serverTime;
 
 	public Long getServerTime()
 	{

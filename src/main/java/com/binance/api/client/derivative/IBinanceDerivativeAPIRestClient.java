@@ -7,20 +7,46 @@ package com.binance.api.client.derivative;
 
 import java.util.List;
 
-import com.binance.api.client.domain.general.ExchangeInfo;
+import com.binance.api.client.domain.market.MarkPrice;
 import com.binance.api.client.domain.market.OpenInterest;
+import com.binance.api.client.domain.market.TickerStatistics;
 
 /**
  * @Ttron May 31, 2024
  */
-public interface IBinanceFutureAPIRestClient
+public interface IBinanceDerivativeAPIRestClient
 {
+	/**
+	 * Get 24 hour price change statistics.
+	 *
+	 * @param symbol ticker symbol (e.g. ETHBTC)
+	 */
+	TickerStatistics get24HPriceStatistics(String symbol);
+
+
+	/**
+	 * Get 24 hour price change statistics for all symbols.
+	 */
+	List<TickerStatistics> get24HPriceStatisticsAll();
+
+
 	/**
 	 * @return Current exchange trading rules and symbol information
 	 */
-	ExchangeInfo getExchangeInfo();
+	DerivativeExchangeInfo getExchangeInfo();
 
 
+	MarkPrice getMarkPrice(String symbol);
+
+
+	List<MarkPrice> getMarkPriceAll();
+
+
+	/**
+	 * /fapi/v1/openInterest
+	 * @param symbol
+	 * @return
+	 */
 	OpenInterest getOpenInterest(String symbol);
 
 

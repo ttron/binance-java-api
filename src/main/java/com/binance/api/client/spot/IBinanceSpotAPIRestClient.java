@@ -26,6 +26,7 @@ import com.binance.api.client.domain.market.AggTrade;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
 import com.binance.api.client.domain.market.CandlestickInterval;
+import com.binance.api.client.domain.market.CurrentAveragePrice;
 import com.binance.api.client.domain.market.OrderBook;
 import com.binance.api.client.domain.market.TickerPrice;
 import com.binance.api.client.domain.market.TickerStatistics;
@@ -61,7 +62,7 @@ public interface IBinanceSpotAPIRestClient
 	/**
 	 * Get 24 hour price change statistics for all symbols.
 	 */
-	List<TickerStatistics> get24HAllPriceStatistics();
+	List<TickerStatistics> get24HPriceStatisticsAll();
 
 
 	/**
@@ -159,6 +160,9 @@ public interface IBinanceSpotAPIRestClient
 	 */
 	List<Candlestick> getCandlestickBars(String symbol, CandlestickInterval interval, Integer limit, Long startTime,
 			Long endTime);
+
+
+	CurrentAveragePrice getCurrentAveragePrice(String symbol);
 
 
 	/**

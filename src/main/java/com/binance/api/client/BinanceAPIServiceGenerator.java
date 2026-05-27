@@ -104,6 +104,7 @@ public class BinanceAPIServiceGenerator
 			else
 			{
 				BinanceAPIError apiError = getBinanceAPIError( response );
+				// System.err.println( response );
 				throw new BinanceAPIException( apiError );
 			}
 		}

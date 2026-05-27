@@ -7,7 +7,7 @@ package com.binance.api.examples.derivative;
 
 import java.util.List;
 
-import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
+import com.binance.api.client.derivative.IBinanceDerivativeAPIRestClient;
 import com.binance.api.client.domain.market.OpenInterest;
 import com.binance.api.examples.ExampleBase;
 
@@ -21,7 +21,7 @@ public class OpenInterestExample extends ExampleBase
 
 	public static void main(String[] args)
 	{
-		IBinanceFutureAPIRestClient client = createFutureClient();
+		IBinanceDerivativeAPIRestClient client = createDerivativeClient();
 
 		OpenInterest oi = client.getOpenInterest( "FIDAUSDT" );
 		System.out.println( oi.getOpenInterest() );

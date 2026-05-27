@@ -13,11 +13,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ExchangeInfo
+public class ExchangeInfo extends ServerTime
 {
 	private List<RateLimit> rateLimits;
-
-	private Long serverTime;
 
 	// private List<String> exchangeFilters;
 
@@ -33,12 +31,6 @@ public class ExchangeInfo
 	}
 
 
-	public Long getServerTime()
-	{
-		return serverTime;
-	}
-
-
 	public SmartOrderRouting getSmartOrderRouting(String baseAsset)
 	{
 		return sors.stream().filter( sor -> sor.getBaseAsset().equals( baseAsset ) ).findFirst()
@@ -49,6 +41,12 @@ public class ExchangeInfo
 	public List<SmartOrderRouting> getSors()
 	{
 		return sors;
+	}
+
+
+	public int getSymbolCount()
+	{
+		return symbols == null ? 0 : symbols.size();
 	}
 
 
@@ -81,12 +79,6 @@ public class ExchangeInfo
 	}
 
 
-	public void setServerTime(Long serverTime)
-	{
-		this.serverTime = serverTime;
-	}
-
-
 	public void setSors(List<SmartOrderRouting> sors)
 	{
 		this.sors = sors;
@@ -109,6 +101,7 @@ public class ExchangeInfo
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "timezone", timezone )
-				.append( "serverTime", serverTime ).append( "rateLimits", rateLimits ).append( "symbols", symbols ).toString();
+				.append( "serverTime", serverTime ).append( "rateLimits", rateLimits ).append( "symbolCount", getSymbolCount() )
+				.append( "symbols", symbols ).toString();
 	}
 }

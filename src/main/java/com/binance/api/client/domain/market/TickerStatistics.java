@@ -3,13 +3,14 @@ package com.binance.api.client.domain.market;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
+import com.binance.api.client.domain.SymbolRR;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 24 hour price change statistics for a ticker.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TickerStatistics
+public class TickerStatistics extends SymbolRR
 {
 	/**
 	 * Ask price.
@@ -82,11 +83,6 @@ public class TickerStatistics
 	private double priceChangePercent;
 
 	private double quoteVolume;
-
-	/**
-	 * Ticker symbol.
-	 */
-	private String symbol;
 
 	/**
 	 * Total volume during the past 24 hours.
@@ -185,12 +181,6 @@ public class TickerStatistics
 	public double getQuoteVolume()
 	{
 		return quoteVolume;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
 	}
 
 
@@ -296,12 +286,6 @@ public class TickerStatistics
 	}
 
 
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
-	}
-
-
 	public void setVolume(double volume)
 	{
 		this.volume = volume;
@@ -318,12 +302,11 @@ public class TickerStatistics
 	public String toString()
 	{
 		return new ToStringBuilder( this, BinanceAPIConstants.TO_STRING_BUILDER_STYLE ).append( "symbol", symbol )
-				.append( "DIFF", priceChange ).append( "DIFF_PRNT", priceChangePercent )
+				.append( "DIFF", priceChange ).append( "DIFF_PCT", priceChangePercent )
 				.append( "weightedAvgPrice", weightedAvgPrice ).append( "prevClosePrice", prevClosePrice )
-				.append( "lastPrice", lastPrice ).append( "bidPrice", bidPrice ).append( "askPrice", askPrice )
-				.append( "openPrice", openPrice ).append( "highPrice", highPrice ).append( "lowPrice", lowPrice )
-				.append( "VOL", volume ).append( "VOL_Q", quoteVolume ).append( "openTime", openTime )
-				.append( "closeTime", closeTime ).append( "firstId", firstId ).append( "lastId", lastId ).append( "count", count )
-				.toString();
+				.append( "bidPrice", bidPrice ).append( "askPrice", askPrice ).append( "O", openPrice ).append( "H", highPrice )
+				.append( "L", lowPrice ).append( "C/LAST", lastPrice ).append( "VOL", volume ).append( "VOL_Q", quoteVolume )
+				.append( "openTime", openTime ).append( "closeTime", closeTime ).append( "firstId", firstId )
+				.append( "lastId", lastId ).append( "count", count ).toString();
 	}
 }

@@ -33,6 +33,7 @@ import com.binance.api.client.domain.market.AggTrade;
 import com.binance.api.client.domain.market.BookTicker;
 import com.binance.api.client.domain.market.Candlestick;
 import com.binance.api.client.domain.market.CandlestickInterval;
+import com.binance.api.client.domain.market.CurrentAveragePrice;
 import com.binance.api.client.domain.market.OrderBook;
 import com.binance.api.client.domain.market.TickerPrice;
 import com.binance.api.client.domain.market.TickerStatistics;
@@ -97,7 +98,7 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 
 
 	@Override
-	public List<TickerStatistics> get24HAllPriceStatistics()
+	public List<TickerStatistics> get24HPriceStatisticsAll()
 	{
 		return executeSync( binanceAPIService.getAll24HrPriceStatistics() );
 	}
@@ -145,6 +146,13 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 	{
 		return executeSync(
 				binanceAPIService.getAllAssets( BinanceAPIConfig.getAssetInfoApiBaseUrl() + "assetWithdraw/getAllAsset.html" ) );
+	}
+
+
+	@Override
+	public CurrentAveragePrice getCurrentAveragePrice(String symbol)
+	{
+		return executeSync( binanceAPIService.getCurrentAveragePrice( symbol ) );
 	}
 
 
@@ -207,14 +215,14 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 				System.currentTimeMillis() ) );
 	}
 
+	// Account endpoints
+
 
 	@Override
 	public ExchangeInfo getExchangeInfo()
 	{
 		return executeSync( binanceAPIService.getExchangeInfo() );
 	}
-
-	// Account endpoints
 
 
 	@Override
@@ -346,6 +354,8 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 		return executeSync( call );
 	}
 
+	// User stream endpoints
+
 
 	@Override
 	public NewOrderResponse newOrderOneCancelstheOther(NewOrder order)
@@ -353,8 +363,6 @@ public class BinanceSpotAPIRestClientImpl implements IBinanceSpotAPIRestClient
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	// User stream endpoints
 
 
 	@Override

@@ -15,19 +15,19 @@ public class ExchangeInfoExample extends ExampleBase
 {
 	public static void main(String[] args)
 	{
-		IBinanceSpotAPIRestClient client = createSpotClient();
+		IBinanceSpotAPIRestClient spot = createSpotClient();
 
 		// Test connectivity
-		client.ping();
+		spot.ping();
 
 		// Check server time
-		long serverTime = client.getServerTime();
+		long serverTime = spot.getServerTime();
 		System.out.println( serverTime );
 
 		// Exchange info
-		ExchangeInfo exchangeInfo = client.getExchangeInfo();
-		System.out.println( exchangeInfo.getTimezone() + ", Epoch:" + exchangeInfo.getServerTime() );
-		// System.out.println( exchangeInfo.getSymbols() );
+		ExchangeInfo exchangeInfo = spot.getExchangeInfo();
+		System.out.println( exchangeInfo.getTimezone() + ", Epoch: " + exchangeInfo.getServerTime() );
+		System.out.println( "Pair Count: " + exchangeInfo.getSymbolCount() );
 
 		// Obtain symbol information
 		SymbolInfo symbolInfo = exchangeInfo.getSymbolInfo( "SHIBUSDT" );
@@ -63,6 +63,13 @@ public class ExchangeInfoExample extends ExampleBase
 		// System.out.println( allAssets.stream().filter( asset -> asset.getAssetCode().equals( "BNB" )
 		// ).findFirst().get() );
 
+		for ( SymbolInfo symbol : exchangeInfo.getSymbols() )
+		{
+			if ("USDT".equalsIgnoreCase( symbol.getQuoteAsset() ))
+				System.out.println( symbol.getBaseAsset() + "/" + symbol.getQuoteAsset() + ": " + symbol.getStatus() );
+		}
+
+		// Smart Order Routing (SOR)
 		if (exchangeInfo.getSors() != null)
 		{
 			SmartOrderRouting sor = exchangeInfo.getSmartOrderRouting( "ETH" );

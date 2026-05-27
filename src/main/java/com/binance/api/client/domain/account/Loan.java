@@ -7,42 +7,60 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Represents an executed trade history item.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Loan {
+public class Loan
+{
+	private String asset;
 
-    private String asset;
-    private String principal;
-    private long timestamp;
-    private LoanStatus status;
+	private String principal;
 
-    public String getAsset() {
-        return asset;
-    }
+	private long timestamp;
 
-    public void setAsset(String asset) {
-        this.asset = asset;
-    }
+	private LoanStatus status;
 
-    public String getPrincipal() {
-        return principal;
-    }
+	public String getAsset()
+	{
+		return asset;
+	}
 
-    public void setPrincipal(String principal) {
-        this.principal = principal;
-    }
 
-    public long getTimestamp() {
-        return timestamp;
-    }
+	public void setAsset(String asset)
+	{
+		this.asset = asset;
+	}
 
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
 
-    public LoanStatus getStatus() {
-        return status;
-    }
+	public String getPrincipal()
+	{
+		return principal;
+	}
 
-    public void setStatus(LoanStatus status) {
-        this.status = status;
-    }
+
+	public void setPrincipal(String principal)
+	{
+		this.principal = principal;
+	}
+
+
+	public long getTimestamp()
+	{
+		return timestamp;
+	}
+
+
+	public void setTimestamp(long timestamp)
+	{
+		this.timestamp = timestamp;
+	}
+
+
+	public LoanStatus getStatus()
+	{
+		return status;
+	}
+
+
+	public void setStatus(LoanStatus status)
+	{
+		this.status = status;
+	}
 }

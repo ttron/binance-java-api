@@ -3,18 +3,18 @@ package com.binance.api.client;
 import static com.binance.api.client.BinanceAPIServiceGenerator.getSharedClient;
 import static com.binance.api.client.config.BinanceAPIConfig.getTestnetSpotBaseUrl;
 
-import com.binance.api.client.derivative.IBinanceFutureAPIRestClient;
-import com.binance.api.client.derivative.impl.BinanceFutureAPIRestClientImpl;
+import com.binance.api.client.derivative.IBinanceDerivativeAPIRestClient;
+import com.binance.api.client.derivative.impl.BinanceDerivativeAPIRestClientImpl;
 import com.binance.api.client.spot.BinanceApiAsyncMarginRestClient;
 import com.binance.api.client.spot.BinanceApiMarginRestClient;
 import com.binance.api.client.spot.BinanceApiSwapRestClient;
 import com.binance.api.client.spot.IBinanceAPIWebSocketClient;
 import com.binance.api.client.spot.IBinanceSpotAPIAsyncRestClient;
 import com.binance.api.client.spot.IBinanceSpotAPIRestClient;
+import com.binance.api.client.spot.impl.BinanceAPIWebSocketClientImpl;
 import com.binance.api.client.spot.impl.BinanceApiAsyncMarginRestClientImpl;
 import com.binance.api.client.spot.impl.BinanceApiMarginRestClientImpl;
 import com.binance.api.client.spot.impl.BinanceApiSwapRestClientImpl;
-import com.binance.api.client.spot.impl.BinanceAPIWebSocketClientImpl;
 import com.binance.api.client.spot.impl.BinanceSpotAPIAsyncRestClientImpl;
 import com.binance.api.client.spot.impl.BinanceSpotAPIRestClientImpl;
 
@@ -92,9 +92,9 @@ public class BinanceAPIClientFactory
 	}
 
 
-	public IBinanceFutureAPIRestClient newFutureRestClient()
+	public IBinanceDerivativeAPIRestClient newFutureRestClient()
 	{
-		return new BinanceFutureAPIRestClientImpl( apiKey, secret );
+		return new BinanceDerivativeAPIRestClientImpl( apiKey, secret );
 	}
 
 

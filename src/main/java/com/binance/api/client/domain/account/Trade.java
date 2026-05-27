@@ -3,6 +3,7 @@ package com.binance.api.client.domain.account;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
+import com.binance.api.client.domain.SymbolRR;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -11,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
  * Represents an executed trade.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Trade
+public class Trade extends SymbolRR
 {
 	/**
 	 * Trade id.
@@ -47,11 +48,6 @@ public class Trade
 	 * Trade execution time.
 	 */
 	private long time;
-
-	/**
-	 * The symbol of the trade.
-	 */
-	private String symbol;
 
 	@JsonProperty("isBuyer")
 	private boolean buyer;
@@ -156,18 +152,6 @@ public class Trade
 	public void setTime(long time)
 	{
 		this.time = time;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
-	}
-
-
-	public void setSymbol(String symbol)
-	{
-		this.symbol = symbol;
 	}
 
 

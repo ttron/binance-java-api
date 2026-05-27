@@ -3,17 +3,16 @@ package com.binance.api.client.domain.account.request;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.binance.api.client.constant.BinanceAPIConstants;
+import com.binance.api.client.domain.SymbolRR;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Base request parameters for order-related methods.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class OrderRequest
+public class OrderRequest extends SymbolRR
 {
 	private Long recvWindow;
-
-	private String symbol;
 
 	private Long timestamp;
 
@@ -34,12 +33,6 @@ public class OrderRequest
 	public Long getRecvWindow()
 	{
 		return recvWindow;
-	}
-
-
-	public String getSymbol()
-	{
-		return symbol;
 	}
 
 
