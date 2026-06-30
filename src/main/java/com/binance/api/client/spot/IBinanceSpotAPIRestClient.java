@@ -309,6 +309,7 @@ public interface IBinanceSpotAPIRestClient
 	 *
 	 * @param listenKey listen key that identifies a data stream
 	 */
+	@Deprecated
 	void keepAliveUserDataStream(String listenKey);
 
 
